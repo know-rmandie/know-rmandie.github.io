@@ -1,0 +1,13 @@
+#################
+## Sous-Projets
+#################
+/planification/*
+/urbanisme/*
+/ville-durable/*
+/indicateurs/*
+#################
+## Ressources
+#################
+/zFileManager/*
+/zMatos/*
+/zArchives/*
