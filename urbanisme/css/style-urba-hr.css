@@ -1,0 +1,41 @@
+.chrono3 {width:100%;font-size:.9rem}
+.chrono3 tr td {width:33.33%;font-size:.9rem;}
+.chrono3 tr td:nth-child(3n+1) {text-align:left}
+.chrono3 tr td:nth-child(3n+2) {font-size:.9em;font-style:italic;text-align:center}
+.chrono3 tr td:nth-child(3n+3) {text-align:right}
+
+/* Style for local sankey diagram (svg)*/
+.node rect {
+	cursor: move;
+	fill-opacity: .9;
+	shape-rendering: crispEdges
+	}
+text {
+	font-size:.8rem;
+	pointer-events: none;
+	text-shadow: 0px 0px 2px #fff,0px 0px 2px #fff,0px 0px 2px #fff
+	}
+.link {
+	fill: none;
+	stroke: #000;
+	stroke-opacity:.2
+	}
+	.link:hover {
+		stroke:#b44;
+		stroke-opacity:.75
+		}
+
+.axis path,.axis line {
+	fill: none;
+	stroke: #aaa;
+	shape-rendering: crispEdges
+	}
+.bar {
+	fill: steelblue
+	}
+.x.axis path {
+	display: none
+	}
+.legend line {
+	stroke: #aaa;
+	shape-rendering: crispEdges}
