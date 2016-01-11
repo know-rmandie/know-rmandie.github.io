@@ -1,0 +1,1119 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::4979"
+        }
+    },
+    "metadata": {
+        "date": "novembre 2015",
+        "source": " METTL + DREAL Normandie - <a href='http://www.normandie.developpement-durable.gouv.fr/ville-durable-r90.html'>Observatoire de la ville durable</a>"
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.5945,
+                    49.2084
+                ]
+            },
+            "properties": {
+                "id": "14026ecoA",
+                "name": "éco-quartier centre bourg Audrieu",
+                "description": "NULL",
+                "commune": "Audrieu",
+                "Lcat": "clab",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "ajourné 2014",
+                "Aetat": "projet",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.2783,
+                    49.2432
+                ]
+            },
+            "properties": {
+                "id": "14060ecoA",
+                "name": "Le Fond du Pré",
+                "description": "NULL",
+                "commune": "Benouville",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "intention",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.3707,
+                    49.1829
+                ]
+            },
+            "properties": {
+                "id": "14118ecoA",
+                "name": "Presqu&apos;ile",
+                "description": "NULL",
+                "commune": "Caen",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "projet",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.2972,
+                    49.2039
+                ]
+            },
+            "properties": {
+                "id": "14167ecoA",
+                "name": "Quartier LIBERA",
+                "description": "NULL",
+                "commune": "Colombelles",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "intention",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.4514,
+                    49.1555
+                ]
+            },
+            "properties": {
+                "id": "14738ecoA",
+                "name": "Écoquartier Verson",
+                "description": "NULL",
+                "commune": "Verson",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "réalisé",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.169947,
+                    49.318664
+                ]
+            },
+            "properties": {
+                "id": "27008ecoA",
+                "name": "Écoquartier La Croix",
+                "description": "NULL",
+                "commune": "Alizay",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/Écoquartier-la-croix-alizay-a866.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1757",
+                "Acom": "Tranche 1 terminée",
+                "Aetat": "chantier",
+                "Isurf": "NULL",
+                "Ilogmt": "33",
+                "Ilogsoc": "33"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.1275,
+                    49.0378
+                ]
+            },
+            "properties": {
+                "id": "27229ecoA",
+                "name": "Cité Lafayette",
+                "description": "NULL",
+                "commune": "Evreux",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/cite-lafayette-evreux-a864.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=133",
+                "Acom": "ne doit plus être un écoquratier?",
+                "Aetat": "projet",
+                "Isurf": "23",
+                "Ilogmt": "550",
+                "Ilogsoc": "330"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.14323,
+                    49.01918
+                ]
+            },
+            "properties": {
+                "id": "27229ecoB",
+                "name": "Écoquartier Panette",
+                "description": "NULL",
+                "commune": "Evreux",
+                "Lcat": "clab",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "ajourné 2014",
+                "Aetat": "suspendu",
+                "Isurf": "0.5",
+                "Ilogmt": "116",
+                "Ilogsoc": "46"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.6073,
+                    49.0889
+                ]
+            },
+            "properties": {
+                "id": "27279ecoA",
+                "name": "Les Sablons",
+                "description": "NULL",
+                "commune": "Gasny",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/les-sablons-gasny-a862.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1332",
+                "Acom": "NULL",
+                "Aetat": "projet",
+                "Isurf": "1",
+                "Ilogmt": "20",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.78784,
+                    49.28789
+                ]
+            },
+            "properties": {
+                "id": "27284ecoA",
+                "name": "Quartier de la Gare",
+                "description": "NULL",
+                "commune": "Gisors",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/Écoquartier-de-la-gare-gisors-a872.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1932",
+                "Acom": "pré opérationnel",
+                "Aetat": "intention",
+                "Isurf": "13.5",
+                "Ilogmt": "300",
+                "Ilogsoc": "45"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.199733,
+                    48.936018
+                ]
+            },
+            "properties": {
+                "id": "27301ecoA",
+                "name": "« rue Romaine »",
+                "description": "NULL",
+                "commune": "Grossoeuvre",
+                "Lcat": "elab",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "engagé dans le label en 2015",
+                "Aetat": "projet",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.14607,
+                    49.20747
+                ]
+            },
+            "properties": {
+                "id": "27375ecoA",
+                "name": "Vers un « quartier durable », route de la Vacherie.",
+                "description": "NULL",
+                "commune": "Louviers",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1758",
+                "Acom": "ne doit plus être un écoquratier?",
+                "Aetat": "abandonné",
+                "Isurf": "4.5",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.17805,
+                    49.21645
+                ]
+            },
+            "properties": {
+                "id": "27375ecoB",
+                "name": "Écoquartier de la Gare",
+                "description": "NULL",
+                "commune": "Louviers",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/lotissement-durable-bioclimatique-a871.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=871",
+                "Acom": "NULL",
+                "Aetat": "abandonné",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.4808,
+                    48.93839
+                ]
+            },
+            "properties": {
+                "id": "27414ecoA",
+                "name": "réhabilitation « ancienne gendarmerie »",
+                "description": "NULL",
+                "commune": "Montreuil l&apos;Argillé",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/quartier-de-la-gendarmerie-a852.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1659",
+                "Acom": "NULL",
+                "Aetat": "abandonné",
+                "Isurf": "0.11",
+                "Ilogmt": "0",
+                "Ilogsoc": "0"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.5061,
+                    49.3608
+                ]
+            },
+            "properties": {
+                "id": "27467ecoA",
+                "name": "La Cartonnerie",
+                "description": "NULL",
+                "commune": "Pont-Audemer",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/la-cartonnerie-pont-audemer-a853.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1654",
+                "Acom": "N’est pas un écoquartier (bâtiment requalifié). Tranche 1 terminée.",
+                "Aetat": "suspendu",
+                "Isurf": "6",
+                "Ilogmt": "200",
+                "Ilogsoc": "100"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.93977,
+                    48.74154
+                ]
+            },
+            "properties": {
+                "id": "27679ecoA",
+                "name": "le parc « Reine Mathilde »",
+                "description": "NULL",
+                "commune": "Verneuil sur Avre",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/parc-mathilde-verneuil-sur-avre-a858.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=166",
+                "Acom": "Terminé. N’est pas un écoquartier (parc), mais répond aux objectifs de la ville durable en apportant un plus aux quartiers existants.",
+                "Aetat": "réalisé",
+                "Isurf": "1.2",
+                "Ilogmt": "0",
+                "Ilogsoc": "0"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.47283,
+                    49.09765
+                ]
+            },
+            "properties": {
+                "id": "27681ecoA",
+                "name": "Zac Fieschi",
+                "description": "NULL",
+                "commune": "Vernon",
+                "Lcat": "elab",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "engagé dans le label en 2014",
+                "Aetat": "chantier",
+                "Isurf": "12",
+                "Ilogmt": "600",
+                "Ilogsoc": "120"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.22208,
+                    49.2684
+                ]
+            },
+            "properties": {
+                "id": "27701ecoA",
+                "name": "Éco-village des Noés",
+                "description": "NULL",
+                "commune": "Val de Reuil ",
+                "Lcat": "elab",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/eco-village-des-noes-val-de-reuil-a857.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=164",
+                "Acom": "engagé dans le label en 2014",
+                "Aetat": "chantier",
+                "Isurf": "4",
+                "Ilogmt": "98",
+                "Ilogsoc": "98"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.643126,
+                    49.625504
+                ]
+            },
+            "properties": {
+                "id": "50129ecoA",
+                "name": "Grimesnil Monturbert",
+                "description": "NULL",
+                "commune": "Cherbourg Octeville",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "chantier",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.597302,
+                    48.837579
+                ]
+            },
+            "properties": {
+                "id": "50218ecoA",
+                "name": "Eco quartier de la Clémentière",
+                "description": "NULL",
+                "commune": "Granville",
+                "Lcat": "clab",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "ajourné 2013",
+                "Aetat": "chantier",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.166474,
+                    49.126563
+                ]
+            },
+            "properties": {
+                "id": "50239ecoA",
+                "name": "Eco Hameau les Chemins Verts ",
+                "description": "NULL",
+                "commune": "Hebecrevon",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "chantier",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -1.095232,
+                    49.128547
+                ]
+            },
+            "properties": {
+                "id": "50475ecoA",
+                "name": "Saint-Georges-Montcocq",
+                "description": "NULL",
+                "commune": "Saint-Georges-Montcocq",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "projet",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.915961,
+                    48.755785
+                ]
+            },
+            "properties": {
+                "id": "50625ecoA",
+                "name": "Eco-quartier Communal",
+                "description": "NULL",
+                "commune": "Vengeons",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "projet",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -0.678462,
+                    48.729922
+                ]
+            },
+            "properties": {
+                "id": "61093ecoA",
+                "name": "EcoHameau «Le Brulai»",
+                "description": "NULL",
+                "commune": "Chanu",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "inconnu",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.398551,
+                    48.85587
+                ]
+            },
+            "properties": {
+                "id": "61205ecoA",
+                "name": "Eco-hameau",
+                "description": "NULL",
+                "commune": "Heugon",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "inconnu",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.1164,
+                    49.481
+                ]
+            },
+            "properties": {
+                "id": "76108ecoA",
+                "name": "Zac des Portes de la Forêt ",
+                "description": "NULL",
+                "commune": "Bois-Guillaume",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/zac-des-portes-de-la-foret-bois-a859.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1326",
+                "Acom": "terminé",
+                "Aetat": "réalisé",
+                "Isurf": "38",
+                "Ilogmt": "570",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.0293,
+                    49.2737
+                ]
+            },
+            "properties": {
+                "id": "76165ecoA",
+                "name": "Écoquartier Uggate",
+                "description": "NULL",
+                "commune": "Caudebec lès Elbeuf",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/uggate-caudebec-les-elbeuf-a848.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1656",
+                "Acom": "études préalables",
+                "Aetat": "suspendu",
+                "Isurf": "29",
+                "Ilogmt": "1343",
+                "Ilogsoc": "300"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.107,
+                    49.9295
+                ]
+            },
+            "properties": {
+                "id": "76217ecoA",
+                "name": "Écoquartier du Val d&apos;Arquet",
+                "description": "NULL",
+                "commune": "Dieppe",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/Écoquartier-du-val-d-arquet-dieppe-a865.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1759",
+                "Acom": "Tranche 1 terminée",
+                "Aetat": "chantier",
+                "Isurf": "11",
+                "Ilogmt": "220",
+                "Ilogsoc": "170"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.02,
+                    49.34
+                ]
+            },
+            "properties": {
+                "id": "76319ecoA",
+                "name": "Écoquartier du Clos Samson",
+                "description": "NULL",
+                "commune": "Grand-Couronne",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "pré opérationnel",
+                "Aetat": "intention",
+                "Isurf": "6",
+                "Ilogmt": "100",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.041384,
+                    49.411811
+                ]
+            },
+            "properties": {
+                "id": "76322ecoA",
+                "name": "Quartier Matisse",
+                "description": "NULL",
+                "commune": "Grand-Quevilly",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/quartier-matisse-grand-quevilly-a867.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1327",
+                "Acom": "Tranche 1 terminée, 124 logements Quevilly Habitat dont 20 logements étudiants",
+                "Aetat": "chantier",
+                "Isurf": "11.9",
+                "Ilogmt": "760",
+                "Ilogsoc": "456"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.198015,
+                    49.511788
+                ]
+            },
+            "properties": {
+                "id": "76341ecoA",
+                "name": "Écoquartier des coteaux",
+                "description": "NULL",
+                "commune": "Harfleur",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "Tranche 1 terminée",
+                "Aetat": "chantier",
+                "Isurf": "6",
+                "Ilogmt": "308",
+                "Ilogsoc": "133"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.08706,
+                    49.52898
+                ]
+            },
+            "properties": {
+                "id": "76351ecoA",
+                "name": "Le Grand Hameau",
+                "description": "NULL",
+                "commune": "Le Havre",
+                "Lcat": "elab",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/le-grand-hameau-le-havre-a849.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1658",
+                "Acom": "engagé dans le label en 2014. Tranche 1 terminée",
+                "Aetat": "chantier",
+                "Isurf": "28",
+                "Ilogmt": "1206",
+                "Ilogsoc": "193"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.7695,
+                    49.4765
+                ]
+            },
+            "properties": {
+                "id": "76401ecoA",
+                "name": "quartier de l&apos;église",
+                "description": "NULL",
+                "commune": "La Mailleraye sur Seine",
+                "Lcat": "elab",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/quartier-de-l-eglise-la-mailleraye-a85.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1661",
+                "Acom": "engagé dans le label en 2014",
+                "Aetat": "projet",
+                "Isurf": "2",
+                "Ilogmt": "24",
+                "Ilogsoc": "24"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.1623,
+                    49.5484
+                ]
+            },
+            "properties": {
+                "id": "76447ecoA",
+                "name": "Les jardins de la ville",
+                "description": "NULL",
+                "commune": "Montivilliers ",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/les-jardins-de-la-ville-a851.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1655",
+                "Acom": "études préalablesprojet remanié",
+                "Aetat": "projet",
+                "Isurf": "60",
+                "Ilogmt": "1000",
+                "Ilogsoc": "485"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.2383,
+                    49.4098
+                ]
+            },
+            "properties": {
+                "id": "76448ecoA",
+                "name": "Montmain",
+                "description": "NULL",
+                "commune": "Montmain",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "Probable volonté",
+                "Aetat": "intention",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.0779,
+                    49.46868
+                ]
+            },
+            "properties": {
+                "id": "76451ecoA",
+                "name": "Quartier des Oiseaux",
+                "description": "NULL",
+                "commune": "Mont-Saint-Aignan",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/quartier-des-oiseaux-mont-saint-a868.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1333",
+                "Acom": "projet remanié",
+                "Aetat": "réalisé",
+                "Isurf": "2.5",
+                "Ilogmt": "181",
+                "Ilogsoc": "39"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.0494969,
+                    49.87014
+                ]
+            },
+            "properties": {
+                "id": "76482ecoA",
+                "name": "écoquartier",
+                "description": "NULL",
+                "commune": "Offranville",
+                "Lcat": "caap",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "inconnu",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.2383,
+                    49.4098
+                ]
+            },
+            "properties": {
+                "id": "76533ecoA",
+                "name": "La Fraternité – campemeille",
+                "description": "NULL",
+                "commune": "Rogerville",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "Probable volonté",
+                "Aetat": "intention",
+                "Isurf": "4",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.18108,
+                    49.46551
+                ]
+            },
+            "properties": {
+                "id": "76536ecoA",
+                "name": "Écoquartier des Arondes",
+                "description": "NULL",
+                "commune": "Roncherolles sur le Vivier",
+                "Lcat": "elab",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/la-ferme-debruyne-roncherolles-sur-a863.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1328",
+                "Acom": "engagé dans le label en 2014. Tranche 1 terminée",
+                "Aetat": "chantier",
+                "Isurf": "1.5",
+                "Ilogmt": "40",
+                "Ilogsoc": "3"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.0736,
+                    49.4384
+                ]
+            },
+            "properties": {
+                "id": "76540ecoA",
+                "name": "Écoquartier Flaubert",
+                "description": "NULL",
+                "commune": "Rouen",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/eco-quartier-flaubert-rouen-a854.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1653",
+                "Acom": "études préalables. Fin opération 2035",
+                "Aetat": "projet",
+                "Isurf": "92",
+                "Ilogmt": "2500",
+                "Ilogsoc": "625"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.06699,
+                    49.44571
+                ]
+            },
+            "properties": {
+                "id": "76540ecoB",
+                "name": "Luciline Rives de Seine",
+                "description": "NULL",
+                "commune": "Rouen",
+                "Lcat": "elab",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/eco-quartier-luciline-rouen-a855.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1652",
+                "Acom": "engagé dans le label en 2014.  Tranche 1 terminée 2016",
+                "Aetat": "chantier",
+                "Isurf": "9",
+                "Ilogmt": "1000",
+                "Ilogsoc": "500"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1.1373,
+                    49.43557
+                ]
+            },
+            "properties": {
+                "id": "76540ecoC",
+                "name": "Écoquartier des Deux Rivières Repainville",
+                "description": "NULL",
+                "commune": "Rouen",
+                "Lcat": "autres",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/Écoquartier-des-deux-rivieres-a87.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1765",
+                "Acom": "NULL",
+                "Aetat": "abandonné",
+                "Isurf": "NULL",
+                "Ilogmt": "NULL",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.2913,
+                    49.55373
+                ]
+            },
+            "properties": {
+                "id": "76551ecoA",
+                "name": "Éco-Hameau des charmilles",
+                "description": "NULL",
+                "commune": "SAINNEVILLE-SUR-SEINE ",
+                "Lcat": "caap",
+                "Rter": "http://www.haute-normandie.developpement-durable.gouv.fr/eco-hameau-des-charmilles-a869.html",
+                "Rtra": "http://intra.dreal-haute-normandie.i2/spip.php?page=article&id_article=1761",
+                "Acom": "NULL",
+                "Aetat": "réalisé",
+                "Isurf": "1,2",
+                "Ilogmt": "23",
+                "Ilogsoc": "23"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.7587,
+                    49.6195
+                ]
+            },
+            "properties": {
+                "id": "76557ecoA",
+                "name": "Les jardins du bocage",
+                "description": "NULL",
+                "commune": "Saint-Arnoult",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "ne sera pas un écoquartier",
+                "Aetat": "abandonné",
+                "Isurf": "8",
+                "Ilogmt": "0",
+                "Ilogsoc": "37"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.9949,
+                    49.49187
+                ]
+            },
+            "properties": {
+                "id": "76728ecoA",
+                "name": "Le Vert Galant",
+                "description": "NULL",
+                "commune": "La Vaupalière",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "NULL",
+                "Aetat": "intention",
+                "Isurf": "9.7",
+                "Ilogmt": "107",
+                "Ilogsoc": "NULL"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.7587,
+                    49.6195
+                ]
+            },
+            "properties": {
+                "id": "76758ecoA",
+                "name": "Zac de la Plaine",
+                "description": "NULL",
+                "commune": "Yvetot",
+                "Lcat": "autres",
+                "Rter": "NULL",
+                "Rtra": "NULL",
+                "Acom": "intention",
+                "Aetat": "intention",
+                "Isurf": "12",
+                "Ilogmt": "700",
+                "Ilogsoc": "NULL"
+            }
+        }
+    ]
+}
