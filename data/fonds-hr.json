@@ -1,5 +1,12 @@
 [
-	{	"id" : "toner",
+	{	"id" : "osmbw",
+		"nom" : "OSM N&B",
+		"url": "http://www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png",
+		"attrib":"fond hébergé par toolserver.org, données contributeurs <a href='http://openstreetmap.org'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY 3.0</a>.",
+		"zMin" :1,
+		"zMax" :18
+    }
+    {	"id" : "toner",
 		"nom" : "Encre noire",
 		"url": "http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png",
 		"attrib":"fond par <a href='http://stamen.com'>Stamen Design</a>, licence <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Données contributeurs <a href='http://openstreetmap.org'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>.",
@@ -10,7 +17,7 @@
 		"nom" : "OpenStreetMap",
 		"url": "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
 		"attrib":"fond par les contributeurs &copy;<a href='http://osm.org/copyright'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>.",
-		"zMin" :4,
+		"zMin" :1,
 		"zMax" :20
 		},
 	{	"id" : "water",
