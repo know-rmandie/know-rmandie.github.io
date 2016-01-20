@@ -30,7 +30,7 @@ for(i in fonds) {
 
 function letsStart() {
 	/* affichage de la carte uniquement avec l'ajout de ?carteSeule */	
-	if(document.location.href.match(/\?carteSeule/g)) {
+	if(document.location.href.match(/carteSeule/g)) {
 		context='full';
 		$('#header,#footer,h2').css('display','none');
 		$('#main, #page').css('width','100%');
@@ -169,23 +169,25 @@ function letsStart() {
     // dispatchage dans les couches
     var dataEQ=data.features;
     for(i in dataEQ) {
-        var html='<h6>'+dataEQ[i].properties.commune+' - '+dataEQ[i].properties.name+'</h6>';
-        html+='<i class="avct '+dataEQ[i].properties.Aetat+'">'+dataEQ[i].properties.Aetat+'</i>';
-            var ha=dataEQ[i].properties.Isurf,
-            logts=dataEQ[i].properties.Ilogmt;
-            if(ha=='NULL') {} else {html+='<br/>'+ha+' ha, '}
-            if(logts=='NULL') {} else {html+='<br/>'+logts+' logements,'}
-            var inter=dataEQ[i].properties.Rter,
-                intra=dataEQ[i].properties.Rtra;
-            if(inter=='NULL') {} else {html+='<br/>-&nbsp;<a href='+inter+'">internet</a>'}
-            if(intra=='NULL') {} else {html+='<span class=intranet"><br/>-&nbsp;<a href="'+intra+'">intranet</a></span>'}
-        var iconeCat,iconeAv;
-        if(PinCat[dataEQ[i].properties.Lcat]==undefined) {iconeCat=PinCat["la9-autre"]} else {iconeCat=PinCat[dataEQ[i].properties.Lcat]}
-        if(PinAv[dataEQ[i].properties.Aetat]==undefined) {iconeAv=PinAv["av0-int"]} else {iconeAv=PinAv[dataEQ[i].properties.Aetat]}
-        var pointCat = new L.marker([dataEQ[i].geometry.coordinates[1],dataEQ[i].geometry.coordinates[0]],{icon:iconeCat}).bindPopup(html);
-        ecoQlabel.addLayer(pointCat);
-        var pointAv = new L.marker([dataEQ[i].geometry.coordinates[1],dataEQ[i].geometry.coordinates[0]],{icon:iconeAv}).bindPopup(html);
-        ecoQavancement.addLayer(pointAv);
+        if(document.location.href.match(/tousProjets/g) || document.location.href.match(/adminView/g) || dataEQ[i].properties.Aetat!=="abandonné") {
+            var html='<h6>'+dataEQ[i].properties.commune+' - '+dataEQ[i].properties.name+'</h6>';
+            html+='<i class="avct '+dataEQ[i].properties.Aetat+'">'+dataEQ[i].properties.Aetat+'</i>';
+                var ha=dataEQ[i].properties.Isurf,
+                logts=dataEQ[i].properties.Ilogmt;
+                if(ha=='NULL') {} else {html+='<br/>'+ha+' ha, '}
+                if(logts=='NULL') {} else {html+='<br/>'+logts+' logements,'}
+                var inter=dataEQ[i].properties.Rter,
+                    intra=dataEQ[i].properties.Rtra;
+                if(inter=='NULL') {} else {html+='<br/>-&nbsp;<a href='+inter+'">internet</a>'}
+                if(intra=='NULL') {} else {html+='<span class=intranet"><br/>-&nbsp;<a href="'+intra+'">intranet</a></span>'}
+            var iconeCat,iconeAv;
+            if(PinCat[dataEQ[i].properties.Lcat]==undefined) {iconeCat=PinCat["la9-autre"]} else {iconeCat=PinCat[dataEQ[i].properties.Lcat]}
+            if(PinAv[dataEQ[i].properties.Aetat]==undefined) {iconeAv=PinAv["av0-int"]} else {iconeAv=PinAv[dataEQ[i].properties.Aetat]}
+            var pointCat = new L.marker([dataEQ[i].geometry.coordinates[1],dataEQ[i].geometry.coordinates[0]],{icon:iconeCat}).bindPopup(html);
+            ecoQlabel.addLayer(pointCat);
+            var pointAv = new L.marker([dataEQ[i].geometry.coordinates[1],dataEQ[i].geometry.coordinates[0]],{icon:iconeAv}).bindPopup(html);
+            ecoQavancement.addLayer(pointAv);
+        }
     }
 	
 // création de la légende
@@ -209,15 +211,8 @@ var WMultip=new Array;
 	WMultip["Avancement"]=6;
 var coucheActive="vide";
 
-/*carte.on("overlayremove", function(layer) {
-	if(whileAdding==0) {
-		document.getElementById('legende').innerHTML = '';
-		coucheActive="vide";
-		}
-	});*/
-
 /* ajouts de fonctions, uniquement sur le réseau local. */
-if(document.location.href.match(/\?adminView/g)) {
+if(document.location.href.match(/adminView/g)) {
 	// récupération des coordonnées d'un point
 	var popup = L.popup();
 	var listCoord = "";
