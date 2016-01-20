@@ -230,11 +230,15 @@ a[href*='#'] {
 /* classes */
 .moyen {font-size:.85em}
 .petit {font-size:.75em}
+p.info, p.tip {font:italic 0.9em serif}
 
-.reflex {
-	-moz-column-count:2;-webkit-column-count:2;column-count:2;
-	font-size:80%
-	}
+.reflex, .index {
+	-moz-column-count:2;
+	-webkit-column-count:2;
+	column-count:2;
+	font-size:.8em;
+	line-height:1.1em
+}
 
 /************
 C O L O R S
@@ -261,12 +265,16 @@ body {
 			.nav ul li:hover {
 						box-shadow:5px 0px 5px 2px white;
 						}
-			.nav ul li.active {
-					background-color:#fff;
-					color:#959088;
-				  box-shadow:0px 0px 5px 2px white;
-					}
 			.nav ul li a {color:#fff;text-decoration:none}
+            
+            .nav ul li.active {
+				background-color:#fff;
+				color:#959088;
+				box-shadow:0px 0px 5px 2px white;
+				}
+            .nav ul li.active a {
+                color:#959088
+                }
 						
 			.main {background:white}
 	

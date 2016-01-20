@@ -15,19 +15,31 @@ function letsStart() {     								// function to wait for Leaflet and JQuery
 	$(window).resize(function() {
 		clearTimeout(window.resizedFinished);
 		window.resizedFinished = setTimeout(function(){
-			getWidth('map');
-			$('#map')
-				.css('width',rW)
-				.css('height',rH);
+            if(document.location.href.match(/\?carteSeule/g)) {
+                getWidth('full');
+                }
+            else {
+                getWidth('map');
+            }
+			$('#map').css('width',rW)
+            if(rH>750) $('#map').css('height',rH-25);
+                else $('#map').css('height',rH-15);
 			}, 250);
 		});
 	
 	// mise à une échelle permettant de voir la Haute-Normandie en entier	
-	rW=$('#main').width()-10;	
-	rH=$(window).height()-240;
-	$('#map')
-		.css('width',rW)
-		.css('height',rH);
+	if(document.location.href.match(/\?carteSeule/g)) {
+        $('.page').css('width','100%');
+        $('.page').css('max-width','100%');
+        $('body').css('background','none');
+        getWidth('full');
+        }
+    else {
+        getWidth('map');
+    }
+    $('#map').css('width',rW)
+    if(rH>900) $('#map').css('height',rH-25);
+        else $('#map').css('height',rH-15);
 	if(knwrmdZoom==null) knwrmdZoom=Math.sqrt(rW)/3.75;
 	carte=L.map('map').setView([knwrmdLat,knwrmdLong],Math.round(knwrmdZoom));
 	// ajout des couches de fonds dans la liste des couches disponibles	
@@ -135,6 +147,6 @@ function letsStart() {     								// function to wait for Leaflet and JQuery
 		
 	// affichage de la carte uniquement avec l'ajout de ?carteSeule
 	if(document.location.href.match(/\?carteSeule/g)) {
-		$('#header,#footer').css('display','none');
+		$('#header,#footer,#main>h2').css('display','none');
 		}
 	}
