@@ -1,7 +1,7 @@
 [
 	{	"id" : "osmbw",
 		"nom" : "OSM N&B",
-		"url": "http://www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png",
+		"url": "http://a.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png",
 		"attrib":"fond hébergé par toolserver.org, données contributeurs <a href='http://openstreetmap.org'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY 3.0</a>.",
 		"zMin" :1,
 		"zMax" :18
