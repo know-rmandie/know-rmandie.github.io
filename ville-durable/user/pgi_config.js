@@ -7,17 +7,17 @@ This is a pretty INSECURE way to make issues sent to your gitlab project. Using 
 var pGi={
 /* G I T L A B repo informations */
    gitlab:"gitlab.com",                        // gitlab repo url
-   usgroup:"know-rmandie",                            // gitlab username or group name where the project is
-   project:"know-rmandie.gitlab.io",                // project id in gitlab
-   token:"MDXWmKzdfFp5aqheq_1S",                         // token !WARNING! this_is_your_SECONDARY_gitlab_token_with_ONLY_GUEST_PRIVILEGE
+   usgroup:"know-rmandie",                     // gitlab username or group name where the project is
+   project:"lektor",                           // project id in gitlab - should not contain any dot (. nor "%2E")
+   token:"MDXWmKzdfFp5aqheq_1S",               // token !WARNING! this_is_your_SECONDARY_gitlab_token_with_ONLY_GUEST_PRIVILEGE
 /* F I E L D S list*/
    form:[
-       {name:"title",type:"text",dest:"title",def:"objet de la remarque",req:true,hid:false},
-       {name:"tag",type:"text",dest:"tags",def:"ville-durable",req:false,hid:true},
+       {name:"titre",type:"text",dest:"title",def:"objet de la remarque",req:true,hid:false},
+       {name:"etiquette",type:"text",dest:"labels",def:"ville-durable",req:false,hid:true},
        {name:"comment",type:"textarea",dest:"description",def:"merci de préciser...",req:false,hid:false}
    ],
    intro:"N'hésitez pas à faire vos remarques, commentaires, propositions d'améliorations pour cet outil.",
-   thanks:"Merci de nous aider à améliorer la cartographie de la ville durable en Normandie. ",
+   thanks:"Merci de nous aider à améliorer la cartographie de la ville durable en Normandie.",
    autoclose:false
 }
 /* H E L P
