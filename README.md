@@ -1,7 +1,7 @@
 ﻿*Le [projet original](https://git.framasoft.org/territoires/homeCommon) est hébergé sur [l'instance gitlab de Framasoft](https://git.framasoft.org). D'autres versions peuvent être déployées, notamment sur github, mais il s'agit de mirroirs...*
 
 # Outils et pages au service des territoires
-Ce répertoire contient plusieurs projets destinés à capitaliser et mettre en forme des informations sur les territoires. C'est un travail initié pour la Normandie, mais adaptable à n'importe quel autre territoires... 
+Ce répertoire contient plusieurs projets destinés à capitaliser et mettre en forme des informations sur les territoires. C'est un travail initié pour la Normandie, mais adaptable à n'importe quel autre territoire... 
 
 ## Projets diponibles
 *nb : les liens sont conçus pour fonctionner sur git.framasoft.org . Si vous être sur une copie hébergée ailleurs, il se peut qu'ils ne fonctionnent pas*
@@ -24,5 +24,5 @@ Tout ceci est modifiable, il faut juste `index.html` et l'arborescence en foncti
 
 ## Sources utilisées / licences
 Chaque module présente les sources et codes qu'il utilise ainsi que les licences associées. La page d'accueil utilise seulement [jQuery](https://jquery.org) sous Licence MIT.
-  
+
 Sauf mention contraire les codes sont **réutilisable sous licence [MIT](http://opensource.org/licenses/MIT)** et les **icones, textes et objets graphiques sous licence [CC By 3.0](http://creativecommons.org/licenses/by/3.0/deed.fr)**.
