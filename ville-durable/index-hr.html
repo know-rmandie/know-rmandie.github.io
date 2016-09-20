@@ -6,19 +6,19 @@
 		<meta name='author' value='Sylvain Comte' />
 		<meta name='version' value='1.3.1' />
 		<meta name="keywords" value="carte, ville durable, écoquartiers, écocité, exemplaire, Normandie, avancement, projets" />
-		<meta name="description" content="Normandie : carte des projets d'écoquartiers, leur avancement, leur position par rapport au label national" /> 
-	
+		<meta name="description" content="Normandie : carte des projets d'écoquartiers, leur avancement, leur position par rapport au label national" />
+
 	<meta name='viewport' content='width=device-width, user-scalable=yes'>
-	
+
 	<title>La Ville Durable en Normandie</title>
-	
+
 	<link rel="stylesheet" href="../css/font-awesome.css">
 		<link rel="stylesheet" href="../css/style-hr.css" />
 		<link rel="stylesheet" href="../css/leaflet.css" />
 		<link rel="stylesheet" href="../css/leaflet-knwrmd-hr.css" />
 		<link rel="stylesheet" href="../css/leaflet-markercluster.css" />
 		<link rel="stylesheet" href="./css/style-cartoVD-hr.css" />
-	
+
 	<script src="../data/fonds.js"></script>
 		<script src="./user/config.js"></script>
 		<script src="./user/token.js"></script>
@@ -28,13 +28,13 @@
 		<script src="../js/leaflet-markercluster.js"></script>
 		<script src="../js/init-hr.js"></script>
 		<script src="./js/init-villeD-hr.js"></script>
-		
-	
-		
+
+
+
 </head>
 
 <body>
-	<div id="page" class="page"">
+	<div id="page" class="page">
 		<header id="header" class="header" role="banner">
 			<h1>la ville durable en Normandie</h1>
 			<div id="nav" class="nav" role="navigation">
@@ -59,9 +59,9 @@
 				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="letsComment" href="#">remarques et commentaires</a>.</li></ul>
 			<span id="debug" style="visibility:hidden"></span>
 			<p id="aide" style="display:none">
-				<div id="listCoord"></div>				
+				<div id="listCoord"></div>
 				accéder à l'<a href="file:///X:/BLCA/UA/VilleDurable/Observatoire/0utils/aideMiseAJour.html">aide pour la mise à jour</a>
-			</p>	
+			</p>
 		</footer>
 	</div>
 	<!-- comments -->
@@ -70,7 +70,7 @@
 			<span id="comment-close" class="fa icon fa-close"></span>
 			<p>Merci de contribuer à l'amélioration de ce site par vos remarques.</p>
 			<form id="form">
-			   
+
 			   <input value="Objet des remarques" name="title" id="title" required="" value="Objet des remarques" default="Objet des remarques" type="text">
 			   <textarea value="Remarques détaillées ou description du problème" required="" name="description" id="description" default="Remarques détaillées ou description du problème..." type="textarea" form="form">Remarques détaillées ou description du problème...
 			   </textarea>
@@ -83,7 +83,7 @@
 					 <label for="labels">
 						<input name="labels" id="labelsSug" value="suggestion" type="radio"><span  class="fa icon fa-lightbulb-o">Suggestion : ce serait pas mal d'ajouter...</label>
 					 <label for="labels">
-						<input name="labels" id="labelsDat" value="data" type="radio"/><span  class="fa icon fa-pie-chart">Données : une donnée est fausse / à compléter</span></label>	
+						<input name="labels" id="labelsDat" value="data" type="radio"/><span  class="fa icon fa-pie-chart">Données : une donnée est fausse / à compléter</span></label>
 			   </fieldset>
 			   <div class="center"><button class="button" name="submit" id="submit" type="submit">Envoyer</button></div>
 			</form>
@@ -95,9 +95,9 @@
 			   </iframe>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<script>
-/* comptage Google */	
+/* comptage Google */
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -105,4 +105,4 @@
   ga('create', 'UA-109815-13', 'territoires.hn.free.fr');
   ga('send', 'pageview');
     </script>
-</body>	
+</body>
