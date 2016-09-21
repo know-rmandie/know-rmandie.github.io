@@ -188,13 +188,13 @@ $.getJSON("./data/data-normandie-hr.geojson", function(data) {
         var dataTE = data.features;
         for (i in dataTE) {
          if (dataTE[i].geometry.coordinates[1] !== 0) {
-               var iconeCat = PinCat["autres"];
+               var iconeCat = PinCat["clab"];
                 var html = "<h6>" + dataTE[i].properties.firstname + " " + dataTE[i].properties.name + "</h6>";
                 html += '<i class="avct ' +  dataTE[i].properties.structure + '">' + dataTE[i].properties.fonction + "</i>";
                 html += '<br/>'+ dataTE[i].properties.structure;
                 var tel = dataTE[i].properties.tel;
-                 if (tel == 0);
-                 else html += "<br/>tel : " + tel;
+                /* if (tel == 0);
+                 else html += "<br/>tel : " + tel;*/
                 var email = dataTE[i].properties.email;
                   if (email == "0");
                   else html += "<br/>mél : <a href='mailto:" + email + "'>" + email + "</a>";
