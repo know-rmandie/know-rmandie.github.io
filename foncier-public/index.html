@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang='fr-FR'>
+<head>
+	<meta charset='UTF-8' />
+		<meta name='date-created' value='2013-12-10' /><meta name='date-modified' value='2016-02-01' />
+		<meta name='author' value='Sylvain Comte' />
+		<meta name='version' value='1.3.1' />
+		<meta name="keywords" value="carte, ville durable, écoquartiers, écocité, exemplaire, Normandie, avancement, projets" />
+		<meta name="description" content="Normandie : carte des projets d'écoquartiers, leur avancement, leur position par rapport au label national" />
+
+	<meta name='viewport' content='width=device-width, user-scalable=yes'>
+
+	<title>Mobilisation du foncier public en faveur du logement</title>
+
+	<link rel="stylesheet" href="../lib/font-awesome.css">
+		<link rel="stylesheet" href="../lib/leaflet.css" />
+		<link rel="stylesheet" href="../lib/leaflet-markercluster.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/leaflet-knwrmd.css" />
+		<link rel="stylesheet" href="./css/style-foncP.css" />
+
+    <script src="../data/fonds.js"></script>
+        <script src="./user/config.js"></script>
+		  <script src="./user/pgi_config.js"></script>
+
+    <script src="../lib/jquery.js"></script>
+        <script src="../lib/leaflet.js"></script>
+        <script src="../lib/leaflet-markercluster.js"></script>
+		  <script src="./lib/pgi.js"></script>
+		  <!--<script src="../lib/pgi.js"></script>-->
+        <script src="../js/init.js"></script>
+        <script src="./js/init-foncP.js"></script>
+
+</head>
+
+<body>
+	<div id="page" class="page">
+		<header id="header" class="header" role="banner">
+			<h1>Mobilisation du foncier public en Normandie</h1>
+			<div id="nav" class="nav" role="navigation">
+				<p id="navIcon" class="fa fa-2x fa-icon fa-bars"></p>
+				<ul>
+					<li><a href="../">Accueil</a></li>
+					<li class="active">Foncier Public</li>
+				</ul>
+			</div>
+		</header>
+		<div id="main" class="main" role="main">
+			<h2>Cartographie des opérations retenues</h2>
+				<div id="map" class="map" style="width:500px;height:500px"></div>
+		</div>
+		<footer id="footer" class="footer" role="banner">
+			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr">DREAL Normandie</a> / SECLAD / BADD / uSA - janvier 2016.<ul>
+				<li class="fa fa-code-fork">
+				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/tree/master/foncier-public">Code source</a></li>
+				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="pgi_comment" class="pgiButton" href="#">remarques et commentaires</a>.</li></ul>
+			<span id="debug" style="visibility:hidden"></span>
+			<p id="aide" style="display:none">
+			</p>
+		</footer>
+	</div>
+	<script>
+/* comptage Google */
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-109815-13', 'territoires.hn.free.fr');
+  ga('send', 'pageview');
+    </script>
+</body>
