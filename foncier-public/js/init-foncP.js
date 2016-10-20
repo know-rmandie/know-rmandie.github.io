@@ -109,7 +109,8 @@ $.getJSON("./data/CessionFoncierEtatPoint.geojson", function(data) {
 
             L.geoJson(dataPoly, {
                 style: {
-                    color: "red"
+                    color: "purple",
+                    weight: ".25"
                 }
             }).addTo(carte);
 
