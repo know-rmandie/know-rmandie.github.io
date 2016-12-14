@@ -1,9 +1,11 @@
-
+// appel des données et lancement
 $.getJSON("./data/ecoquartiers-france-brut.geojson",function(data) {
+    // récupération des métadonnées sources dans la couches
     var sources = "sources : " + data.metadata.source + " - " + data.metadata.date;
-    var context = "map";
-    var radius;
-    var Couches = new Array;
+    var context = "map"; // contexte en référence à init.js commun au site
+    var radius; // variable pour le rayon des clusters
+    var Couches = new Array; // liste de couches qui seront utilisées
+    // construction des TileLayer
     var tiles = {};
     for (i in fonds) {
         var couche = new L.TileLayer(fonds[i].url, {
@@ -23,6 +25,7 @@ $.getJSON("./data/ecoquartiers-france-brut.geojson",function(data) {
     })(jQuery);
 
     function letsStart() {
+      // mise en place de la carte plein écran si demané
         if (document.location.href.match(/carteSeule/g)) {
             context = "full";
             $("#header,#footer,h2").css("display", "none");
@@ -31,14 +34,18 @@ $.getJSON("./data/ecoquartiers-france-brut.geojson",function(data) {
             $("#main, #page").css("margin", "0");
             $("#main, #page").css("padding", "0")
         }
+        // remise à la taille de la carte en cas de redimensionnement de la fenêtre
         $(window).resize(function() {
             clearTimeout(window.resizedFinished);
             window.resizedFinished = setTimeout(function() {
                 getWidth(context);
+                console.log(context+" - "+rW+" - "+rH);
                 $("#map").css("width", rW).css("height", rH)
             }, 250)
         });
+        // mise à la taille initiale de la carte
         getWidth(context);
+        console.log(context+" - "+rW+" - "+rH);
         $("#map").css("width", rW).css("height", rH);
         if (knwrmdZoom == null) knwrmdZoom = Math.sqrt(rW) / 3.75;
         carte = L.map("map").setView([knwrmdLat,
