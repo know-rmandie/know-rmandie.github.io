@@ -12,25 +12,25 @@ var rW=10,rH=5,rW0,rWg,rWi; // largeur et hauteur de la zone de tracé + variabl
 		$window.on('load', function() {
 			$body.removeClass('is-loading');
 		});
-		
+
 	// removable menu for handeld device
 		$('#navIcon').click(function(){
 			$('#nav').toggleClass('active')
 			});
-		
+
 	// function that get width of #main element
 	getWidth=function(usage) {
 		switch(usage) {
-			case 'map' : 
-				rW=$('#main').width()-10;	
+			case 'map' :
+				rW=$('#main').width()-10;
 				rH=$(window).height()-240;
 				break;
 			case 'graph' :
 				rW=$('#main').width();
 				rH=rW/2;
 				break;
-			case 'full' : 
-				rW=$('#main').width();	
+			case 'full' :
+				rW=$('#main').width();
 				rH=$(window).height();
 				break;
 			/*case 'illus' :
@@ -44,9 +44,10 @@ var rW=10,rH=5,rW0,rWg,rWi; // largeur et hauteur de la zone de tracé + variabl
 				rH=$(window).height();
 				if(rW0==null) rW0=rW;
 			}
-	}	
-		
+	}
+
 /* Comments and bug report */
+	// to be replaced by sycom.gitlab.io/post-Gitlab-issues soon
 	// require data in ../user/token.js
 	// show and hide comments form
 	function letsSendComment() {
@@ -63,13 +64,13 @@ var rW=10,rH=5,rW0,rWg,rWi; // largeur et hauteur de la zone de tracé + variabl
 			});
 		$('textarea').text($(this).attr('default'));
 	   }
-	   
+
 	// add functions to links and buttons
 	$('#letsComment').click(letsSendComment);
 	$('#comment-close').click(letsCloseComment);
 	// add function to submit button
 	$('#submit').click(FormSubmit);
-	
+
 	// submission function
 	function FormSubmit() {
 		// define target url
@@ -102,6 +103,6 @@ var rW=10,rH=5,rW0,rWg,rWi; // largeur et hauteur de la zone de tracé + variabl
 					}
 				}
 			});
-		}	
+		}
 	})
 })(jQuery);

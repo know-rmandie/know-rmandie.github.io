@@ -1,0 +1,704 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::4979"
+        }
+    },
+    "metadata": {
+        "date": " septembre 2016 ",
+        "source": " <a href='http://www.normandie.developpement-durable.gouv.fr'>DREAL Normandie</a> "
+    },
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0, 0]
+        },
+        "properties": {
+            "firstname": "Didier",
+            "name": "BOUVET",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "PETR d’Argentan,d’Auge, Pays d’Ouche",
+            "ville": "0",
+            "email": "conseils.enr@orange.fr",
+            "tel": "02 33 84 87 23"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.2678796, 49.321641]
+        },
+        "properties": {
+            "firstname": "Denis",
+            "name": "LETAN",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "PNR des Marais du Cotentin et du Bessin",
+            "ville": "Carentan-les-Marais ",
+            "email": "dletan@parc-cotentin-bessin.fr",
+            "tel": "02 33 71 61 90"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.7578877, 48.550619]
+        },
+        "properties": {
+            "firstname": "Priscilla",
+            "name": "VALLEE",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "Pays de la Baie du Mont St Michel",
+            "ville": "Dol-de-Bretagne ",
+            "email": "pv@pays-baie-mont-saint-michel.fr",
+            "tel": "02 33 79 43 77"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.6839037, 49.2697715]
+        },
+        "properties": {
+            "firstname": "Fanny",
+            "name": "LEMAIRE",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "Pays du Bessin au Virois",
+            "ville": "Bayeux",
+            "email": "lemaire-fany@orange.fr",
+            "tel": "02 31 21 06 10"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.6556097, 49.6349175]
+        },
+        "properties": {
+            "firstname": "Morgane",
+            "name": "JESTIN",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "Pays du Cotentin",
+            "ville": "Cherbourg Octeville",
+            "email": "mjestin@cotentin.org",
+            "tel": "02 33 53 57 12"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3506767, 49.1777915]
+        },
+        "properties": {
+            "firstname": "Aurélie",
+            "name": "DUPRIE",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "Pôle métropolitain Caen Métropole",
+            "ville": "Caen",
+            "email": "aurelie.duprie@caen-metropole.fr",
+            "tel": "02 31 86 91 82"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.1609395, 48.5675061]
+        },
+        "properties": {
+            "firstname": "Manuel",
+            "name": "LEGER",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "PNR Normandie Maine",
+            "ville": "Carrouges",
+            "email": "manuel.leger@parc-normandie-maine.fr",
+            "tel": "02 33 81 75 79"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.2587645, 49.14345]
+        },
+        "properties": {
+            "firstname": "Florent",
+            "name": "BRUNET",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "Pays d’Auge",
+            "ville": "Lisieux",
+            "email": "florent.brunet@pays-auge.fr",
+            "tel": "02 31 61 55 90"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.1027979, 49.1231648]
+        },
+        "properties": {
+            "firstname": "Paul",
+            "name": "HAMELIN",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "Pays Saint Lois",
+            "ville": "Saint Lô",
+            "email": "paul.hamelin@saint-lo-agglo.fr",
+            "tel": "02 14 29 00 59"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.6688023, 48.3970465]
+        },
+        "properties": {
+            "firstname": "Catherine",
+            "name": "BAUR",
+            "fonction": "Chargé de mission Conseillers Energie Climat Partagés",
+            "structure": "PNR du Perche",
+            "ville": "Nocé",
+            "email": "c.baur@parc-naturel-perche.fr",
+            "tel": "02 33 85 36 36"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0874914, 49.4354528]
+        },
+        "properties": {
+            "firstname": "Sophie",
+            "name": "DUPLESSY",
+            "fonction": "Responsable du bureau Aménagement Durable",
+            "structure": "DDTM 76",
+            "ville": "Rouen",
+            "email": "sophie.duplessy@seine-maritime.gouv.fr",
+            "tel": "02 35 58 55 61"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0874914, 49.4354528]
+        },
+        "properties": {
+            "firstname": "Florence",
+            "name": "CATOIS",
+            "fonction": "Chargé de mission transition énergétique",
+            "structure": "DDTM 76",
+            "ville": "Rouen",
+            "email": "florence.catois@seine-maritime.gouv.fr",
+            "tel": "02 32 18 94 44"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.0855658, 48.4355873]
+        },
+        "properties": {
+            "firstname": "Isabelle",
+            "name": "DEBORDE ",
+            "fonction": "Responsable de la mission Développement Durable",
+            "structure": "DDT 61",
+            "ville": "Alençon",
+            "email": "isabelle.deborde@orne.gouv.fr",
+            "tel": "02 33 32 71 91"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.0855658, 48.4355873]
+        },
+        "properties": {
+            "firstname": "Joël",
+            "name": "BUCHERY",
+            "fonction": "Chargé de mission transition énergétique",
+            "structure": "DDT 61",
+            "ville": "Alençon",
+            "email": "ddt-transition-energetique@orne.gouv.fr ",
+            "tel": "02 33 32 51 07 "
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3513408, 49.199828]
+        },
+        "properties": {
+            "firstname": "Isabelle",
+            "name": "MARIE-HUET",
+            "fonction": "Responsable du pôle aménagement, construction et transition énergétique",
+            "structure": "DDTM14",
+            "ville": "Caen",
+            "email": "isabelle.marie-huet@calvados.gouv.fr",
+            "tel": "02 31 43 16 53"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.1374267, 49.0228938]
+        },
+        "properties": {
+            "firstname": "Corinne",
+            "name": "GOILLOT",
+            "fonction": "Responsable de l’unité gestion de l’espace",
+            "structure": "DDTM 27",
+            "ville": "Evreux",
+            "email": "corinne.goillot@eure.gouv.fr",
+            "tel": "02 32 29 62 20"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.1374267, 49.0228938]
+        },
+        "properties": {
+            "firstname": "Elisabeth",
+            "name": "COTO",
+            "fonction": "Chargé de mission transition énergétique",
+            "structure": "DDTM 27",
+            "ville": "Evreux",
+            "email": "elisabeth.coto@eure.gouv.fr",
+            "tel": "02 32 29 60 11"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.0992695, 49.1181285]
+        },
+        "properties": {
+            "firstname": "Jean-Michel",
+            "name": "MARC",
+            "fonction": "Responsable de l'unité Aide à l’émergence de projets d’aménagement durable",
+            "structure": "DDTM 50",
+            "ville": "Saint Lô",
+            "email": "jean-michel.marc@manche.gouv.fr",
+            "tel": "02 33 06 38 14"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3860857, 49.3429934]
+        },
+        "properties": {
+            "firstname": "Patrick",
+            "name": "TABOUREL",
+            "fonction": "Chargé de mission observatoire, SRCAE et transition énergétique",
+            "structure": "DREAL Normandie",
+            "ville": "Caen",
+            "email": "patrick.tabourel@developpement-durable.gouv.fr",
+            "tel": "02 50  01 83 71"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3860857, 49.3429934]
+        },
+        "properties": {
+            "firstname": "Cyrille",
+            "name": "GACHIGNAT",
+            "fonction": "Chef du Bureau Climat Air Energie",
+            "structure": "DREAL Normandie",
+            "ville": "Caen",
+            "email": "cyrille.gachignat@developpement-durable.gouv.fr",
+            "tel": "02 50 01 84 55"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0896801, 49.4354528]
+        },
+        "properties": {
+            "firstname": "Florence",
+            "name": "MONROUX",
+            "fonction": "Adjointe en charge de la transition énergétique et de la croissance verte",
+            "structure": "DREAL Normandie",
+            "ville": "Rouen",
+            "email": "florence.monroux@developpement-durable.gouv.fr",
+            "tel": "02 32 18 97 20"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0896801, 49.4354528]
+        },
+        "properties": {
+            "firstname": "Dominique",
+            "name": "LEPETIT",
+            "fonction": "Chef du Service Energie, Climat, Logement et Aménagement Durable",
+            "structure": "DREAL Normandie",
+            "ville": "Rouen",
+            "email": "dominique.lepetit@developpement-durable.gouv.fr",
+            "tel": "02 32 18 97 31"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3504896, 49.1782792]
+        },
+        "properties": {
+            "firstname": "Peggy",
+            "name": "MORICET ",
+            "fonction": "Chagée de mission Agenda 21 et développement durable",
+            "structure": "Caen la mer",
+            "ville": "Caen",
+            "email": "p.moricet@agglo-caen.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3504896, 49.1782792]
+        },
+        "properties": {
+            "firstname": "Emeline",
+            "name": "AUBERT-DOZEVILLE",
+            "fonction": "0",
+            "structure": "Caen la mer",
+            "ville": "Caen",
+            "email": "e.aubert-dozeville@agglo-caen.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3531308, 49.1768246]
+        },
+        "properties": {
+            "firstname": "Aurélie",
+            "name": "DUPRIÉ",
+            "fonction": "Chargée de mission Environnement",
+            "structure": "Syndicat Mixte Caen-Métropole",
+            "ville": "Caen",
+            "email": "aurelie.duprie@caen-metropole.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.4117792, 49.1893111]
+        },
+        "properties": {
+            "firstname": "Vanida",
+            "name": " ALLAIN",
+            "fonction": "Chef des services Développement Durable et Energie",
+            "structure": "Ville de CAEN",
+            "ville": "Caen",
+            "email": "vallain@caen.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.5558501, 48.8504409]
+        },
+        "properties": {
+            "firstname": "Valérie",
+            "name": "ESPALLARGAS",
+            "fonction": "Directrice générale des services",
+            "structure": "CdC du Pays de Condé et de la Druance",
+            "ville": "Condé-sur-Noireau",
+            "email": "vespallargas@condeintercom.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.1660717, 49.215033]
+        },
+        "properties": {
+            "firstname": "Julie",
+            "name": "NGO",
+            "fonction": "Chargée de projet énergie/ CEP",
+            "structure": "Communauté d'Agglomération Seine-Eure",
+            "ville": "Louviers",
+            "email": "julie.ngo@seine-eure.com",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.1416179, 49.0251069]
+        },
+        "properties": {
+            "firstname": "Stéphanie",
+            "name": "ROBINET",
+            "fonction": "Responsable du pôle Environnement",
+            "structure": "Conseil départemental de l'Eure",
+            "ville": "Evreux",
+            "email": "stephanie.robinet@eure.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.8727693, 49.300424]
+        },
+        "properties": {
+            "firstname": "Cyrille",
+            "name": "MANSOUR",
+            "fonction": "Directeur du Pays",
+            "structure": "Pays du Roumois",
+            "ville": "Bourgtheroulde-Infreville",
+            "email": "cyrille.mansour@roumois.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.4064753, 49.1836811]
+        },
+        "properties": {
+            "firstname": "Denis",
+            "name": "LETAN",
+            "fonction": "Chargé de mission PCET",
+            "structure": "Communauté de Communes Sèves-Taute",
+            "ville": "Périers ",
+            "email": "dletan@parc-cotentin-bessin.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.661231, 49.6227077]
+        },
+        "properties": {
+            "firstname": "Jean-Luc",
+            "name": "SIMON",
+            "fonction": "Directeur de l'Environnement et de l'Energie (D2E)",
+            "structure": "Communauté urbaine de Cherbourg",
+            "ville": "Cherbourg-Octeville ",
+            "email": "philippe.menut@cuc-cherbourg.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.9817245, 49.0398434]
+        },
+        "properties": {
+            "firstname": "Valérie",
+            "name": "BALAGUER",
+            "fonction": "Chef du service de la transition écologique",
+            "structure": "Conseil général de la Manche",
+            "ville": "Saint-Lô ",
+            "email": "valerie.balaguer@manche.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.9381267, 48.648719]
+        },
+        "properties": {
+            "firstname": "Laurence",
+            "name": "COLIN",
+            "fonction": "Directrice en charge de la définition des politiques publiques",
+            "structure": "CdC du Mortainais",
+            "ville": "Mortain ",
+            "email": "laurence.colin@mortainais.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.0798655, 48.4301617]
+        },
+        "properties": {
+            "firstname": "Anabel",
+            "name": "HUREL",
+            "fonction": "0",
+            "structure": "Communauté Urbaine d'Alençon",
+            "ville": "Alençon",
+            "email": "anabel.hurel@ville-alencon.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.0153852, 48.7266073]
+        },
+        "properties": {
+            "firstname": "Jocelin",
+            "name": "SOURISSEAU",
+            "fonction": "Directeur du Pôle aménagement et cadre de vie",
+            "structure": "Argentan Intercom",
+            "ville": "Argentan",
+            "email": "josselin.sourisseau@cc-argentan.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0751663, 49.9005573]
+        },
+        "properties": {
+            "firstname": "Nicolas",
+            "name": "GAILLET",
+            "fonction": "Directeur-délégué  Politiques Durables & Cadre de Vie",
+            "structure": "Communauté d'agglomération Dieppe-Maritime",
+            "ville": "Saint-Aubin-sur-Scie ",
+            "email": "nicolas.gaillet@agglodieppe-maritime.com",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.104908, 49.4948625]
+        },
+        "properties": {
+            "firstname": "Emilie",
+            "name": "LEPROUST-HOULLIER",
+            "fonction": " chargée de mission énergie Climat",
+            "structure": "Communauté d'agglomération Havraise ",
+            "ville": "Le Havre",
+            "email": "Emilie.Leproust-Houllier@codah.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.4600978, 49.5382223]
+        },
+        "properties": {
+            "firstname": "Marc-Antoine ",
+            "name": "TETREL",
+            "fonction": "Responsable Service Développement durable",
+            "structure": "Communauté de communes Caux Vallée de Seine",
+            "ville": "Lillebonne",
+            "email": "ma.tetrel@cauxseine.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.9779569, 49.5253034]
+        },
+        "properties": {
+            "firstname": "Laurent ",
+            "name": "FUSSIEN",
+            "fonction": "Directeur Général des Services (DGS) et Directeur du CCAS",
+            "structure": "Ville de Malaunay",
+            "ville": "Malaunay",
+            "email": "fussien.laurent@malaunay.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [0.9779569, 49.5253034]
+        },
+        "properties": {
+            "firstname": "Isabelle ",
+            "name": "MOULIN ",
+            "fonction": "Directrice de l'Environnement et des Moyens Techniques (DEMT)",
+            "structure": "Ville de Malaunay",
+            "ville": "Malaunay",
+            "email": "moulin.isabelle@malaunay.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.099877, 49.443268]
+        },
+        "properties": {
+            "firstname": "Marie-Hélène",
+            "name": "HOUALLA",
+            "fonction": "Directrice du Développemement Durable (DDD)",
+            "structure": "Ville de Rouen",
+            "ville": "Rouen",
+            "email": "mhhoualla@rouen.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0397019, 49.4237837]
+        },
+        "properties": {
+            "firstname": "Antoine",
+            "name": "LEMERY",
+            "fonction": "Chargé de missions développement durable",
+            "structure": "Ville du Petit-Quevilly",
+            "ville": "Petit-Quevilly",
+            "email": "antoine.lemery@petit-quevilly.fr",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.4366519, 49.729787]
+        },
+        "properties": {
+            "firstname": "Fanny ",
+            "name": "BALAY",
+            "fonction": "Chargée de mission au PETR",
+            "structure": "PETR du Pays de Bray",
+            "ville": "Neufchâtel-en-Bray ",
+            "email": "fannybalay@paysdebray.org",
+            "tel": "0"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-0.3544267, 49.214633]
+        },
+        "properties": {
+            "firstname": "Karine",
+            "name": "BOSSER ",
+            "fonction": "Coordinatrice du pôle Territoires",
+            "structure": "ADEME Normandie",
+            "ville": "Hérouville-Saint-Clair",
+            "email": "karine.bosser@ademe.fr",
+            "tel": "02 31 46 89 61 "
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [1.0786619, 49.4297312]
+        },
+        "properties": {
+            "firstname": "Eddy",
+            "name": "POITRAT",
+            "fonction": "Ingénieur Energie / Effet de Serre",
+            "structure": "ADEME Normandie",
+            "ville": "Rouen",
+            "email": "eddy.poitrat@ademe.fr",
+            "tel": "02 32 81 93 11 "
+        }
+    }]
+}

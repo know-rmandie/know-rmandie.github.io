@@ -1,11 +1,18 @@
 [
+	{	"id" : "osmfr",
+		"nom" : "OSM France",
+		"url": "http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+		"attrib":"fond par les contributeurs &copy;<a href='http://osm.org/copyright'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>.",
+		"zMin" :1,
+		"zMax" :20
+   },
 	{	"id" : "osmbw",
 		"nom" : "OSM N&B",
-		"url": "http://a.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png",
-		"attrib":"fond hébergé par toolserver.org, données contributeurs <a href='http://openstreetmap.org'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY 3.0</a>.",
+		"url": "https://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png",
+		"attrib":"fond hébergé par wikimedia labs, données contributeurs <a href='http://openstreetmap.org'>OSM</a>, licence <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY 3.0</a>.",
 		"zMin" :1,
 		"zMax" :18
-    }
+	},
     {	"id" : "toner",
 		"nom" : "Encre noire",
 		"url": "http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png",
@@ -48,5 +55,5 @@
 		"attrib":"fond par © <a href='http://mapbox.com'>Mapbox</a>",
 		"zMin" :4,
 		"zMax" :18
-		}*/	
+		}*/
 	]
