@@ -1,0 +1,111 @@
+/************
+L A Y O U T
+************/
+/* struct. */
+
+#main {
+    width:100%;padding:1em;
+    max-width:1000px;
+    margin:auto;
+}
+
+.geo li, li.onglet {
+    display:inline-block;
+    margin:2em .1em 0 .1em;
+    padding:.5em}
+}
+
+/*****************/
+/*    T Y P O     */
+/******************/
+html {
+    font-family: "Open Sans", sans-serif;
+    font-size:18px
+}
+
+h1 {
+  font-family: "Cormorant Upright", Georgia, serif;
+  font-style: italic;
+  font-size:30px;
+}
+
+/******************/
+/*  C O L O R S    */
+/*******************/
+body {color:#444}
+a {color:#222}
+  a:hover {black}
+  a:visited {color:#777}
+
+code {
+    border:1px dashed #777;
+    border-radius:4px;
+    padding:1px 5px 0 5px;
+}
+
+.header,.footer {color:#444;background:#333;background-image: linear-gradient(33deg,#ddd,#eaeaea);}
+
+.oublie {background-color:#128297; color:#fff;padding:0 2px}
+.inconnu {background-color:#972412; color:#fff;padding:0 2px}
+
+li.onglet {
+  background-color:#128297; color:#fff;
+  border-bottom:0;
+  border-radius: 6px 6px 0 0;
+  box-shadow:-2px -4px 3px #bbb
+}
+
+li.onglet:hover {
+  background-color:#eee; color:#888
+}
+
+li.onglet.active {
+  background-color:#fff;color:#444;
+}
+
+/***********************/
+/* R E S P O N S I V E */
+/***********************/
+
+/* Printer */
+@media print {
+  }
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+  }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  .col {width:48%;display:inline-block}
+
+
+  }
+
+/* smaller than tablet */
+@media (max-width: 750px) {
+
+	}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .high h1, .high nav {width:50%;display: inline-block}
+
+  }
+
+/* Smoothing intervalue */
+@media (min-width: 900px) {
+  .col {width:32%;}
+
+  }
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .col {width:23%;}
+
+	}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+
+	}

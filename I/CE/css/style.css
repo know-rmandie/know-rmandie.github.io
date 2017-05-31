@@ -1,0 +1,7 @@
+
+
+
+#fiche > div {display:none}
+    #fiche > div.active {display:block;width:100%}
+
+.axis--y text {width:100}
