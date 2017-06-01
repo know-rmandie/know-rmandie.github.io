@@ -29,7 +29,7 @@ function tester(v) {
             .align(0.1);
 
         var xOs = d3.scaleLinear()
-            .rangeRound([width, 0]);
+            .rangeRound([0, width]);
 
         var zOs = d3.scaleOrdinal()
             .range(["#b00","#a08","#b99","#bb9","#b99", // espaces urbanisés 12,11,13,14,15
@@ -51,18 +51,22 @@ function tester(v) {
                 function drawOs(center) {
                     var data = [];
                     data.columns =  oscom.columns;
+                    var dep = center.substr(0,2);
+                    console.log(dep);
                     // remplissage du tableau de données en partant du "centre";
                     for (var i in oscom) {
                         if (oscom[i].insee_2015 === center) {
-                            data.push(oscom[i]);
-                            i++;data.push(oscom[i]);
-                            i++;data.push(oscom[i]);
+                            data[0] = oscom[i];
+                            // récupération des entités supérieures
                         }
-                    }
+                        if (oscom[i].insee_2015 === dep) data[1] = oscom[i];
+                        if (oscom[i].insee_2015 === "Norm") data[2] = oscom[i];
+                        }
                     if (data.length > 0) {
+                        console.log(data);
                         // construction de l'axe y
                         yOs.domain(data.map(function(d) {
-                            return d.Nom;
+                            return d.Nom
                         }));
 
                         var serie = g.selectAll(".serie")
@@ -82,10 +86,10 @@ function tester(v) {
                                 return yOs(d.data.Nom);
                             })
                             .attr("x", function(d) {
-                                return xOs(d[1]);
+                                return xOs(d[0]);
                             })
                             .attr("width", function(d) {
-                                return xOs(d[0]) - xOs(d[1]);
+                                return xOs(d[1]) - xOs(d[0]);
                             })
                             .attr("height", yOs.bandwidth());
 
@@ -98,13 +102,13 @@ function tester(v) {
                             .attr("class", "axis axis--y")
                             .call(d3.axisLeft(yOs));
 
-                        var legend = serie.append("g")
+                        /*var legend = serie.append("g")
                             .attr("class", "legend")
                             .attr("transform", function(d) {
                                 var p = d[0];
                                 console.log(p);
                                 if(p[0] === p[1]) return "translate(-50,-50)";
-                                else return "translate(" + xOs((p[0]+p[1])/2) + ","+ (-margin.top/2) +" )"// + (yOs(d.data.Nom) - yOs.bandwidth()) + ")";
+                                else return "translate(" + xOs(p[0]) + ","+ (-margin.top/2) +" )"// + (yOs(d.data.Nom) - yOs.bandwidth()) + ")";
                             });
 
                         legend.append("line")
@@ -118,7 +122,6 @@ function tester(v) {
                             .attr("x", 9)
                             .attr("dy", "0.35em")
                             .attr("fill", "#555")
-                            .attr("width", "80")
                             .style("font", "10px sans-serif")
                             .attr("title", function(d) {
                                 var title;
@@ -129,10 +132,10 @@ function tester(v) {
                             })
                             .text(function(d) {
                                 return d.key;
-                            });
+                            });*/
                     }
                 }
-                drawOs("50480");
+                drawOs("76470");
             });
         });
 
