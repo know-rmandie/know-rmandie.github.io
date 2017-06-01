@@ -1,14 +1,30 @@
 /************
 L A Y O U T
 ************/
-/* struct. */
+/* elem. */
+ul{
+  margin:0;padding:0;
+}
 
-#main {
-    width:100%;padding:1em;
+/* struct. */
+html, body {margin:0;padding:0}
+#page, #main {
+    width:100%;
+    padding:0;
     max-width:1000px;
     margin:auto;
 }
 
+.nav {float:right}
+.nav ul li {list-style: none}
+
+.header, .footer {padding:.5em;margin:0;}
+
+.footer {
+  margin-bottom:0;
+}
+
+/* classes */
 .geo li, li.onglet {
     display:inline-block;
     margin:2em .1em 0 .1em;
@@ -18,7 +34,7 @@ L A Y O U T
 /*****************/
 /*    T Y P O     */
 /******************/
-html {
+html, body {
     font-family: "Open Sans", sans-serif;
     font-size:18px
 }
@@ -26,7 +42,11 @@ html {
 h1 {
   font-family: "Cormorant Upright", Georgia, serif;
   font-style: italic;
-  font-size:30px;
+  font-size:160%;
+}
+
+.nav a {
+  font-size:150%;text-decoration:none;
 }
 
 /******************/
@@ -89,8 +109,7 @@ li.onglet.active {
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-  .high h1, .high nav {width:50%;display: inline-block}
-
+  
   }
 
 /* Smoothing intervalue */

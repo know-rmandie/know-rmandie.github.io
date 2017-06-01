@@ -13,38 +13,35 @@
 
 	<title>Indicateurs de consommation d'espace</title>
 
-    <link rel="stylesheet" href="../../lib/normalize.css" />
-        <link rel="stylesheet" href="../../lib/font-awesome.css" />
-        <link rel="stylesheet" href="../../css/style-knw.css" />
-        <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Cormorant+Upright|Open+Sans"
+            rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../../lib/jquery-ui.min.css" type="text/css" />
+        <link rel="stylesheet" href="../../lib/font-awesome.css" type="text/css" />
+        <link rel="stylesheet" href="../../css/style-knw.css" type="text/css" />
+        <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
-	<script src="../../lib/jquery.js"></script>
+	<script src="../../lib/jquery.min.js"></script>
+        <script src="../../lib/jquery-ui.min.js"></script>
         <script src="../../lib/d3.v4.min.js"></script>
+        <script src="../../lib/d3-tip.js"></script>
 		<script src="./js/init.js"></script>
 </head>
 
 <body>
 	<div id="page" class="page">
-		<header id="header" class="header" role="banner">
-			<h1>Indicateurs de consommation d'espace</h1>
-			<div id="nav" class="nav" role="navigation">
-				<p id="navIcon" class="fa fa-2x fa-icon fa-bars"></p>
-				<ul>
-					<li><a href="../../">Accueil</a></li>
-					<li class="active"><a href="../">Indicateurs</a></li>
-					<li><a href="../../planification">Planification</a></li>
-					<li><a href="../../urbanisme">Urbanisme</a></li>
-					<li><a href="../../ville-durable">Ville Durable</a></li>
-				</ul>
-			</div>
-		</header>
+        <div id="nav" class="nav" role="navigation">
+            <ul>
+                <li><a class="fa fa-icon fa-home" href="../../" title="Accueil"></a></li>
+            </ul>
+        </div>
+
+        <h1>Indicateurs de consommation d'espace</h1>
 
 		<div id="main" class="main" role="main">
-            <div id="pilote">
-				<label>secteur : </label>
-                <input id="choix" name="choix" type="text" title="secteur géographique"></input>
-                <span id="go">></span>
-				<div id="geo" class="geo">
+            <div id="pilote" class="header">
+                <p>selectionnez un secteur à l'aide du champ suivant pour avoir un aperçu des indicateurs associés.</p>
+                <!--<div id="geo" class="geo">
 					<ul>
                         <li class='niv' id='com'>commune</li>
                         <li class='niv' id='can'>canton</li>
@@ -55,11 +52,9 @@
                         <li class='niv' id='gra'>interregion</li>
                         <li class='niv' id='pay'>France</li>
                     </ul>
-				</div>
-			</div>
-
-            <div id="fiche">
-                <h1 id='titreZone'></h1>
+				</div>-->
+				<label>secteur : </label>
+                <input id="choix" name="choix" type="text" title="secteur géographique"></input>
                 <nav id="onglets">
                     <ul>
                         <li class="onglet active" target="OcSol">Occ. Sol</li>
@@ -67,26 +62,29 @@
                         <li class="onglet" target="Infos">Infos</li>
                     </ul>
                 </nav>
+			</div>
 
+            <div id="fiche">
+                <h2 id='titreZone'></h2>
                 <div id="OcSol" class="active">
-                    <h2>Occupation du sol</h2>
-                    <svg> </svg>
+                    <h3>Occupation du sol</h3>
+                    <svg></svg>
                 </div>
                 <div id="ConsNeuve">
-                    <h2>Intensité de la construction</h2>
+                    <h3>Intensité de la construction</h3>
                     Le tableau construction neuve
                 </div>
                 <div id="Infos">
-                    Des informations sur ce travail
+                    <h3>Informations sur ce travail</h3>
                 </div>
 
             </div>
 		</div>
 
 		<footer id="footer" class="footer" role="banner">
-			Réalisation : <a href="http://www.haute-normandie.developpement-durable.gouv.fr">DREAL Normandie</a> / SECLAD / BADD / uSA - janvier 2016.<ul>
+			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD / uSA - janvier 2016.<ul>
 				<li class="fa fa-code-fork">
-				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://git.framasoft.org/territoires/indicateurs-territoriaux">Code source</a></li>
+				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://framagit.org/know-rmandie/know-rmandie.frama.io" target="_blank">Code source</a></li>
 				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="letsComment" href="#">remarques et commentaires</a>.</li></ul>
 		</footer>
 

@@ -14,14 +14,14 @@ function tester(v) {
             svg.attr("width",document.getElementById("OcSol").clientWidth);
             svg.attr("height","200");
         var margin = {
-          top: 30,
+          top: 5,
           right: 5,
           bottom: 20,
           left: 100
-        },
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom,
-        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            },
+            width = +svg.attr("width") - margin.left - margin.right,
+            height = +svg.attr("height") - margin.top - margin.bottom,
+            g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var yOs = d3.scaleBand()
             .rangeRound([0, height])
@@ -31,28 +31,25 @@ function tester(v) {
         var xOs = d3.scaleLinear()
             .rangeRound([0, width]);
 
-        var zOs = d3.scaleOrdinal()
-            .range(["#b00","#a08","#b99","#bb9","#b99", // espaces urbanisés 12,11,13,14,15
-                "#660","#990","#ac0","#774", // espaces agricoles
-                "#292","#9b9","#aaf","#ddd" // espaces naturels, eau et indéfini
-            ]);
-
         var stackOs = d3.stack()
             .offset(d3.stackOffsetExpand);
 
         // récupération des données d'occupation du sol
         d3.csv("./data/oscom-norm-2015.csv", function(error, oscom) {
             if (error) throw error;
+            var liste = oscom.map(function(d) {
+                return {label:d.Nom,value:d.insee_2015};
+            });
             // récupération des textes de légende
             d3.json("./data/oscom-legende.json", function(error, oscleg) {
-                zOs.domain(oscom.columns.slice(3));
 
                 // tracé du graphe d'occupation des sols
                 function drawOs(center) {
+                    g.remove();
+                    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                     var data = [];
                     data.columns =  oscom.columns;
                     var dep = center.substr(0,2);
-                    console.log(dep);
                     // remplissage du tableau de données en partant du "centre";
                     for (var i in oscom) {
                         if (oscom[i].insee_2015 === center) {
@@ -63,19 +60,32 @@ function tester(v) {
                         if (oscom[i].insee_2015 === "Norm") data[2] = oscom[i];
                         }
                     if (data.length > 0) {
-                        console.log(data);
                         // construction de l'axe y
                         yOs.domain(data.map(function(d) {
                             return d.Nom
                         }));
 
-                        var serie = g.selectAll(".serie")
-                            .data(stackOs.keys(oscom.columns.slice(3))(data))
-                            .enter().append("g")
-                            .attr("class", "serie")
-                            .attr("fill", function(d) {
-                                return zOs(d.key);
+                        var tip = d3.tip()
+                            .attr('class','d3-tip')
+                            .offset([-5, 0])
+                            .html(function(d) {
+                                var classe = $(this).attr("class").split("c")[1];
+                                var title;
+                                for (var l in oscleg) {
+                                    if (oscleg[l].code === classe) title = oscleg[l].nature;
+                                }
+                                return title;
                             });
+                        svg.call(tip);
+
+                        var serie = g.selectAll(".serie")
+                            .data(stackOs.keys(oscom.columns.slice(4))(data))
+                            .enter().append("g")
+                            .attr("class", function(d) {
+                                return "serie c" + d.key;
+                            })
+                            .on('mouseover', tip.show)
+                            .on('mouseout', tip.hide);
 
                         serie.selectAll("rect")
                             .data(function(d) {
@@ -89,7 +99,7 @@ function tester(v) {
                                 return xOs(d[0]);
                             })
                             .attr("width", function(d) {
-                                return xOs(d[1]) - xOs(d[0]);
+                                return xOs(d[1] - d[0]);
                             })
                             .attr("height", yOs.bandwidth());
 
@@ -101,6 +111,8 @@ function tester(v) {
                         g.append("g")
                             .attr("class", "axis axis--y")
                             .call(d3.axisLeft(yOs));
+
+
 
                         /*var legend = serie.append("g")
                             .attr("class", "legend")
@@ -135,8 +147,36 @@ function tester(v) {
                             });*/
                     }
                 }
-                drawOs("76470");
+
+                /* mise en place de l'autocomplete */
+                $("#choix").autocomplete({
+                    source:liste,
+                    _renderItem: function(ul,item) {
+                        return $( "<li>" )
+                        .attr( "data-value",item.value)
+                        .append(item.label)
+                        .appendTo(ul);
+                    },
+                    /*change:function(event,ui) {
+                        $("#titreZone").text(ui.item.label);
+                        drawOs(ui.item.value)
+                    },*/
+                    select:function(event,ui) {
+                        $("#titreZone").text(ui.item.label);
+                        drawOs(ui.item.value)
+                    }
+                    /*function(request,response) {
+                        var matcher=new RegExp($.ui.autocomplete.escapeRegex(normalize(request.term)),"i");
+                        response($.grep(liste,function(value) {
+                            //value=value.label || value.value || value;
+                            console.log(matcher);
+                            tester(value);
+                            return matcher.test(value) || matcher.test(normalize(value));
+                        }));
+                    }*/
+                });
             });
+
         });
 
 
@@ -151,6 +191,21 @@ function tester(v) {
             $('#fiche > div').removeClass('active');
             $('#' + target).addClass('active');
         });
+
+        /* fonction de nettoyage des accents */
+        var accentMap = {
+              "à":"a",
+        	  "é":"e","è":"e","ê":"e","ë":"e",
+        	  "ù":"u","ô":"o",
+        	  "-":" ",
+            };
+        var normalize=function(term) {
+        	var ret = "";
+        	for (var i=0;i<term.length;i++) {
+                ret+=accentMap[term.charAt(i)] || term.charAt(i);
+        		}
+            return ret;
+            };
 
         /* --- */
     });
