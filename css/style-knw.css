@@ -6,14 +6,22 @@ ul{
   margin:0;padding:0;
 }
 
+tr, th {line-height: 1.5em}
+
 /* struct. */
 html, body {margin:0;padding:0}
-#page, #main {
+#page, #main, table {
     width:100%;
     padding:0;
     max-width:1000px;
     margin:auto;
 }
+
+#page, #main {
+    max-width:1000px;
+}
+
+table {max-width:800px;margin:5px auto .5em}
 
 .nav {float:right}
 .nav ul li {list-style: none}
@@ -49,6 +57,10 @@ h1 {
   font-size:150%;text-decoration:none;
 }
 
+.real, .int {
+  text-align:right;
+}
+
 /******************/
 /*  C O L O R S    */
 /*******************/
@@ -62,6 +74,8 @@ code {
     border-radius:4px;
     padding:1px 5px 0 5px;
 }
+
+table {box-shadow: 4px 0px 8px #ddd } 
 
 .header,.footer {color:#444;background:#333;background-image: linear-gradient(33deg,#ddd,#eaeaea);}
 

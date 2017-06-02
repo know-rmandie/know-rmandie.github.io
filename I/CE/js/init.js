@@ -10,41 +10,44 @@ function tester(v) {
     }
 }
 //
-        var svg = d3.select("svg");
-            svg.attr("width",document.getElementById("OcSol").clientWidth);
-            svg.attr("height","200");
-        var margin = {
-          top: 5,
-          right: 5,
-          bottom: 20,
-          left: 100
-            },
-            width = +svg.attr("width") - margin.left - margin.right,
-            height = +svg.attr("height") - margin.top - margin.bottom,
-            g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        var hash = window.location.hash.split("#")[1];
+        console.log(hash);
 
-        var yOs = d3.scaleBand()
-            .rangeRound([0, height])
-            .padding(0.1)
-            .align(0.1);
-
-        var xOs = d3.scaleLinear()
-            .rangeRound([0, width]);
-
-        var stackOs = d3.stack()
-            .offset(d3.stackOffsetExpand);
-
-        // récupération des données d'occupation du sol
+        // récupération des données d'occupation du sol (+nom des communes et recherche des communes)
         d3.csv("./data/oscom-norm-2015.csv", function(error, oscom) {
             if (error) throw error;
-            var liste = oscom.map(function(d) {
+            var terr = oscom.map(function(d) {
                 return {label:d.Nom,value:d.insee_2015};
             });
             // récupération des textes de légende
             d3.json("./data/oscom-legende.json", function(error, oscleg) {
+                var svg = d3.select("svg");
+                    svg.attr("width",document.getElementById("OcSol").clientWidth);
+                    svg.attr("height","200");
+                var margin = {
+                  top: 5,
+                  right: 5,
+                  bottom: 20,
+                  left: 100
+                    },
+                    width = +svg.attr("width") - margin.left - margin.right,
+                    height = +svg.attr("height") - margin.top - margin.bottom,
+                    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                var yOs = d3.scaleBand()
+                    .rangeRound([0, height])
+                    .padding(0.1)
+                    .align(0.1);
+
+                var xOs = d3.scaleLinear()
+                    .rangeRound([0, width]);
+
+                var stackOs = d3.stack()
+                    .offset(d3.stackOffsetExpand);
 
                 // tracé du graphe d'occupation des sols
                 function drawOs(center) {
+                    $("#titreZone").text(nomTerr(center,terr));
                     g.remove();
                     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                     var data = [];
@@ -54,7 +57,7 @@ function tester(v) {
                     for (var i in oscom) {
                         if (oscom[i].insee_2015 === center) {
                             data[0] = oscom[i];
-                            // récupération des entités supérieures
+                            // !!todo récupération des entités supérieures
                         }
                         if (oscom[i].insee_2015 === dep) data[1] = oscom[i];
                         if (oscom[i].insee_2015 === "Norm") data[2] = oscom[i];
@@ -111,46 +114,12 @@ function tester(v) {
                         g.append("g")
                             .attr("class", "axis axis--y")
                             .call(d3.axisLeft(yOs));
-
-
-
-                        /*var legend = serie.append("g")
-                            .attr("class", "legend")
-                            .attr("transform", function(d) {
-                                var p = d[0];
-                                console.log(p);
-                                if(p[0] === p[1]) return "translate(-50,-50)";
-                                else return "translate(" + xOs(p[0]) + ","+ (-margin.top/2) +" )"// + (yOs(d.data.Nom) - yOs.bandwidth()) + ")";
-                            });
-
-                        legend.append("line")
-                            .attr("y1", 5)
-                            .attr("x1", 15)
-                            .attr("x2", 15)
-                            .attr("y2", 12)
-                            .attr("stroke", "#555");
-
-                        legend.append("text")
-                            .attr("x", 9)
-                            .attr("dy", "0.35em")
-                            .attr("fill", "#555")
-                            .style("font", "10px sans-serif")
-                            .attr("title", function(d) {
-                                var title;
-                                for (var l in oscleg) {
-                                    if (oscleg[l].code === d.key) title = oscleg[l].nature;
-                                }
-                                return title;
-                            })
-                            .text(function(d) {
-                                return d.key;
-                            });*/
                     }
                 }
 
                 /* mise en place de l'autocomplete */
                 $("#choix").autocomplete({
-                    source:liste,
+                    source:terr,
                     _renderItem: function(ul,item) {
                         return $( "<li>" )
                         .attr( "data-value",item.value)
@@ -162,12 +131,12 @@ function tester(v) {
                         drawOs(ui.item.value)
                     },*/
                     select:function(event,ui) {
-                        $("#titreZone").text(ui.item.label);
+                        //
                         drawOs(ui.item.value)
                     }
                     /*function(request,response) {
                         var matcher=new RegExp($.ui.autocomplete.escapeRegex(normalize(request.term)),"i");
-                        response($.grep(liste,function(value) {
+                        response($.grep(terr,function(value) {
                             //value=value.label || value.value || value;
                             console.log(matcher);
                             tester(value);
@@ -175,12 +144,46 @@ function tester(v) {
                         }));
                     }*/
                 });
+
+                if(hash !== undefined) drawOs(hash);
             });
+
+            /* mise en place des statistiques d'intensité de construction à partir de la base ETB */
+            d3.csv("./data/etb-norm-2004_2013-2017.csv", function(error, etb) {
+                if (error) throw error;
+
+                function writeIC(center) {
+                    var table = d3.select('#iCons').append('table')
+                    var thead = table.append('tr');
+                        thead.append('th').text('Nom');
+                        thead.append('th').text('Surface utilisée');
+                        thead.append('th').text('Locaux construits');
+                        thead.append('th').text('Densité moyenne');
+                    var tr = table.append('tr');
+                    for (var t in etb) {
+                        if(etb[t].insee_2017 === center) {
+                            tr.append('td').text(nomTerr(etb[t].insee_2017, terr));
+                            tr.append('td').attr('class','real').text(Math.round(etb[t].Surfcons/100)/100);
+                            tr.append('td').attr('class','int').text(etb[t].Locaux);
+                            tr.append('td').attr('class','real').text(Math.round(etb[t].Dens_cons*100)/100);
+                        }
+                    }
+                }
+                if(hash !== undefined) writeIC(hash);
+
+            });
+
 
         });
 
 
-
+        /* fonction de récupération du nom de territoire */
+        function nomTerr(id,base) {
+            for(var i in base) {
+                //console.log(base[i]);
+                if(base[i].value === id) return base[i].label;
+            }
+        }
 
 
         /* fonction de bascule entre les onglets */
