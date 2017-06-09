@@ -1,6 +1,7 @@
 /************
 L A Y O U T
 ************/
+
 /* elem. */
 ul{
   margin:0;padding:0;
@@ -21,7 +22,9 @@ html, body {margin:0;padding:0}
     max-width:1000px;
 }
 
-table {max-width:800px;margin:5px auto .5em}
+table {max-width:900px;margin:5px auto .5em}
+  table tr td:first-child {padding-left:1em}
+  table tr td:last-child {padding-right:1em}
 
 .nav {float:right}
 .nav ul li {list-style: none}
@@ -53,9 +56,12 @@ h1 {
   font-size:160%;
 }
 
+.source {font-style:italic;font-size:.75em;text-align:right}
+.center {text-align:center}
 .nav a {
   font-size:150%;text-decoration:none;
 }
+.footer ul {list-style:none}
 
 .real, .int {
   text-align:right;
@@ -75,7 +81,7 @@ code {
     padding:1px 5px 0 5px;
 }
 
-table {box-shadow: 4px 0px 8px #ddd } 
+table {box-shadow: 4px 0px 8px #ddd }
 
 .header,.footer {color:#444;background:#333;background-image: linear-gradient(33deg,#ddd,#eaeaea);}
 
@@ -123,7 +129,7 @@ li.onglet.active {
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-  
+
   }
 
 /* Smoothing intervalue */

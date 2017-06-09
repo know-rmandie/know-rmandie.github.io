@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Cormorant+Upright|Open+Sans"
             rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="../../lib/jquery-ui.min.css" type="text/css" />
+        <!-- link rel="stylesheet" href="../../lib/jquery-ui.min.css" type="text/css" / -->
         <link rel="stylesheet" href="../../lib/font-awesome.css" type="text/css" />
         <link rel="stylesheet" href="../../css/style-knw.css" type="text/css" />
         <link rel="stylesheet" href="./css/style.css" type="text/css" />
@@ -25,6 +25,7 @@
         <script src="../../lib/jquery-ui.min.js"></script>
         <script src="../../lib/d3.v4.min.js"></script>
         <script src="../../lib/d3-tip.js"></script>
+        <script src="../../lib/d3-queue.js"></script>
 		<script src="./js/init.js"></script>
 </head>
 
@@ -39,22 +40,27 @@
         <h1>Indicateurs de consommation d'espace</h1>
 
 		<div id="main" class="main" role="main">
-            <div id="pilote" class="header">
-                <p>selectionnez un secteur à l'aide du champ suivant pour avoir un aperçu des indicateurs associés.</p>
-                <!--<div id="geo" class="geo">
-					<ul>
-                        <li class='niv' id='com'>commune</li>
-                        <li class='niv' id='can'>canton</li>
-                        <li class="niv" id="epci">EPCI</li>
-                        <li class='niv' id='sco'>SCoT</li>
-                        <li class='niv' id='dep'>département</li>
-                        <li class='niv' id='reg'>région</li>
-                        <li class='niv' id='gra'>interregion</li>
-                        <li class='niv' id='pay'>France</li>
-                    </ul>
-				</div>-->
-				<label>secteur : </label>
-                <input id="choix" name="choix" type="text" title="secteur géographique"></input>
+            <div id="header" class="header">
+                <div id="wait">
+                    <p class="center">L'application charge les données, merci de patienter...</p>
+                </div>
+                <div id="pilote">
+                    <p>selectionnez un secteur à l'aide du champ suivant pour avoir un aperçu des indicateurs associés.</p>
+                    <!--<div id="geo" class="geo">
+    					<ul>
+                            <li class='niv' id='com'>commune</li>
+                            <li class='niv' id='can'>canton</li>
+                            <li class="niv" id="epci">EPCI</li>
+                            <li class='niv' id='sco'>SCoT</li>
+                            <li class='niv' id='dep'>département</li>
+                            <li class='niv' id='reg'>région</li>
+                            <li class='niv' id='gra'>interregion</li>
+                            <li class='niv' id='pay'>France</li>
+                        </ul>
+    				</div>-->
+    				<label>secteur : </label>
+                    <input id="choix" name="choix" type="text" title="secteur géographique"></input>
+                </div>
                 <nav id="onglets">
                     <ul>
                         <li class="onglet active" target="OcSol">Occ. Sol</li>
@@ -62,17 +68,21 @@
                         <li class="onglet" target="Infos">Infos</li>
                     </ul>
                 </nav>
-			</div>
+            </div>
 
             <div id="fiche">
                 <h2 id='titreZone'></h2>
                 <div id="OcSol" class="active">
                     <h3>Occupation du sol</h3>
                     <svg></svg>
+                    <div id="OcSoLeg">
+                    </div>
                 </div>
                 <div id="ConsNeuve">
                     <h3>Intensité de la construction</h3>
                     <div id="iCons"></div>
+                    <div id="iConsLeg">
+                    </div>
                 </div>
                 <div id="Infos">
                     <h3>Informations sur ce travail</h3>
@@ -82,10 +92,10 @@
 		</div>
 
 		<footer id="footer" class="footer" role="banner">
-			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD / uSA - janvier 2016.<ul>
-				<li class="fa fa-code-fork">
+			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD / uSA - juin 2017.<ul>
+				<li><i class="fa fa-code-fork"></i>
 				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://framagit.org/know-rmandie/know-rmandie.frama.io" target="_blank">Code source</a></li>
-				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="letsComment" href="#">remarques et commentaires</a>.</li></ul>
+				<li><i class="fa fa-comment pgi_button"></i>Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a class="pgi_button" href="#">remarques et commentaires</a>.</li></ul>
 		</footer>
 
 	<script>

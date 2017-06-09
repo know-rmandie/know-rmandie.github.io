@@ -34,6 +34,7 @@ Le projet utilise
 * [jQuery](http://jquery.com/) *1.11.1*
 * [d3](https://d3js.org/) *3.?* et ses plugins
    * [sankey-d3](https://github.com/soxofaan/d3-plugin-captain-sankey)
+   * d3-queue
 * [leaflet](http://leafletjs.com) *1.0.1*
    * son extension [leaflet-markercluster](https://github.com/Leaflet/Leaflet.markercluster)
 * [normalize.css](http://necolas.github.io/normalize.css) *3.0.3*
