@@ -29,7 +29,8 @@ table {max-width:900px;margin:5px auto .5em}
 .nav {float:right}
 .nav ul li {list-style: none}
 
-.header, .footer {padding:.5em;margin:0;}
+#nav, #main > div, h1 {padding:.5em;margin:0}
+#main #header {padding-bottom:0}
 
 .footer {
   margin-bottom:0;
@@ -39,15 +40,15 @@ table {max-width:900px;margin:5px auto .5em}
 .geo li, li.onglet {
     display:inline-block;
     margin:2em .1em 0 .1em;
-    padding:.5em}
+    padding:.5em
 }
 
 /*****************/
 /*    T Y P O     */
 /******************/
 html, body {
-    font-family: "Open Sans", sans-serif;
-    font-size:18px
+    font-family: "Open Sans", "Liberation Serif", Arial, sans-serif;
+    font-size:18px;
 }
 
 h1 {

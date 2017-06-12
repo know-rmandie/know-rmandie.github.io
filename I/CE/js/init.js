@@ -152,7 +152,6 @@ var firstTime = 1;
                     if (oscom[i].insee_2015 === dep) data[1] = oscom[i];
                     if (oscom[i].insee_2015 === "Norm") data[2] = oscom[i];
                     }
-                console.log(data);
                 if (data.length > 0) {
                     // construction de l'axe y
                     yOs.domain(data.map(function(d) {
