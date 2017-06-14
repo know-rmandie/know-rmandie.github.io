@@ -26,7 +26,7 @@ var firstTime = 1;
             {type:"csv",url:"./data/oscom-norm-2015.csv"},  // les données d'occupation du sol (OSCOM)
             {type:"json",url:"./data/oscom-legende.json"},   // légende des données OSCOM
             {type:"csv",url:"./data/etb-norm-2004_2013-2017.csv"}  // les données de construction / densité (ETB)
-        ]
+        ];
         // création d'une queue
         var q = d3.queue();
         // récupération des données listées
@@ -43,10 +43,11 @@ var firstTime = 1;
             $("#wait").fadeOut();
             $("#pilote").fadeIn();
             // préparation des données
-            var territ = res[0],
+            var territ = assoArray(res[0],"id"),
                 oscom = res[1],
                 oscleg = res[2],
                 etb = res[3];
+            console.log(territ);
             for(var i in territ) {
                 territ[i].label = territ[i].Nom;
                 territ[i].value = territ[i].id;
@@ -99,17 +100,17 @@ var firstTime = 1;
                 });
 
             if(hash !== undefined) {
-                center = hash;
+                center = "i"+hash;
                 create(center);
             }
 
             // tracé de toutes les données
             function create(id) {
-                // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
                 // !!todo, faire un traitement différencié pour les différents types de territoires
+                // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
                 for(var t in territ) {
-                    if(territ[t].id === id) {
-                        if(territ[t].type !== "c") id = territ[t].c;
+                    if(t === id) {
+                        if(territ[t].type !== "c") id = "i"+territ[t].c;
                         break;
                     }
                 }
@@ -118,7 +119,8 @@ var firstTime = 1;
             }
             // tracé du graphe d'occupation des sols
             function drawOs(id) {
-                $("#titreZone").text(nomTerr(id,territ));
+                tester(id);
+                $("#titreZone").text(territ[id].Nom);
                 var svg = d3.select("svg");
                     svg.attr("width",document.getElementById("OcSol").clientWidth);
                     svg.attr("height","300");
@@ -141,21 +143,62 @@ var firstTime = 1;
 
                 var data = [];
                 data.columns =  oscom.columns;
-                // récupération de l'identifiant du département
-                var dep = id.substr(0,2);
-                // remplissage du tableau de données en partant du "centre";
+                // récupération de l'identifiant de la commune centre
+                var com = territ[id].c;
+                // si on a un "centre", on "recentre"
+                var Geo = [], ord = 0, sub = null;
+                if(com !== "" && com !== null && com !== undefined) {
+                    // si notre territoire est une commune et comporte un "centre", elle a été fusionnée commune nouvelle
+                    if(territ[id].type === "c") {
+                        sub = id.substr(1,id.length);
+                        Geo["sub"]={"id":sub,"order":ord};
+                        ord++;
+                    }
+tester(sub);
+                    // sinon, c'est un epci, un SCoT ou autre
+                    // dans tous les cas on repart de la commune nouvelle
+                    id = "i"+com;
+                }
+                else com = id.substr(1,id.length);
+                Geo["com"]={"id":com,"order":ord};ord++;
+                if(territ[id].e !== undefined) {
+                    Geo["epci"]={"id":territ[id].e,"order":ord};
+                    ord++};
+                /*if(territ[id].s !== "" ) {
+                    Geo.push({"scot":{"id":territ[id].s,"order":ord}});
+                    ord++};*/
+                Geo["dep"]={"id":com.substr(0,2),"order":ord};ord++;
+                Geo["reg"]={"id":"Norm","order":ord};
+                /* remplissage du tableau de données en partant du "centre";
+                if(sub !== "" && sub !== null && sub !== undefined) {Ord["sub"] = order; order++};
+                Ord["com"] = order; order++;
+                if(epci !== "" && epci !== null && epci !== undefined) {Ord["epci"] = order; order++};
+                if(scot !== "" && scot !== null && scot !== undefined) {Ord["scot"] = order; order++};
+                Ord["dep"] = order; order++;
+                Ord["reg"] = order; order++;*/
+tester(Geo);
                 for (var i in oscom) {
-                    if (oscom[i].insee_2015 === id) {
-                        data[0] = oscom[i];
-                        // !!todo récupération des entités supérieures
+                    for (var geo in Geo) {
+                        if (oscom[i].insee_2015 === Geo[geo].id) data[+Geo[geo].order] = oscom[i];
                     }
-                    if (oscom[i].insee_2015 === dep) data[1] = oscom[i];
-                    if (oscom[i].insee_2015 === "Norm") data[2] = oscom[i];
-                    }
+                }
+                // valeurs non fournies par oscom dans data :
+                for (var i=0; i<ord;i++) {
+                    if(data[i] === undefined) data[i]=0;
+                }
+
+                    /*
+                    if (oscom[i].insee_2015 === com) data[Ord["com"]] = oscom[i];
+                    // !!todo récupération des entités supérieures
+                    if(Ord["epci"] !== undefined) {if (oscom[i].insee_2015 === epci) data[Ord["epci"]] = oscom[i];}
+                    if(Ord["scot"]) {if (oscom[i].insee_2015 === scot) data[Ord["scot"]] = oscom[i];}
+                    if (oscom[i].insee_2015 === dep) data[Ord["dep"]] = oscom[i];
+                    if (oscom[i].insee_2015 === "Norm") data[Ord["reg"]] = oscom[i];*/
+tester(data);
                 if (data.length > 0) {
                     // construction de l'axe y
                     yOs.domain(data.map(function(d) {
-                        return nomTerr(d.insee_2015, territ)
+                        return territ["i"+d.insee_2015].Nom;
                     }));
 
                     var tip = d3.tip()
@@ -186,7 +229,7 @@ var firstTime = 1;
                         })
                         .enter().append("rect")
                         .attr("y", function(d) {
-                            return yOs(nomTerr(d.data.insee_2015, territ));
+                            return yOs(territ["i"+d.data.insee_2015].Nom);
                         })
                         .attr("x", function(d) {
                             return xOs(d[0]);
@@ -237,7 +280,7 @@ var firstTime = 1;
                 var tr4 = table.append('tr');
                 var tr5 = table.append('tr');
                 function createLine(l,x) {
-                    l.append('td').text(nomTerr(etb[x].insee_2017, territ));
+                    l.append('td').text(territ["i"+etb[x].insee_2017].Nom);
                     l.append('td').attr('class','real').text(Math.round(etb[x].cons/100)/100);
                     l.append('td').attr('class','int').text(etb[x].loc);
                     l.append('td').attr('class','real').text(Math.round(etb[x].dens*100)/100);
@@ -253,12 +296,33 @@ var firstTime = 1;
          }
 
 
-        /* fonction de récupération du nom de territoire */
-        function nomTerr(id,base) {
+        /* fonction de récupération du nom de territoire
+        function searchIn(base,field,val) {
             for(var i in base) {
+                if(base[i].field === val) return i;
+            }
+        }
+
+        function nomTerr(id) {
+            var name = territ[searchIn(base,"value",id)].label;
+            if (name === undefined) name =
+            /*for(var i in base) {
                 //console.log(base[i]);
                 if(base[i].value === id) return base[i].label;
             }
+        }*/
+
+        // transforme un tableau en tableau associatif avec field comme champ "id"
+        function assoArray(base,field) {
+            var array = [];
+            for (var i in base) {
+                if(array["i"+base[i][field]] !== undefined) {
+                    // création d'un identifiant pour les "sous-communes"
+                    array["xi"+base[i][field]] = base[i];
+                }
+                else array["i"+base[i][field]] = base[i];
+            }
+            return array;
         }
 
         /* fonction de bascule entre les onglets */
