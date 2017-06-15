@@ -24,12 +24,13 @@ html, body {margin:0;padding:0}
 
 table {max-width:900px;margin:5px auto .5em}
   table tr td:first-child {padding-left:1em}
-  table tr td:last-child {padding-right:1em}
+  table tr td:last-child {padding-right:1.1em}
+  table tr:last-child td {padding-bottom:.5em}
 
 .nav {float:right}
 .nav ul li {list-style: none}
 
-#nav, #main > div, h1 {padding:.5em;margin:0}
+#nav, #main > div, h1, #footer {padding:.5em;margin:0}
 #main #header {padding-bottom:0}
 
 .footer {
@@ -62,6 +63,8 @@ h1 {
 .nav a {
   font-size:150%;text-decoration:none;
 }
+
+.footer {font-size:.85em}
 .footer ul {list-style:none}
 
 .real, .int {
