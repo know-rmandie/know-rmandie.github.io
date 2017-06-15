@@ -87,14 +87,12 @@ function launch(err, res) {
     $("#choix").autocomplete({
         source: function(request, response) {
             var matcher = new RegExp($.ui.autocomplete.escapeRegex(normalize(request.term.toLowerCase())), "i");
-            response($.grep(territ, function(value) {
+            response($.grep(res[0], function(value) {
                 value = value.label || value.value || value;
-                tester(value, "value");
                 return matcher.test(value.toLowerCase()) || matcher.test(normalize(value.toLowerCase()));
             }));
         },
         _renderItem: function(ul, item) {
-            tester(item, "item");
             return $("<li>")
                 .attr("data-value", item.id)
                 .append(item.Nom)
@@ -110,7 +108,7 @@ focus: function( event, ui ) {
 },*/
         select: function(event, ui) {
             $("#choix").val(ui.item.label);
-            create(ui.item.id);
+            create("i"+ui.item.id);
             return false;
         }
     });
@@ -124,12 +122,7 @@ focus: function( event, ui ) {
     function create(id) {
         // !!todo, faire un traitement différencié pour les différents types de territoires
         // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
-        for (var t in territ) {
-            if (t === id) {
-                if (territ[t].type !== "c") id = "i" + territ[t].c;
-                break;
-            }
-        }
+        if (territ[id].type !== "c") id = "i" + territ[id].c;
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
         // lancement des différents traitements
@@ -246,7 +239,7 @@ focus: function( event, ui ) {
                 .call(d3.axisLeft(yOs));
 
             // ajoute les sources et la légende si on est sur la première utilisation
-            if (firstTime === 1) {
+            if (firstTime > 0) {
                 var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
                 .html("source : <a href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr'>DRAAF Normandie</a> - 2016");
                 var ocSoLeg = d3.select('#OcSoLeg').append('ul');
@@ -255,7 +248,7 @@ focus: function( event, ui ) {
                         .text(oscleg[l].nature)
                         .attr('class', 'fa fa-square c' + oscleg[l].code);
                 }
-                firstTime = 0;
+                firstTime += -0.5;
             }
         }
     }
@@ -302,8 +295,8 @@ focus: function( event, ui ) {
                         pop;
                     if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
                     else {
-                        tester(pop, "pop");
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
+                        tester(pop, "pop");
                     }
 
                     var l = Line[Geo[geo].order];
@@ -319,8 +312,11 @@ focus: function( event, ui ) {
     if(etb[t].insee_2017 === "Norm") createLine(tr5,t);*/
         }
         // ajout des sources
-        var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-        .html("source : <a href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/'>EPF Normandie</a> - 2016");
+        if (firstTime > 0) {
+            var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
+            .html("source : <a href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/'>EPF Normandie</a> - 2016");
+        }
+        firstTime += -0.5;
     }
 }
 
