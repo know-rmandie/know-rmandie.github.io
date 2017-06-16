@@ -137,7 +137,7 @@ focus: function( event, ui ) {
         svg.attr("height", "300");
         var margin = {
             top: 5,
-            right: 5,
+            right: 20,
             bottom: 20,
             left: 100
         },
@@ -147,15 +147,15 @@ focus: function( event, ui ) {
         var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var yOs = d3.scaleBand()
-        .rangeRound([0, height])
-        .padding(0.1)
-        .align(0.1);
+            .rangeRound([0, height])
+            .padding(0.1)
+            .align(0.1);
 
         var xOs = d3.scaleLinear()
-        .rangeRound([0, width]);
+            .rangeRound([0, width]);
 
         var stackOs = d3.stack()
-        .offset(d3.stackOffsetExpand);
+            .offset(d3.stackOffsetExpand);
 
         var data = [];
         // récupération des en-têtes de colonnes
@@ -168,16 +168,19 @@ focus: function( event, ui ) {
             for (var geo in Geo) {
                 // vérification des données et compléments éventuels
                 if (data[+Geo[geo].order] === undefined) {
+                    // si on est sur une commune on regarde l
                     if (geo !== "inf" && geo !== "com" && geo !== "dep" && geo !== "reg") {
                         data[+Geo[geo].order] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, oscom, "insee_2015", "all");
                     }
                 }
             }
         }
+tester(data,"data");
         // valeurs toujours non fournies par oscom dans data : mise à 0
         for (var i = 0; i < data.length; i++) {
             if (data[i] === undefined) data.splice(i, 1);
         }
+tester(data,"data");
         // construction du graphique si on a des données
         if (data.length > 0) {
             // construction de l'axe y
@@ -237,6 +240,15 @@ focus: function( event, ui ) {
             g.append("g")
                 .attr("class", "axis axis--y")
                 .call(d3.axisLeft(yOs));
+
+            var select = $("#OcSol .axis--y text");
+            select.each(function() {
+                var txt = $(this).text();
+                $(this).text("");
+                $(this).parent()
+                    .html("<foreignObject y='-" + yOs.bandwidth()/2 + "' x='-" + margin.left + "' width='" + margin.left + "' height='" + yOs.bandwidth() + "'><body xmlns='http://www.w3.org/1999/xhtml'><div><span>" + txt + "</span></div></body></foreignObject>");
+            });
+
 
             // ajoute les sources et la légende si on est sur la première utilisation
             if (firstTime > 0) {
