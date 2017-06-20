@@ -19,9 +19,10 @@ var Geo = [],
 // masquage du pilote
 $("#pilote").fadeOut();
 // récupération d'un éventuel identifiant de territoire
+tester(window.location,"location");
 var center,
+    pos = window.location.search.split("?")[1],
     hash = window.location.hash.split("#")[1];
-//console.log(hash);
 
 /* récupération des données */
 // liste des données
@@ -113,8 +114,10 @@ focus: function( event, ui ) {
         }
     });
 
-    if (hash !== undefined) {
-        center = "i" + hash;
+tester(pos,"pos");
+    if (pos !== undefined) {
+        center = "i" + pos;
+
         create(center);
     }
 
@@ -122,7 +125,9 @@ focus: function( event, ui ) {
     function create(id) {
         // !!todo, faire un traitement différencié pour les différents types de territoires
         // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
+tester(territ[id],"territ/id");
         if (territ[id].type !== "c") id = "i" + territ[id].c;
+tester(id,"id1");
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
         // lancement des différents traitements
@@ -175,12 +180,10 @@ focus: function( event, ui ) {
                 }
             }
         }
-tester(data,"data");
         // valeurs toujours non fournies par oscom dans data : mise à 0
         for (var i = 0; i < data.length; i++) {
             if (data[i] === undefined) data.splice(i, 1);
         }
-tester(data,"data");
         // construction du graphique si on a des données
         if (data.length > 0) {
             // construction de l'axe y
@@ -335,7 +338,11 @@ tester(data,"data");
 // fonction de construction des niveaux géographiques
 function geoLevels(id, base) {
     // récupération de l'identifiant de la commune centre (si existe)
-    var com = base[id].c;
+tester(id,"id");
+tester(base,"base");
+tester(base[id],"base/id");
+    var com;
+    if(base[id].c !== undefined) com = base[id].c;
     // si on a un "centre", on "recentre"
     var Levels = [],
         ord = 0,
