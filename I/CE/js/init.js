@@ -24,11 +24,7 @@ var center,
     hash = window.location.hash.split("#")[1] || "no",
     pos = window.location.search.split("?")[1] || hash.split("?")[1];
     hash = hash.split("?")[0];
-// bascule sur l'onglet de départ
-if(hash !== "no") bascule(hash);
 
-tester(hash,"hash");
-tester(pos,"pos");
 /* récupération des données */
 // liste des données
 var Dataliste = [{
@@ -119,19 +115,18 @@ focus: function( event, ui ) {
         }
     });
 
-tester(pos,"pos");
     if (pos !== undefined) {
         center = "i" + pos;
         create(center);
+        // bascule sur l'onglet de départ
+        if(hash !== "no") bascule(hash);
     }
 
     // tracé de toutes les données
     function create(id) {
         // !!todo, faire un traitement différencié pour les différents types de territoires
         // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
-tester(territ[id],"territ/id");
         if (territ[id].type !== "c") id = "i" + territ[id].c;
-tester(id,"id1");
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
         // lancement des différents traitements
