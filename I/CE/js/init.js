@@ -18,12 +18,17 @@ var Geo = [],
 // -----------------
 // masquage du pilote
 $("#pilote").fadeOut();
-// récupération d'un éventuel identifiant de territoire
+// récupération d'un éventuel identifiant de territoire (?) et d'un onglet de départ (#)
 tester(window.location,"location");
 var center,
-    pos = window.location.search.split("?")[1],
-    hash = window.location.hash.split("#")[1];
+    hash = window.location.hash.split("#")[1] || "no",
+    pos = window.location.search.split("?")[1] || hash.split("?")[1];
+    hash = hash.split("?")[0];
+// bascule sur l'onglet de départ
+if(hash !== "no") bascule(hash);
 
+tester(hash,"hash");
+tester(pos,"pos");
 /* récupération des données */
 // liste des données
 var Dataliste = [{
@@ -117,7 +122,6 @@ focus: function( event, ui ) {
 tester(pos,"pos");
     if (pos !== undefined) {
         center = "i" + pos;
-
         create(center);
     }
 
@@ -462,12 +466,15 @@ function assoArray(base, field) {
 }
 
 /* fonction de bascule entre les onglets */
+function bascule(cible) {
+    $('#onglets li').removeClass('active');
+    $('#onglets li.' + cible).addClass('active');
+    $('#fiche > div').removeClass('active');
+    $('#' + cible).addClass('active');
+}
 $('.onglet').on('click', function(e) {
     var target = $(this).attr("target");
-    $('#onglets li').removeClass('active');
-    $(this).addClass('active');
-    $('#fiche > div').removeClass('active');
-    $('#' + target).addClass('active');
+    bascule(target);
 });
 /* --- */
     });
