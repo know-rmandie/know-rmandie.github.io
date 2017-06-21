@@ -255,7 +255,7 @@ focus: function( event, ui ) {
             // ajoute les sources et la légende si on est sur la première utilisation
             if (firstTime > 0) {
                 var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
-                .html("source : <a href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr'>DRAAF Normandie</a> - 2016");
+                .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a> - 2016");
                 var ocSoLeg = d3.select('#OcSoLeg').append('ul');
                 for (var l in oscleg) {
                     ocSoLeg.append('li')
@@ -285,7 +285,13 @@ focus: function( event, ui ) {
         // création des lignes pour chaque niveau géographiques
         // + vérification de l'existence de la valeur dans la table
         var Line = [],
-            Data = [];
+            Data = [],
+            colorDens = d3.scaleLinear()
+                   .domain([4, 8, 12, 30, 50, 1000])
+                   .range(["red", "orange", "yellow","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
+            colorInt = d3.scaleLinear()
+                   .domain([1000, 12, 7.1, 6.2, 4.9, 2])
+                   .range(["red","red", "orange", "yellow","green","rgb(59, 157, 240)"]);
         for (var geo in Geo) {
             // ajout de la ligne dans la table
             Line[Geo[geo].order] = table.append('tr');
@@ -307,18 +313,22 @@ focus: function( event, ui ) {
                         loc = 1 * Data[d].loc,
                         dens = Math.round(loc / cons * 100 * 10000) / 100,
                         pop;
+tester(colorDens(dens),"colorDens");
                     if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
                     else {
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
-                        tester(pop, "pop");
                     }
-
-                    var l = Line[Geo[geo].order];
+                    var int = Math.round(loc / pop * 1000 * 100 / 10) / 100,
+                        l = Line[Geo[geo].order];
                     l.append('td').text(territ['i' + Data[d].insee_2017].Nom);
                     l.append('td').attr('class', 'int').text(loc);
                     l.append('td').attr('class', 'real').text(Math.round(cons / 100) / 100);
-                    l.append('td').attr('class', 'real').text(dens);
-                    l.append('td').attr('class', 'real').text(Math.round(loc / pop * 1000 / 10 * 100) / 100);
+                    l.append('td').attr('class', 'real').html(dens + '&nbsp;<i class="fa fa-circle" style="color:'+colorDens(dens)+'"></i>');
+                    l.append('td').attr('class', 'real').html(int + '&nbsp;<i class="fa fa-circle" style="color:'+colorInt(int)+'"></i>');
+                    if(loc < 10) {
+                        l.attr('class', 'small');
+                        l.attr('alt','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
+                    }
                 } //fillLine(Line[Geo[geo].order],t);
             }
             /*if(etb[t].insee_2017 === id) createLine(tr0,t);
@@ -328,7 +338,7 @@ focus: function( event, ui ) {
         // ajout des sources
         if (firstTime > 0) {
             var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-            .html("source : <a href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/'>EPF Normandie</a> - 2016");
+            .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> - 2016");
         }
         firstTime += -0.5;
     }
