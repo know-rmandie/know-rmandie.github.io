@@ -118,8 +118,7 @@ focus: function( event, ui ) {
     if (pos !== undefined) {
         center = "i" + pos;
         create(center);
-        // bascule sur l'onglet de départ
-        if(hash !== "no") bascule(hash);
+
     }
 
     // tracé de toutes les données
@@ -129,9 +128,13 @@ focus: function( event, ui ) {
         if (territ[id].type !== "c") id = "i" + territ[id].c;
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
+        // bascule sur OcSol pour éviter les problèmes de tracé
+        bascule("OcSol",false);
         // lancement des différents traitements
         drawOs(id);
         writeIC(id);
+        // bascule sur l'onglet de départ
+        if(hash !== "no") bascule(hash,false);
     }
     // tracé du graphe d'occupation des sols
     function drawOs(id) {
@@ -314,17 +317,19 @@ focus: function( event, ui ) {
                         dens = Math.round(loc / cons * 100 * 10000) / 100,
                         pop;
 tester(colorDens(dens),"colorDens");
+                    if(cons < 250000) cons = Math.round(cons / 10000 * 100) / 100;
+                    else cons = Math.round(cons / 10000);
                     if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
                     else {
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
                     }
                     var int = Math.round(loc / pop * 1000 * 100 / 10) / 100,
                         l = Line[Geo[geo].order];
-                    l.append('td').text(territ['i' + Data[d].insee_2017].Nom);
-                    l.append('td').attr('class', 'int').text(loc);
-                    l.append('td').attr('class', 'real').text(Math.round(cons / 100) / 100);
-                    l.append('td').attr('class', 'real').html(dens + '&nbsp;<i class="fa fa-circle" style="color:'+colorDens(dens)+'"></i>');
-                    l.append('td').attr('class', 'real').html(int + '&nbsp;<i class="fa fa-circle" style="color:'+colorInt(int)+'"></i>');
+                    l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee_2017].Nom);
+                    l.append('td').attr('class', 'int').text(loc.toLocaleString());
+                    l.append('td').attr('class', 'real').text(cons.toLocaleString());
+                    l.append('td').attr('class', 'real').html(dens.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorDens(dens)+'"></i>');
+                    l.append('td').attr('class', 'real').html(int.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorInt(int)+'"></i>');
                     if(loc < 10) {
                         l.attr('class', 'small');
                         l.attr('alt','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
@@ -471,15 +476,16 @@ function assoArray(base, field) {
 }
 
 /* fonction de bascule entre les onglets */
-function bascule(cible) {
+function bascule(cible,movetarget) {
     $('#onglets li').removeClass('active');
     $('#onglets li.' + cible).addClass('active');
     $('#fiche > div').removeClass('active');
     $('#' + cible).addClass('active');
+    if(movetarget === true) hash = cible;
 }
 $('.onglet').on('click', function(e) {
     var target = $(this).attr("target");
-    bascule(target);
+    bascule(target,true);
 });
 /* --- */
     });

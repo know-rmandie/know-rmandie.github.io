@@ -67,6 +67,7 @@ h1 {
 .footer {font-size:.85em}
 .footer ul {list-style:none}
 
+.text {text-align: left}
 .real, .int {
   text-align:right;
 }
