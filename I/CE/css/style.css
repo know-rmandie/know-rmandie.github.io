@@ -76,29 +76,6 @@ tr.small {opacity:0.5}
 
 
 @media print {
-
-body {padding:0 .5cm}
-#fiche > div {display:block}
-#nav,#header,#footer ul {display:none}
-h1 {text-align:center;font-size:1.1em;margin:5px 0;padding:0}
-h2 {text-align:center;margin:0;padding:0}
-h3 {margin:1.5em 0 .75em 0}
-
-.fiche div {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    padding-bottom: 100%;
-    vertical-align: middle;
-    overflow: hidden;
-}
-.svg {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 #Infos {page-break-before:always}
-#footer {text-align:right;font-size:.65em;font-style:italic;background:none}
+
 }

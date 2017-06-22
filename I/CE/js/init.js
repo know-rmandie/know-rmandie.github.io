@@ -19,7 +19,6 @@ var Geo = [],
 // masquage du pilote
 $("#pilote").fadeOut();
 // récupération d'un éventuel identifiant de territoire (?) et d'un onglet de départ (#)
-tester(window.location,"location");
 var center,
     hash = window.location.hash.split("#")[1] || "no",
     pos = window.location.search.split("?")[1] || hash.split("?")[1];
@@ -135,9 +134,17 @@ focus: function( event, ui ) {
         writeIC(id);
         // bascule sur l'onglet de départ
         if(hash !== "no") bascule(hash,false);
+        // fonctions de redimensionnement (fenêtre et impression)
+        $(window).on("resize", function() {
+            drawOs(id)
+        });
+        window.onbeforeprint = function() {
+
+    drawOs(id,550);
+};
     }
     // tracé du graphe d'occupation des sols
-    function drawOs(id) {
+    function drawOs(id,larg) {
         $("#titreZone").text(territ[id].Nom);
         var svg = d3.select("svg");
         svg.attr("width", document.getElementById("OcSol").clientWidth);
@@ -148,7 +155,7 @@ focus: function( event, ui ) {
             bottom: 20,
             left: 100
         },
-            width = +svg.attr("width") - margin.left - margin.right,
+            width = larg || +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
         $("svg g").remove();
         var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -290,11 +297,16 @@ focus: function( event, ui ) {
         var Line = [],
             Data = [],
             colorDens = d3.scaleLinear()
-                   .domain([4, 8, 12, 30, 50, 1000])
-                   .range(["red", "orange", "yellow","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
+                   .domain([3, 6, 10, 20, 30, 1000])
+                   .range(["red", "darkorange", "gold","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
             colorInt = d3.scaleLinear()
-                   .domain([1000, 12, 7.1, 6.2, 4.9, 2])
-                   .range(["red","red", "orange", "yellow","green","rgb(59, 157, 240)"]);
+                   .domain([1000, 12, 8, 6, 4, 2])
+                   .range(["red","red", "darkorange", "gold","green","rgb(59, 157, 240)"]);
+        // description des échelles dans "Infos"
+        $("#echDens").html("Echelle (locaux/ha) : ");
+        for(var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html()+"<li class='fa fa-circle' style='color:"+colorDens(colorDens.domain()[i])+"'></li>&nbsp;"+colorDens.domain()[i]+" ");
+        $("#echInt").html("Echelle (locaux/1000 hab./an) : ");
+        for(var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html()+"<li class='fa fa-circle' style='color:"+colorInt(colorInt.domain()[i])+"'></li>&nbsp;"+colorInt.domain()[i]+" ");
         for (var geo in Geo) {
             // ajout de la ligne dans la table
             Line[Geo[geo].order] = table.append('tr');
@@ -316,7 +328,6 @@ focus: function( event, ui ) {
                         loc = 1 * Data[d].loc,
                         dens = Math.round(loc / cons * 100 * 10000) / 100,
                         pop;
-tester(colorDens(dens),"colorDens");
                     if(cons < 250000) cons = Math.round(cons / 10000 * 100) / 100;
                     else cons = Math.round(cons / 10000);
                     if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
@@ -352,9 +363,6 @@ tester(colorDens(dens),"colorDens");
 // fonction de construction des niveaux géographiques
 function geoLevels(id, base) {
     // récupération de l'identifiant de la commune centre (si existe)
-tester(id,"id");
-tester(base,"base");
-tester(base[id],"base/id");
     var com;
     if(base[id].c !== undefined) com = base[id].c;
     // si on a un "centre", on "recentre"
