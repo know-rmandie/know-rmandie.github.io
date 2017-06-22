@@ -18,10 +18,11 @@ var Geo = [],
 // -----------------
 // masquage du pilote
 $("#pilote").fadeOut();
-// récupération d'un éventuel identifiant de territoire
+// récupération d'un éventuel identifiant de territoire (?) et d'un onglet de départ (#)
 var center,
-    hash = window.location.hash.split("#")[1];
-//console.log(hash);
+    hash = window.location.hash.split("#")[1] || "no",
+    pos = window.location.search.split("?")[1] || hash.split("?")[1];
+    hash = hash.split("?")[0];
 
 /* récupération des données */
 // liste des données
@@ -113,9 +114,10 @@ focus: function( event, ui ) {
         }
     });
 
-    if (hash !== undefined) {
-        center = "i" + hash;
+    if (pos !== undefined) {
+        center = "i" + pos;
         create(center);
+
     }
 
     // tracé de toutes les données
@@ -125,12 +127,24 @@ focus: function( event, ui ) {
         if (territ[id].type !== "c") id = "i" + territ[id].c;
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
+        // bascule sur OcSol pour éviter les problèmes de tracé
+        bascule("OcSol",false);
         // lancement des différents traitements
         drawOs(id);
         writeIC(id);
+        // bascule sur l'onglet de départ
+        if(hash !== "no") bascule(hash,false);
+        // fonctions de redimensionnement (fenêtre et impression)
+        $(window).on("resize", function() {
+            drawOs(id)
+        });
+        window.onbeforeprint = function() {
+
+    drawOs(id,550);
+};
     }
     // tracé du graphe d'occupation des sols
-    function drawOs(id) {
+    function drawOs(id,larg) {
         $("#titreZone").text(territ[id].Nom);
         var svg = d3.select("svg");
         svg.attr("width", document.getElementById("OcSol").clientWidth);
@@ -141,7 +155,7 @@ focus: function( event, ui ) {
             bottom: 20,
             left: 100
         },
-            width = +svg.attr("width") - margin.left - margin.right,
+            width = larg || +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
         $("svg g").remove();
         var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -175,12 +189,10 @@ focus: function( event, ui ) {
                 }
             }
         }
-tester(data,"data");
         // valeurs toujours non fournies par oscom dans data : mise à 0
         for (var i = 0; i < data.length; i++) {
             if (data[i] === undefined) data.splice(i, 1);
         }
-tester(data,"data");
         // construction du graphique si on a des données
         if (data.length > 0) {
             // construction de l'axe y
@@ -253,7 +265,7 @@ tester(data,"data");
             // ajoute les sources et la légende si on est sur la première utilisation
             if (firstTime > 0) {
                 var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
-                .html("source : <a href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr'>DRAAF Normandie</a> - 2016");
+                .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a> - 2016");
                 var ocSoLeg = d3.select('#OcSoLeg').append('ul');
                 for (var l in oscleg) {
                     ocSoLeg.append('li')
@@ -283,7 +295,18 @@ tester(data,"data");
         // création des lignes pour chaque niveau géographiques
         // + vérification de l'existence de la valeur dans la table
         var Line = [],
-            Data = [];
+            Data = [],
+            colorDens = d3.scaleLinear()
+                   .domain([3, 6, 10, 20, 30, 1000])
+                   .range(["red", "darkorange", "gold","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
+            colorInt = d3.scaleLinear()
+                   .domain([1000, 12, 8, 6, 4, 2])
+                   .range(["red","red", "darkorange", "gold","green","rgb(59, 157, 240)"]);
+        // description des échelles dans "Infos"
+        $("#echDens").html("Echelle (locaux/ha) : ");
+        for(var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html()+"<li class='fa fa-circle' style='color:"+colorDens(colorDens.domain()[i])+"'></li>&nbsp;"+colorDens.domain()[i]+" ");
+        $("#echInt").html("Echelle (locaux/1000 hab./an) : ");
+        for(var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html()+"<li class='fa fa-circle' style='color:"+colorInt(colorInt.domain()[i])+"'></li>&nbsp;"+colorInt.domain()[i]+" ");
         for (var geo in Geo) {
             // ajout de la ligne dans la table
             Line[Geo[geo].order] = table.append('tr');
@@ -305,18 +328,23 @@ tester(data,"data");
                         loc = 1 * Data[d].loc,
                         dens = Math.round(loc / cons * 100 * 10000) / 100,
                         pop;
+                    if(cons < 250000) cons = Math.round(cons / 10000 * 100) / 100;
+                    else cons = Math.round(cons / 10000);
                     if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
                     else {
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
-                        tester(pop, "pop");
                     }
-
-                    var l = Line[Geo[geo].order];
-                    l.append('td').text(territ['i' + Data[d].insee_2017].Nom);
-                    l.append('td').attr('class', 'int').text(loc);
-                    l.append('td').attr('class', 'real').text(Math.round(cons / 100) / 100);
-                    l.append('td').attr('class', 'real').text(dens);
-                    l.append('td').attr('class', 'real').text(Math.round(loc / pop * 1000 / 10 * 100) / 100);
+                    var int = Math.round(loc / pop * 1000 * 100 / 10) / 100,
+                        l = Line[Geo[geo].order];
+                    l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee_2017].Nom);
+                    l.append('td').attr('class', 'int').text(loc.toLocaleString());
+                    l.append('td').attr('class', 'real').text(cons.toLocaleString());
+                    l.append('td').attr('class', 'real').html(dens.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorDens(dens)+'"></i>');
+                    l.append('td').attr('class', 'real').html(int.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorInt(int)+'"></i>');
+                    if(loc < 10) {
+                        l.attr('class', 'small');
+                        l.attr('alt','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
+                    }
                 } //fillLine(Line[Geo[geo].order],t);
             }
             /*if(etb[t].insee_2017 === id) createLine(tr0,t);
@@ -326,7 +354,7 @@ tester(data,"data");
         // ajout des sources
         if (firstTime > 0) {
             var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-            .html("source : <a href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/'>EPF Normandie</a> - 2016");
+            .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> - 2016");
         }
         firstTime += -0.5;
     }
@@ -335,7 +363,8 @@ tester(data,"data");
 // fonction de construction des niveaux géographiques
 function geoLevels(id, base) {
     // récupération de l'identifiant de la commune centre (si existe)
-    var com = base[id].c;
+    var com;
+    if(base[id].c !== undefined) com = base[id].c;
     // si on a un "centre", on "recentre"
     var Levels = [],
         ord = 0,
@@ -455,12 +484,16 @@ function assoArray(base, field) {
 }
 
 /* fonction de bascule entre les onglets */
+function bascule(cible,movetarget) {
+    $('#onglets li').removeClass('active');
+    $('#onglets li.' + cible).addClass('active');
+    $('#fiche > div').removeClass('active');
+    $('#' + cible).addClass('active');
+    if(movetarget === true) hash = cible;
+}
 $('.onglet').on('click', function(e) {
     var target = $(this).attr("target");
-    $('#onglets li').removeClass('active');
-    $(this).addClass('active');
-    $('#fiche > div').removeClass('active');
-    $('#' + target).addClass('active');
+    bascule(target,true);
 });
 /* --- */
     });

@@ -71,3 +71,11 @@
 #OcSoLeg li::before {
   padding:0 5px;
 }
+
+tr.small {opacity:0.5}
+
+
+@media print {
+#Infos {page-break-before:always}
+
+}
