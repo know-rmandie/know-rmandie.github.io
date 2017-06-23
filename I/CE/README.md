@@ -1,6 +1,6 @@
-# Indicateurs de consommation d'espace
+# Indicateurs de consommation d'espace (*v 1.0.0-beta*)
 
-Cette partie du projet présente des indicateurs de consommation d'espaces pour les territoires. Un travail est en cours pour la mise à jour de l'outil avec des données récentes.
+Cette partie du projet présente des indicateurs de consommation d'espaces pour les territoires.
 
 ## Crédits
 Cette partie du projet utilise :
@@ -9,13 +9,14 @@ Cette partie du projet utilise :
 * [D3][d3js] (*Data Driven Documents - 4.8.0*) et ses extensions
    * [d3-tip][d3-tip]
    * [d3-queue][d3-queue]
+* [post Gitblab issues][pgi] (*0.1.1*)
 * [normalize.css][normalize_css] (*5.0.0*)
 * [font-awesome][font-awesome] (*4.3.0*)
 
 ## Sources
 Les données utilisées sont issues
-* de l'observatoire de l'occupations des sols communales (OSCOM) développé et mis à jours par la DRAAF Normandie et la DDTM de Seine-Maritime
-* de la base Extension du Tissu Bâti (ETB) développée et mise à jour par l'EPF Normandie avec l'appui de la Région Normandie
+* de l'[observatoire de l'occupation des sols communale][OSCOM] (OSCOM) développé et mis à jours par la DRAAF Normandie et la DDTM de Seine-Maritime
+* de la base [extension du tissu bâti][ETB] (ETB) développée et mise à jour par l'EPF Normandie avec l'appui de la Région Normandie
 
 [jquery]:http://jquery.com
 [jquery_ui]:http://jqueryui.com
@@ -24,3 +25,7 @@ Les données utilisées sont issues
 [d3-queue]:https://d3js.org/d3-queue
 [normalize_css]:http://necolas.github.io/normalize.css
 [font-awesome]:http://fontawesome.io
+[pgi]:http://sycom.gitlab.io/post-Gitlab-issues/
+
+[OSCOM]:http://carto.geo-ide.application.developpement-durable.gouv.fr/481/DRAAF_OSCOM_R28.map
+[ETB]:http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB

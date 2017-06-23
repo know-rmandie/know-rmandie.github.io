@@ -6,18 +6,18 @@ This is a pretty INSECURE way to make issues sent to your gitlab project. Using 
 
 var pGi={
 /* G I T L A B repo informations */
-   gitlab:"gitlab.com",                        // gitlab repo url
+   gitlab:"framagit.org",                      // gitlab repo url
    usgroup:"know-rmandie",                     // gitlab username or group name where the project is
-   project:"lektor",                           // project id in gitlab - should not contain any dot (. nor "%2E")
-   token:"MDXWmKzdfFp5aqheq_1S",               // token !WARNING! this_is_your_SECONDARY_gitlab_token_with_ONLY_GUEST_PRIVILEGE
+   project:"know-rmandie.frama.io",            // project id in gitlab - should not contain any dot (. nor "%2E")
+   token:"EzqGzy_FNQa_r5AKzqnK",               // token !WARNING! this_is_your_SECONDARY_gitlab_token_with_ONLY_GUEST_PRIVILEGE
 /* F I E L D S list*/
    form:[
        {name:"titre",type:"text",dest:"title",def:"objet de la remarque",req:true,hid:false},
-       {name:"etiquette",type:"text",dest:"labels",def:"ville-durable",req:false,hid:true},
+       {name:"etiquette",type:"text",dest:"labels",def:"ice",req:false,hid:true},
        {name:"comment",type:"textarea",dest:"description",def:"merci de préciser...",req:false,hid:false}
    ],
    intro:"N'hésitez pas à faire vos remarques, commentaires, propositions d'améliorations pour cet outil.",
-   thanks:"Merci de nous aider à améliorer la cartographie de la ville durable en Normandie.",
+   thanks:"Merci de nous aider à améliorer la connaissance de la consommation d'espaces en Normandie.",
    autoclose:false
 }
 /* H E L P
