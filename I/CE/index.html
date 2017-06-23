@@ -6,16 +6,16 @@
 		<meta name='author' value='Sylvain Comte' />
 		<meta name='version' value='0.8.0' />
 		<meta name="keywords" value="indicateurs, espace, consommation, urbanisme, aménagement" />
-		<meta name="description" content="Normandie : indicateurs de consommation d'espace et d'intensité d'urbanisation" /> 
-	
+		<meta name="description" content="Normandie : indicateurs de consommation d'espace et d'intensité d'urbanisation" />
+
 	<meta name='viewport' content='width=device-width, user-scalable=yes'>
-	
+
 	<title>Indicateurs de consommation d'espace</title>
-	
+
 	<link rel="stylesheet" href="../../css/font-awesome.css">
 		<link rel="stylesheet" href="../../css/style.css" />
 		<link rel="stylesheet" href="./css/style-ice.css" />
-	
+
 	<script src="./data/liste.json"></script>
         <script src="./data/zones.json"></script>
         <script src="./data/iet34.json"></script>
@@ -46,6 +46,7 @@
 			</div>
 		</header>
 		<div id="main" class="main" role="main">
+            <p class="info">Une nouvelle version est en cours de réalisation. Vous êtes invités à la <a href="./new.html">tester</a>.</p>
 			<p class="info">Les indicateurs ont été choisis dans le cadre de l'<a href="http://www.haute-normandie.developpement-durable.gouv.fr/quel-s-indicateur-s-pour-mesurer-a1308.html">étude réalisée par le CETE</a>. Les autres indicateurs seront fournis dès production.<br/><b>Tapez le nom d'une commune</b> ou d'un SCoT. Il est ensuite possible d'<b>afficher / masquer</b> certains niveaux géographiques. Le <i>territoire de référence (ou interrégion)</i> est l'ensemble constitué de la Haute-Normandie et des départements limitrophes : Calvados, Orne, Eure-et-Loir, Yvelines, Val d'Oise, Oise et Somme.</p>
 			<div id='pilote'>
 				<label>secteur : </label><input id="choix" name="choix" type="text" title="secteur géographique"></input><span id="go">></span>
@@ -59,13 +60,13 @@
 			</div>
         <div id="fiches">
 			</div>
-		
+
 		</div>
 		<footer id="footer" class="footer" role="banner">
 			Réalisation : <a href="http://www.haute-normandie.developpement-durable.gouv.fr">DREAL Normandie</a> / SECLAD / BADD / uSA - janvier 2016.<ul>
 				<li class="fa fa-code-fork">
 				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://git.framasoft.org/territoires/indicateurs-territoriaux">Code source</a></li>
-				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="letsComment" href="#">remarques et commentaires</a>.</li></ul>			
+				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="letsComment" href="#">remarques et commentaires</a>.</li></ul>
 		</footer>
 <!-- comments -->
 	<div id="comment-fond" class="hidden">
@@ -73,7 +74,7 @@
 			<span id="comment-close" class="fa icon fa-close"></span>
 			<p>Merci de contribuer à l'amélioration de ce site par vos remarques.</p>
 			<form id="form">
-			   
+
 			   <input value="Objet des remarques" name="title" id="title" required="" value="Objet des remarques" default="Objet des remarques" type="text">
 			   <textarea value="Remarques détaillées ou description du problème" required="" name="description" id="description" default="Remarques détaillées ou description du problème..." type="textarea" form="form">Remarques détaillées ou description du problème...
 			   </textarea>
@@ -86,7 +87,7 @@
 					 <label for="labels">
 						<input name="labels" id="labelsSug" value="suggestion" type="radio"><span  class="fa icon fa-lightbulb-o">Suggestion : ce serait pas mal d'ajouter...</label>
 					 <label for="labels">
-						<input name="labels" id="labelsDat" value="data" type="radio"/><span  class="fa icon fa-pie-chart">Données : une donnée est fausse / à compléter</span></label>	
+						<input name="labels" id="labelsDat" value="data" type="radio"/><span  class="fa icon fa-pie-chart">Données : une donnée est fausse / à compléter</span></label>
 			   </fieldset>
 			   <div class="center"><button class="button" name="submit" id="submit" type="submit">Envoyer</button></div>
 			</form>
@@ -98,9 +99,9 @@
 			   </iframe>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<script>
-/* comptage Google */	
+/* comptage Google */
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

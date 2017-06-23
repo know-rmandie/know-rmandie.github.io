@@ -124,6 +124,7 @@ focus: function( event, ui ) {
     function create(id) {
         // !!todo, faire un traitement différencié pour les différents types de territoires
         // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
+if(territ[id] === undefined) tester(id,"territ(id) undefined - id :");
         if (territ[id].type !== "c") id = "i" + territ[id].c;
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
@@ -297,12 +298,13 @@ focus: function( event, ui ) {
         var Line = [],
             Data = [],
             colorDens = d3.scaleLinear()
-                   .domain([3, 6, 10, 20, 30, 1000])
+                   .domain([3, 5, 7, 15, 30, 1000])
                    .range(["red", "darkorange", "gold","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
             colorInt = d3.scaleLinear()
                    .domain([1000, 12, 8, 6, 4, 2])
                    .range(["red","red", "darkorange", "gold","green","rgb(59, 157, 240)"]);
         // description des échelles dans "Infos"
+        // !! faire des histogrammes dynamiques en lieu et place des histo svg actuels
         $("#echDens").html("Echelle (locaux/ha) : ");
         for(var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html()+"<li class='fa fa-circle' style='color:"+colorDens(colorDens.domain()[i])+"'></li>&nbsp;"+colorDens.domain()[i]+" ");
         $("#echInt").html("Echelle (locaux/1000 hab./an) : ");
