@@ -3,7 +3,6 @@
 /* --- */
 // outils de débugage
 var Tst = [];
-
 function tester(v, text) {
     if (Tst[text] < 20 || Tst[text] === undefined) {
         if (Tst[text] === undefined) Tst[text] = 0;
@@ -63,6 +62,7 @@ function launch(err, res) {
         oscom = res[1],
         oscleg = res[2],
         etb = res[3];
+tester(territ,"territ");
     for (var i in territ) {
         territ[i].label = territ[i].Nom;
         territ[i].value = territ[i].id;
@@ -140,9 +140,8 @@ if(territ[id] === undefined) tester(id,"territ(id) undefined - id :");
             drawOs(id)
         });
         window.onbeforeprint = function() {
-
-    drawOs(id,550);
-};
+            drawOs(id,550);
+        };
     }
     // tracé du graphe d'occupation des sols
     function drawOs(id,larg) {
@@ -204,6 +203,7 @@ if(territ[id] === undefined) tester(id,"territ(id) undefined - id :");
                     nouvTer.Nom = "nom inconnu (" + d.insee_2015 + ")";
                     territ["i"+nouvTer.id] = nouvTer;
                 }
+tester(territ["i"+d.insee_2015],"territ[i+d.insee_2015]");
                 return territ["i" + d.insee_2015].Nom;
             }));
 
@@ -397,6 +397,13 @@ function geoLevels(id, base) {
         };
         ord++;
     }
+    if (base[id].s !== undefined) {
+        Levels.scot = {
+            "id": base[id].s,
+            "order": ord
+        };
+        ord++;
+    }
     Levels.dep = {
         "id": com.substr(0, 2),
         "order": ord
@@ -406,6 +413,7 @@ function geoLevels(id, base) {
         "id": "Norm",
         "order": ord
     };
+    tester(Levels,"Levels");
     return Levels;
 }
 
