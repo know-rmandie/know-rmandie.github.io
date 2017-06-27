@@ -13,6 +13,7 @@ function tester(v, text) {
 }
 // variables globales
 var Geo = [],
+    depart = [],
     firstTime = 1;
 // -----------------
 // masquage du pilote
@@ -62,7 +63,6 @@ function launch(err, res) {
         oscom = res[1],
         oscleg = res[2],
         etb = res[3];
-tester(territ,"territ");
     for (var i in territ) {
         territ[i].label = territ[i].Nom;
         territ[i].value = territ[i].id;
@@ -99,14 +99,6 @@ tester(territ,"territ");
                 .append(item.Nom)
                 .appendTo(ul);
         },
-        /*change:function(event,ui) {
-    $("#titreZone").text(ui.item.label);
-    drawOs(ui.item.value)
-},
-focus: function( event, ui ) {
-    $( "#choix" ).val( ui.item.label );
-    return false;
-},*/
         select: function(event, ui) {
             $("#choix").val(ui.item.label);
             create("i"+ui.item.id);
@@ -117,20 +109,20 @@ focus: function( event, ui ) {
     if (pos !== undefined) {
         center = "i" + pos;
         create(center);
-
     }
 
     // tracé de toutes les données
     function create(id) {
         // !!todo, faire un traitement différencié pour les différents types de territoires
         // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
-if(territ[id] === undefined) tester(id,"territ(id) undefined - id :");
-        if (territ[id].type !== "c") id = "i" + territ[id].c;
+if(!territ[id]) tester(id,"id (territ[id] === undefined)");
+//        if (territ[id].type !== "c") id = "i" + territ[id].c;
         // récupération des niveaux géographiques
         Geo = geoLevels(id, territ);
         // bascule sur OcSol pour éviter les problèmes de tracé
         bascule("OcSol",false);
         // lancement des différents traitements
+        $("#titreZone").text(depart.Nom);
         drawOs(id);
         writeIC(id);
         // bascule sur l'onglet de départ
@@ -145,7 +137,6 @@ if(territ[id] === undefined) tester(id,"territ(id) undefined - id :");
     }
     // tracé du graphe d'occupation des sols
     function drawOs(id,larg) {
-        $("#titreZone").text(territ[id].Nom);
         var svg = d3.select("svg");
         svg.attr("width", document.getElementById("OcSol").clientWidth);
         svg.attr("height", "300");
@@ -203,7 +194,6 @@ if(territ[id] === undefined) tester(id,"territ(id) undefined - id :");
                     nouvTer.Nom = "nom inconnu (" + d.insee_2015 + ")";
                     territ["i"+nouvTer.id] = nouvTer;
                 }
-tester(territ["i"+d.insee_2015],"territ[i+d.insee_2015]");
                 return territ["i" + d.insee_2015].Nom;
             }));
 
@@ -364,13 +354,15 @@ tester(territ["i"+d.insee_2015],"territ[i+d.insee_2015]");
 
 // fonction de construction des niveaux géographiques
 function geoLevels(id, base) {
-    // récupération de l'identifiant de la commune centre (si existe)
-    var com;
-    if(base[id].c !== undefined) com = base[id].c;
-    // si on a un "centre", on "recentre"
     var Levels = [],
         ord = 0,
         inf = null;
+    // stockage du point de recherche (pour le titre notamment)
+    depart = base[id];
+    // récupération de l'identifiant de la commune centre (si existe)
+    var com;
+    // si on a un "centre", on "recentre"
+    if(base[id].c !== undefined) com = base[id].c;
     if (com !== "" && com !== null && com !== undefined) {
         // si notre territoire est une commune, elle a été fusionnée commune nouvelle
         if (base[id].type === "c") {
@@ -390,6 +382,7 @@ function geoLevels(id, base) {
         "order": ord
     };
     ord++;
+    // niveau epci
     if (base[id].e !== undefined) {
         Levels.epci = {
             "id": base[id].e,
@@ -397,12 +390,15 @@ function geoLevels(id, base) {
         };
         ord++;
     }
+    // niveau scot (si différent epci)
     if (base[id].s !== undefined) {
-        Levels.scot = {
-            "id": base[id].s,
-            "order": ord
-        };
-        ord++;
+        if (base[id].e !== base[id].s) {
+            Levels.scot = {
+                "id": base[id].s,
+                "order": ord
+            };
+            ord++;
+        }
     }
     Levels.dep = {
         "id": com.substr(0, 2),
@@ -413,7 +409,6 @@ function geoLevels(id, base) {
         "id": "Norm",
         "order": ord
     };
-    tester(Levels,"Levels");
     return Levels;
 }
 
