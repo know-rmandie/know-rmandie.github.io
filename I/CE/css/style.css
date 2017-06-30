@@ -72,7 +72,16 @@
   padding:0 5px;
 }
 
+.hyperlink {display:block;float:right}
+.hyperlink span {margin-left:5px;font-family:"open sans";font-size:75%}
+
+.depart {font-weight:bold}
+
+span.depart {font-size:115%}
+
 tr.small {opacity:0.5}
+tr.depart {
+    box-shadow:0px 2px 5px #128297}
 
 
 @media print {

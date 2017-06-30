@@ -20,9 +20,9 @@ var Geo = [],
 $("#pilote").fadeOut();
 // récupération d'un éventuel identifiant de territoire (?) et d'un onglet de départ (#)
 var center,
-    hash = window.location.hash.split("#")[1] || "no",
-    pos = window.location.search.split("?")[1] || hash.split("?")[1];
-    hash = hash.split("?")[0];
+    ongl = window.location.hash.split("#")[1] || "no",
+    pos = window.location.search.split("?")[1] || ongl.split("?")[1];
+    ongl = ongl.split("?")[0];
 
 /* récupération des données */
 // liste des données
@@ -93,18 +93,24 @@ function launch(err, res) {
                 return matcher.test(value.toLowerCase()) || matcher.test(normalize(value.toLowerCase()));
             }));
         },
-        _renderItem: function(ul, item) {
-            return $("<li>")
-                .attr("data-value", item.id)
-                .append(item.Nom)
-                .appendTo(ul);
+        create: function() {
+            $(this).data('ui-autocomplete')._renderItem = function(ul, item) {
+        tester(item,"item");
+                var itemNom = "";
+                if(item.type === "c") itemNom = item.Nom + " (" + item.id.substr(0,2) + ")";
+                else itemNom = item.Nom;
+                return $("<li>")
+                    .attr("data-value", item.id)
+                    .append(itemNom)
+                    .appendTo(ul);
+            };
         },
         select: function(event, ui) {
             $("#choix").val(ui.item.label);
             create("i"+ui.item.id);
             return false;
         }
-    });
+    })/*._renderItem = */;
 
     if (pos !== undefined) {
         center = "i" + pos;
@@ -126,7 +132,8 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         drawOs(id);
         writeIC(id);
         // bascule sur l'onglet de départ
-        if(hash !== "no") bascule(hash,false);
+        if(ongl !== "no") bascule(ongl,false);
+        hyperlink();
         // fonctions de redimensionnement (fenêtre et impression)
         $(window).on("resize", function() {
             drawOs(id)
@@ -225,7 +232,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             })
                 .enter().append("rect")
                 .attr("y", function(d) {
-                return yOs(territ["i" + d.data.insee_2015].Nom);
+                return yOs(territ["i" + d.data.insee_2015].Nom)
             })
                 .attr("x", function(d) {
                 return xOs(d[0]);
@@ -247,9 +254,11 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             var select = $("#OcSol .axis--y text");
             select.each(function() {
                 var txt = $(this).text();
+                var classDep="";
+                if(txt === depart.Nom) classDep = "depart";
                 $(this).text("");
                 $(this).parent()
-                    .html("<foreignObject y='-" + yOs.bandwidth()/2 + "' x='-" + margin.left + "' width='" + margin.left + "' height='" + yOs.bandwidth() + "'><body xmlns='http://www.w3.org/1999/xhtml'><div><span>" + txt + "</span></div></body></foreignObject>");
+                    .html("<foreignObject y='-" + yOs.bandwidth()/2 + "' x='-" + margin.left + "' width='" + margin.left + "' height='" + yOs.bandwidth() + "'><body xmlns='http://www.w3.org/1999/xhtml'><div><span class='" + classDep + "'>" + txt + "</span></div></body></foreignObject>");
             });
 
 
@@ -337,6 +346,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                         l.attr('class', 'small');
                         l.attr('alt','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
                     }
+                    if(Geo[geo].id === depart.id) l.attr('class', l.attr('class')+" depart");
                 } //fillLine(Line[Geo[geo].order],t);
             }
             /*if(etb[t].insee_2017 === id) createLine(tr0,t);
@@ -383,7 +393,7 @@ function geoLevels(id, base) {
     };
     ord++;
     // niveau epci
-    if (base[id].e !== undefined) {
+    if (base[id].e) {
         Levels.epci = {
             "id": base[id].e,
             "order": ord
@@ -391,7 +401,7 @@ function geoLevels(id, base) {
         ord++;
     }
     // niveau scot (si différent epci)
-    if (base[id].s !== undefined) {
+    if (base[id].s) {
         if (base[id].e !== base[id].s) {
             Levels.scot = {
                 "id": base[id].s,
@@ -494,11 +504,22 @@ function bascule(cible,movetarget) {
     $('#onglets li.' + cible).addClass('active');
     $('#fiche > div').removeClass('active');
     $('#' + cible).addClass('active');
-    if(movetarget === true) hash = cible;
+    if(movetarget === true) ongl = cible;
+    hyperlink();
 }
 $('.onglet').on('click', function(e) {
     var target = $(this).attr("target");
     bascule(target,true);
+});
+
+/* fonction d'hyperlien */
+function hyperlink() {
+    var h = "",p = "";
+    if(ongl) h = ongl; if(depart) p = depart.id;
+    $(".hyperlink span").text(location.host+location.pathname+"#"+h+"?"+p);
+}
+$(".hyperlink").on("click",function() {
+    $(".hyperlink span").toggleClass("hidden");
 });
 /* --- */
     });
