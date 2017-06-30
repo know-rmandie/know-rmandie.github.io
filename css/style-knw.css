@@ -4,7 +4,7 @@ L A Y O U T
 /* elem. */
 
 tr, th {
-    line-height: 1.5em
+    line-height: 1.75em
 }
 
 p {
@@ -95,6 +95,7 @@ table tr:last-child td {
     padding: .5em
 }
 
+.hidden {display:none}
 
 /*****************
 //    T Y P O    //

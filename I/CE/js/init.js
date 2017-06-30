@@ -20,9 +20,9 @@ var Geo = [],
 $("#pilote").fadeOut();
 // récupération d'un éventuel identifiant de territoire (?) et d'un onglet de départ (#)
 var center,
-    hash = window.location.hash.split("#")[1] || "no",
-    pos = window.location.search.split("?")[1] || hash.split("?")[1];
-    hash = hash.split("?")[0];
+    ongl = window.location.hash.split("#")[1] || "no",
+    pos = window.location.search.split("?")[1] || ongl.split("?")[1];
+    ongl = ongl.split("?")[0];
 
 /* récupération des données */
 // liste des données
@@ -94,9 +94,12 @@ function launch(err, res) {
             }));
         },
         _renderItem: function(ul, item) {
+            var itemNom = "";
+            if(item.type === "c") itemNom = item.Nom + " (" + item.id.substr(0,2) + ")";
+            else itemNom = item.Nom;
             return $("<li>")
                 .attr("data-value", item.id)
-                .append(item.Nom)
+                .append(itemNom)
                 .appendTo(ul);
         },
         select: function(event, ui) {
@@ -126,7 +129,8 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         drawOs(id);
         writeIC(id);
         // bascule sur l'onglet de départ
-        if(hash !== "no") bascule(hash,false);
+        if(ongl !== "no") bascule(ongl,false);
+        hyperlink();
         // fonctions de redimensionnement (fenêtre et impression)
         $(window).on("resize", function() {
             drawOs(id)
@@ -385,7 +389,6 @@ function geoLevels(id, base) {
         "order": ord
     };
     ord++;
-tester(base[id],"base[id]");
     // niveau epci
     if (base[id].e) {
         Levels.epci = {
@@ -498,11 +501,22 @@ function bascule(cible,movetarget) {
     $('#onglets li.' + cible).addClass('active');
     $('#fiche > div').removeClass('active');
     $('#' + cible).addClass('active');
-    if(movetarget === true) hash = cible;
+    if(movetarget === true) ongl = cible;
+    hyperlink();
 }
 $('.onglet').on('click', function(e) {
     var target = $(this).attr("target");
     bascule(target,true);
+});
+
+/* fonction d'hyperlien */
+function hyperlink() {
+    var h = "",p = "";
+    if(ongl) h = ongl; if(depart) p = depart.id;
+    $(".hyperlink span").text(location.host+location.pathname+"#"+h+"?"+p);
+}
+$(".hyperlink").on("click",function() {
+    $(".hyperlink span").toggleClass("hidden");
 });
 /* --- */
     });
