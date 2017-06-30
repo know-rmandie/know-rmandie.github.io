@@ -225,7 +225,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             })
                 .enter().append("rect")
                 .attr("y", function(d) {
-                return yOs(territ["i" + d.data.insee_2015].Nom);
+                return yOs(territ["i" + d.data.insee_2015].Nom)
             })
                 .attr("x", function(d) {
                 return xOs(d[0]);
@@ -247,9 +247,11 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             var select = $("#OcSol .axis--y text");
             select.each(function() {
                 var txt = $(this).text();
+                var classDep="";
+                if(txt === depart.Nom) classDep = "depart";
                 $(this).text("");
                 $(this).parent()
-                    .html("<foreignObject y='-" + yOs.bandwidth()/2 + "' x='-" + margin.left + "' width='" + margin.left + "' height='" + yOs.bandwidth() + "'><body xmlns='http://www.w3.org/1999/xhtml'><div><span>" + txt + "</span></div></body></foreignObject>");
+                    .html("<foreignObject y='-" + yOs.bandwidth()/2 + "' x='-" + margin.left + "' width='" + margin.left + "' height='" + yOs.bandwidth() + "'><body xmlns='http://www.w3.org/1999/xhtml'><div><span class='" + classDep + "'>" + txt + "</span></div></body></foreignObject>");
             });
 
 
@@ -337,6 +339,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                         l.attr('class', 'small');
                         l.attr('alt','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
                     }
+                    if(Geo[geo].id === depart.id) l.attr('class', l.attr('class')+" depart");
                 } //fillLine(Line[Geo[geo].order],t);
             }
             /*if(etb[t].insee_2017 === id) createLine(tr0,t);
@@ -382,8 +385,9 @@ function geoLevels(id, base) {
         "order": ord
     };
     ord++;
+tester(base[id],"base[id]");
     // niveau epci
-    if (base[id].e !== undefined) {
+    if (base[id].e) {
         Levels.epci = {
             "id": base[id].e,
             "order": ord
@@ -391,7 +395,7 @@ function geoLevels(id, base) {
         ord++;
     }
     // niveau scot (si différent epci)
-    if (base[id].s !== undefined) {
+    if (base[id].s) {
         if (base[id].e !== base[id].s) {
             Levels.scot = {
                 "id": base[id].s,
