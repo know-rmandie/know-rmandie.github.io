@@ -93,21 +93,24 @@ function launch(err, res) {
                 return matcher.test(value.toLowerCase()) || matcher.test(normalize(value.toLowerCase()));
             }));
         },
-        _renderItem: function(ul, item) {
-            var itemNom = "";
-            if(item.type === "c") itemNom = item.Nom + " (" + item.id.substr(0,2) + ")";
-            else itemNom = item.Nom;
-            return $("<li>")
-                .attr("data-value", item.id)
-                .append(itemNom)
-                .appendTo(ul);
+        create: function() {
+            $(this).data('ui-autocomplete')._renderItem = function(ul, item) {
+        tester(item,"item");
+                var itemNom = "";
+                if(item.type === "c") itemNom = item.Nom + " (" + item.id.substr(0,2) + ")";
+                else itemNom = item.Nom;
+                return $("<li>")
+                    .attr("data-value", item.id)
+                    .append(itemNom)
+                    .appendTo(ul);
+            };
         },
         select: function(event, ui) {
             $("#choix").val(ui.item.label);
             create("i"+ui.item.id);
             return false;
         }
-    });
+    })/*._renderItem = */;
 
     if (pos !== undefined) {
         center = "i" + pos;
