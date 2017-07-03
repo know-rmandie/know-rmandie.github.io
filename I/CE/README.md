@@ -1,4 +1,4 @@
-# Indicateurs de consommation d'espace (*v 1.0.0-beta*)
+# Indicateurs de consommation d'espace (*v 1.0.2-beta*)
 
 Cette partie du projet présente des indicateurs de consommation d'espaces pour les territoires.
 
