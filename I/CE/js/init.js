@@ -95,7 +95,6 @@ function launch(err, res) {
         },
         create: function() {
             $(this).data('ui-autocomplete')._renderItem = function(ul, item) {
-        tester(item,"item");
                 var itemNom = "";
                 if(item.type === "c") itemNom = item.Nom + " (" + item.id.substr(0,2) + ")";
                 else itemNom = item.Nom;
@@ -110,7 +109,7 @@ function launch(err, res) {
             create("i"+ui.item.id);
             return false;
         }
-    })/*._renderItem = */;
+    });
 
     if (pos !== undefined) {
         center = "i" + pos;
@@ -344,7 +343,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                     l.append('td').attr('class', 'real').html(int.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorInt(int)+'"></i>');
                     if(loc < 10) {
                         l.attr('class', 'small');
-                        l.attr('alt','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
+                        l.attr('title','nombre de construction insuffisant pour garantir la fiabilité de la donnée')
                     }
                     if(Geo[geo].id === depart.id) l.attr('class', l.attr('class')+" depart");
                 } //fillLine(Line[Geo[geo].order],t);
@@ -518,7 +517,7 @@ function hyperlink() {
     if(ongl) h = ongl; if(depart) p = depart.id;
     $(".hyperlink span").text(location.host+location.pathname+"#"+h+"?"+p);
 }
-$(".hyperlink").on("click",function() {
+$(".hyperlink").dblclick(function() {
     $(".hyperlink span").toggleClass("hidden");
 });
 /* --- */
