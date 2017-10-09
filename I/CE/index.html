@@ -2,112 +2,147 @@
 <html lang='fr-FR'>
 <head>
 	<meta charset='UTF-8' />
-		<meta name='date-created' value='2012-12-02' /><meta name='date-modified' value='2016-01-13' />
+		<meta name='date-created' value='2012-12-02' />
+        <meta name='date-modified' value='2017-10-09' />
 		<meta name='author' value='Sylvain Comte' />
-		<meta name='version' value='0.8.0' />
+		<meta name='version' value='1.0.2' />
 		<meta name="keywords" value="indicateurs, espace, consommation, urbanisme, aménagement" />
 		<meta name="description" content="Normandie : indicateurs de consommation d'espace et d'intensité d'urbanisation" />
 
 	<meta name='viewport' content='width=device-width, user-scalable=yes'>
 
-	<title>Indicateurs de consommation d'espace</title>
+	<title>ICE - Indicateurs de consommation d'espace</title>
 
-	<link rel="stylesheet" href="../../css/font-awesome.css">
-		<link rel="stylesheet" href="../../css/style.css" />
-		<link rel="stylesheet" href="./css/style-ice.css" />
+    <link rel="stylesheet" href="../../lib/normalize.css" type="text/css" />
+        <link rel="stylesheet" href="../../fonts/font-awesome.css" type="text/css" />
+        <link rel="stylesheet" href="../../fonts/g-fonts.css" type="text/css" />
+        <link rel="stylesheet" href="../../css/style-knw.css" type="text/css" />
+        <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
-	<script src="./data/liste.json"></script>
-        <script src="./data/zones.json"></script>
-        <script src="./data/iet34.json"></script>
-        <script src="./data/iet38.json"></script>
-        <script src="./user/config.js"></script>
-		<script src="./user/token.js"></script>
-
-	<script src="../../js/jquery.js"></script>
-        <script src="../../js/jquery-ui-1.10.0.custom.min.js"></script>
-		<script src="../../js/highcharts.js"></script>
-        <script src="../../js/init.js"></script>
-		<script src="./js/init-ice.js"></script>
+	<script src="../../lib/jquery.min.js"></script>
+        <script src="../../lib/jquery-ui.min.js"></script>
+        <script src="../../lib/d3.v4.min.js"></script>
+        <script src="../../lib/d3-tip.js"></script>
+        <script src="../../lib/d3-queue.js"></script>
+        <script src="./user/pgi_config.js"></script>
+        <script src="../../lib/pgi.js"></script>
+		<script src="./js/init.js"></script>
 </head>
 
 <body>
 	<div id="page" class="page">
-		<header id="header" class="header" role="banner">
-			<h1>Indicateurs de consommation d'espace</h1>
-			<div id="nav" class="nav" role="navigation">
-				<p id="navIcon" class="fa fa-2x fa-icon fa-bars"></p>
-				<ul>
-					<li><a href="../../">Accueil</a></li>
-					<li class="active"><a href="../">Indicateurs</a></li>
-					<li><a href="../../planification">Planification</a></li>
-					<li><a href="../../urbanisme">Urbanisme</a></li>
-					<li><a href="../../ville-durable">Ville Durable</a></li>
-				</ul>
-			</div>
-		</header>
+        <div id="nav" class="nav" role="navigation">
+            <ul>
+                <li><a class="fa fa-icon fa-home" href="../../" title="Accueil"></a></li>
+            </ul>
+        </div>
+
+        <h1>Indicateurs de consommation d'espace</h1>
+
 		<div id="main" class="main" role="main">
-            <p class="info">Une nouvelle version est en cours de réalisation. Vous êtes invités à la <a href="./new.html">tester</a>.</p>
-			<p class="info">Les indicateurs ont été choisis dans le cadre de l'<a href="http://www.haute-normandie.developpement-durable.gouv.fr/quel-s-indicateur-s-pour-mesurer-a1308.html">étude réalisée par le CETE</a>. Les autres indicateurs seront fournis dès production.<br/><b>Tapez le nom d'une commune</b> ou d'un SCoT. Il est ensuite possible d'<b>afficher / masquer</b> certains niveaux géographiques. Le <i>territoire de référence (ou interrégion)</i> est l'ensemble constitué de la Haute-Normandie et des départements limitrophes : Calvados, Orne, Eure-et-Loir, Yvelines, Val d'Oise, Oise et Somme.</p>
-			<div id='pilote'>
-				<label>secteur : </label><input id="choix" name="choix" type="text" title="secteur géographique"></input><span id="go">></span>
-				<div id='geo'>
-					<ul><li class='niv' id='com'>commune</li><li class='niv' id='can'>canton</li><li class='niv' id='sco'>SCoT</li><li class='niv' id='dep'>département</li><li class='niv' id='reg'>région</li><li class='niv' id='gra'>interregion</li><li class='niv' id='pay'>France</li></ul>
-				</div>
-			</div>
-        <h1 id='titreZone'></h1>
-		<div id="navigateur" class="onglets">
-			<ul id="onglets"></ul>
-			</div>
-        <div id="fiches">
-			</div>
+            <div id="header" class="header">
+                <div id="wait">
+                    <p class="center"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><br/>
+L'application charge les données, merci de patienter...</p>
+                </div>
+                <div id="pilote">
+                    <p>selectionnez un territoire à l'aide du champ suivant pour avoir un aperçu des indicateurs associés.</p>
+                    <!--<div id="geo" class="geo">
+    					<ul>
+                            <li class='niv' id='com'>commune</li>
+                            <li class='niv' id='can'>canton</li>
+                            <li class="niv" id="epci">EPCI</li>
+                            <li class='niv' id='sco'>SCoT</li>
+                            <li class='niv' id='dep'>département</li>
+                            <li class='niv' id='reg'>région</li>
+                            <li class='niv' id='gra'>interregion</li>
+                            <li class='niv' id='pay'>France</li>
+                        </ul>
+    				</div>-->
+    				<label>secteur : </label>
+                    <input id="choix" name="choix" type="text" title="secteur géographique"></input>
+                </div>
+                <nav id="onglets">
+                    <ul>
+                        <li class="onglet OcSol active" target="OcSol">Occ. Sol</li>
+                        <li class="onglet ConsNeuve" target="ConsNeuve">Constr.</li>
+                        <li class="onglet Infos" target="Infos">Infos</li>
+                    </ul>
+                </nav>
+            </div>
 
+            <div id="fiche">
+                <span class="fa fa-link hyperlink" title="double clickez pour obtenir un lien permanent..."><span class="hidden"></span></span><h2 id='titreZone'></h2>
+                <div id="OcSol" class="active">
+                    <h3>Occupation du sol</h3>
+                    <svg class="full"></svg>
+                    <div id="OcSoLeg">
+                    </div>
+                </div>
+                <div id="ConsNeuve">
+                    <h3>Construction neuve</h3>
+                    <p>La construction neuve est caractérisée, en <i>intensité</i> par l'<strong>indice de construction</strong> (nombre de locaux construits par an pour mille habitants) et en <i>qualité</i> par la <strong>densité de construction</strong> (nombre de locaux par hectare)</p>
+                    <div id="iCons"></div>
+                    <div id="iConsLeg">
+                    </div>
+                </div>
+                <div id="Infos">
+                    <h3>Informations sur ce travail</h3>
+                    <p>Les indicateurs présentés ici ont été choisis dans le cadre des études réalisées par la DREAL Normandie avec l'appui du CEREMA Normandie Centre. Il a notamment été considéré que la production d'un seul indicateur de synthèse était insuffisante pour décrire la consommation d'espaces sur un territoire et que la sélection d'un faisceau d'indicateurs était préférable.
+                    <ul>
+                        <li><strong>l'occupation du sol</strong> fourni un aperçu rapide de la répartition entre espaces urbanisés, agricoles et naturels. C'est une sorte de <i>portrait express</i> qui fourni un contexte à l'évolution et à la consommation des espaces,</li>
+                        <li>la <strong>construction neuve</strong> donne des chiffres clés de l'utilisation des espaces au cours des dix dernières années :<ul>
+                            <li>L'<i>intensité</i> de cette utilisation, fournie par l'<strong>indice de construction</strong> (en locaux pour 1&nbsp;000 habitants et par an) montre la pression subie par le territoire (l'échelle de couleur utilisée est relative à la Normandie).<br/><span id="echInt"></span><br/>
+    <svg width="563pt" height="205pt" version="1.1" viewBox="0 0 563 205" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata>
+        <defs><linearGradient id="a" x1="131.06" x2="313.12" y1="247.25" y2="247.25" gradientTransform="matrix(1.1285 0 0 .49658 -98.018 -32.29)" gradientUnits="userSpaceOnUse"><stop stop-color="#3b9df0" offset="0"/><stop stop-color="#008000" offset=".2165"/><stop stop-color="#ffd700" offset=".40594"/><stop stop-color="#ff8c00" offset=".59866"/><stop stop-color="#f00" offset="1"/></linearGradient></defs>
+        <path d="m92.514 10.735v16.876h-20.624v51.025h-20.626v42.588h-20.626v36.159h-20.624v12.856h20.624 20.626 20.626 20.624 20.626 20.624 20.624 20.626 20.624 20.626 20.626 20.624 20.619 20.624 20.626 20.624 20.626 20.626 20.624 20.626 20.624 20.624 20.626 20.624 20.626v-0.80305h-20.626v0.40056h-20.624v-0.40056h-20.626v-0.4025h-20.624-20.624v-1.2046h-20.626-20.624v-0.805h-20.626v-0.40056h-20.626v-1.2046h-20.624v-4.0172h-20.626v-3.2161h-20.624v-6.0249h-20.619v-12.456h-20.624v-4.8222h-20.626v-21.694h-20.626v-26.517h-20.624v-44.597h-20.626v-15.668h-20.624v-4.8222h-20.624v-10.849z" fill="url(#a)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m9.9739 176.62h547.4" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".66011"/><path d="m10.015 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m113.14 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m216.26 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m319.38 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m422.5 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m525.63 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m429.52 170.24v-160.71" fill="none" stroke="#000" stroke-dasharray="0.7016,1.4032" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7016"/><path d="m429.52 170.24h10.155" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m429.52 130.06h10.155" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m429.52 89.885h10.155" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m429.52 49.708h10.155" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m429.52 9.5309h10.155" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m10.015 170.24h20.625v-12.856h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m30.64 170.24h20.625v-49.015h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m51.264 170.24h20.625v-91.603h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m71.889 170.24h20.625v-142.63h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m92.514 170.24h20.625v-159.5h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m113.14 170.24h20.625v-148.66h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m133.76 170.24h20.625v-143.83h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m154.39 170.24h20.625v-128.16h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m175.01 170.24h20.625v-83.567h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m195.64 170.24h20.625v-57.051h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m216.26 170.24h20.625v-35.357h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m236.89 170.24h20.625v-30.534h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m257.51 170.24h20.625v-18.079h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m278.13 170.24h20.625v-12.053h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m298.76 170.24h20.625v-8.838h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m319.38 170.24h20.625v-4.8203h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m340 170.24h20.625v-3.6152h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m360.63 170.24h20.625v-3.2152h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m381.25 170.24h20.625v-2.4102h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m401.88 170.24h20.625v-2.4102h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m422.5 170.24h20.625v-1.2051h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m443.13 170.24h20.625v-1.2051h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m463.75 170.24h20.625v-0.80257h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m484.38 170.24h20.625v-0.4025h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m505 170.24h20.625v-0.80257h-20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m525.63 170.24h20.625zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><text x="6.3951511" y="194.6964" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="6.3951511" y="194.6964">0</tspan></text><text x="109.16665" y="194.09053" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="109.16665" y="194.09053">5</tspan></text><text x="208.15285" y="192.20573" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="208.15285" y="192.20573">10</tspan></text><text x="311.53214" y="192.33133" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="311.53214" y="192.33133">15</tspan></text><text x="414.7858" y="192.33133" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="414.7858" y="192.33133">20</tspan></text><text x="432.37158" y="19.865044" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="19.865044">400</tspan></text><text x="432.37158" y="60.312347" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="60.312347">300</tspan></text><text x="432.37158" y="100.2572" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="100.2572">200</tspan></text><text x="432.37158" y="140.45328" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="140.45328">100</tspan></text>
+    </svg>
+                            </li>
+                            <li>la <strong>densité de construction</strong> (en locaux par hectare utilisé) donne une indication sur la <i>sobriété</i> de cette utilisation.<br/><span id="echDens"></span><br/>
+    <svg width="563pt" height="205pt" version="1.1" viewBox="0 0 563 205" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata>
+        <defs><linearGradient id="a" x1="340.07" x2="102.75" y1="192.13" y2="192.13" gradientTransform="matrix(1.471 0 0 .77616 -100.1 -40.586)" gradientUnits="userSpaceOnUse"><stop stop-color="#3b9df0" offset="0"/><stop stop-color="#008000" offset=".63369"/><stop stop-color="#ffd700" offset=".84841"/><stop stop-color="#ff8c00" offset=".93617"/><stop stop-color="#f00" offset="1"/></linearGradient></defs>
+        <path transform="scale(.8)" d="m77.09 13.215v3.1035h-12.906v55.879h-12.906v74.498h-12.906v50.832h-12.9v12.027h-12.906v3.1055h12.906 12.906 12.9 12.906 12.906 12.906 12.906 12.898 12.906 12.906 12.906 12.9 12.906 12.906 12.906 12.906 12.898 12.906 12.906 12.906 12.9v-1.9414h-12.9-12.906v-0.77539h-12.906v-1.9414h-12.906v-1.5508h-12.898v-2.3301h-12.906v2.7168h-12.906v-11.25h-12.906v-4.6582h-12.906v6.5976h-12.9v-13.193h-12.906v-7.3711h-12.906v-30.268h-12.906v-46.176h-12.898v-27.547h-12.906v-59.758h-12.906zm219.38 196.34v3.1055h12.906 12.906 12.906 12.9 12.904 12.906 12.906 12.906 12.9 12.906 12.906 12.906 12.9 12.904 12.906 12.906 12.906v-0.38868h-12.906-12.906-12.906v-0.38867h-12.904v-0.38672h-12.906v0.38672h-12.9-12.906v-0.38672h-12.906v0.77539h-12.9v-1.1641h-12.906v0.38867h-12.906v0.38672h-12.906v0.38867h-12.904v-0.77539h-12.9v-1.1641h-12.906v0.38672h-12.906v-1.1641h-12.906zm296.81 2.3281v0.77735h12.906v-0.77735h-12.906zm-64.523 0.77735h12.906-12.906z" fill="url(#a)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".8014"/><path d="m30.697 170.13h10.325v-52.771h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m20.377 170.13h10.325v-12.106h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m10.052 170.13h10.325v-2.4837h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m41.022 170.13h10.325v-112.37h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m51.347 170.13h10.325v-157.07h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m61.671 170.13h10.325v-159.56h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m71.996 170.13h10.325v-111.75h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m82.317 170.13h10.325v-89.712h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m92.641 170.13h10.325v-52.771h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m102.97 170.13h10.325v-28.558h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m113.29 170.13h10.325v-22.661h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m123.61 170.13h10.325v-12.106h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m133.94 170.13h10.325v-17.384h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m144.26 170.13h10.325v-13.658h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m154.59 170.13h10.325v-4.657h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m164.91 170.13h10.325v-6.8302h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m175.23 170.13h10.325v-4.9674h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m185.56 170.13h10.325v-3.7256h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m195.88 170.13h10.325v-2.1732h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m206.21 170.13h10.325v-1.5523h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m216.53 170.13h10.325v-1.5523h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m226.85 170.13h10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m237.17 170.13h10.325v-2.4837h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m247.5 170.13h10.325v-1.5523h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m257.82 170.13h10.325v-1.8628h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m268.14 170.13h10.325v-0.93139h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m278.47 170.13h10.325v-0.31046h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m288.79 170.13h10.325v-0.62092h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m299.12 170.13h10.325v-0.93139h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m309.44 170.13h10.325v-1.2418h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m319.76 170.13h10.325v-0.31046h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m330.09 170.13h10.325v-0.93139h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m340.41 170.13h10.325v-0.62092h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m350.74 170.13h10.325v-0.62092h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m361.06 170.13h10.325v-0.93139h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m371.38 170.13h10.325v-0.62092h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m381.71 170.13h10.325v-0.31046h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m392.03 170.13h10.325v-0.31046h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m402.36 170.13h10.325v-0.31046h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m412.68 170.13h10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m423 170.13h10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m443.65 170.13h10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m453.98 170.13h10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m464.3 170.13h10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m474.62 170.13h10.325v-0.62092h-10.325zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m9.9188 176.57h457.27" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".60332"/><path d="m10.015 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m113.14 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m216.26 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m319.38 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m422.5 176.62v4.4712" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><path d="m429.52 170.24v-160.71" fill="none" stroke="#000" stroke-dasharray="0.7016, 1.4032" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7016"/><path d="m429.52 170.24h10.155" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".7018"/><text x="6.3951511" y="194.6964" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="6.3951511" y="194.6964">0</tspan></text><text x="106.14671" y="194.09053" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="106.14671" y="194.09053">10</tspan></text><text x="208.15285" y="192.20573" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="208.15285" y="192.20573">20</tspan></text><text x="311.53214" y="192.33133" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="311.53214" y="192.33133">30</tspan></text><text x="414.7858" y="192.33133" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="414.7858" y="192.33133">40</tspan></text><text x="432.37158" y="52.775581" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="52.775581">400</tspan></text><text x="432.37158" y="85.686127" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="85.686127">300</tspan></text><text x="432.37158" y="118.34544" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="118.34544">200</tspan></text><text x="432.37158" y="149.99985" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.37158" y="149.99985">100</tspan></text><path d="m10.052 176.51v4.4726" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m113.29 176.51v4.4726" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m216.53 176.51v4.4726" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m319.76 176.51v4.4726" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m423 176.51v4.4726" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".64112"/><path d="m438.59 137.98h-8.4613" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".65199"/><path d="m438.59 105.83h-8.4613" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".65199"/><path d="m438.59 73.688h-8.4613" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".65199"/><path d="m438.59 41.541h-8.4613" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".65199"/><path d="m438.59 9.3965h-8.4613" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width=".65199"/><text x="432.06046" y="20.697821" fill="#000000" font-family="sans-serif" font-size="12px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="432.06046" y="20.697821">500</tspan></text>
+    </svg>
+
+                                </li></ul></li></ul>
+                    </p>
+                </div>
+
+            </div>
 		</div>
+
 		<footer id="footer" class="footer" role="banner">
-			Réalisation : <a href="http://www.haute-normandie.developpement-durable.gouv.fr">DREAL Normandie</a> / SECLAD / BADD / uSA - janvier 2016.<ul>
-				<li class="fa fa-code-fork">
-				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://git.framasoft.org/territoires/indicateurs-territoriaux">Code source</a></li>
-				<li class="fa fa-comment">Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a id="letsComment" href="#">remarques et commentaires</a>.</li></ul>
+			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD / uSA - juin 2017.
+            <ul class="fa-ul">
+				<li><i class="fa-li fa fa-code-fork"></i>
+				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://framagit.org/know-rmandie/know-rmandie.frama.io" target="_blank">Code source</a></li>
+				<li><i class="fa-li fa fa-comment pgiButton"></i>Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a class="pgiButton" href="#">remarques et commentaires</a>.</li>
+            </ul>
 		</footer>
-<!-- comments -->
-	<div id="comment-fond" class="hidden">
-		<div id="commentaires">
-			<span id="comment-close" class="fa icon fa-close"></span>
-			<p>Merci de contribuer à l'amélioration de ce site par vos remarques.</p>
-			<form id="form">
 
-			   <input value="Objet des remarques" name="title" id="title" required="" value="Objet des remarques" default="Objet des remarques" type="text">
-			   <textarea value="Remarques détaillées ou description du problème" required="" name="description" id="description" default="Remarques détaillées ou description du problème..." type="textarea" form="form">Remarques détaillées ou description du problème...
-			   </textarea>
-			   <fieldset>
-					<legend>Dans quelle catégorie rangeriez vous cette remarque?</legend>
-					 <label for="labels">
-						<input name="labels" id="labelsBug" value="bug" type="radio"/><span  class="fa icon fa-bug">Bug : quelque chose ne marche pas</span></label>
-					 <label for="labels">
-						<input name="labels" id="labelsAmel" value="amélioration" type="radio"><span  class="fa icon fa-plus">Amélioration : ça pourrait marcher mieux</span></label>
-					 <label for="labels">
-						<input name="labels" id="labelsSug" value="suggestion" type="radio"><span  class="fa icon fa-lightbulb-o">Suggestion : ce serait pas mal d'ajouter...</label>
-					 <label for="labels">
-						<input name="labels" id="labelsDat" value="data" type="radio"/><span  class="fa icon fa-pie-chart">Données : une donnée est fausse / à compléter</span></label>
-			   </fieldset>
-			   <div class="center"><button class="button" name="submit" id="submit" type="submit">Envoyer</button></div>
-			</form>
-			<div id="thanks">
-			   <p>Vos remarques ont (normalement) été envoyées.<br>Merci encore pour votre aide.</p>
-			</div>
-			<div style="visibility:hidden !important">
-			   <iframe id="sender" name="sender" width="0" height="0">
-			   </iframe>
-			</div>
-		</div>
-	</div>
 	<script>
-/* comptage Google */
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-109815-13', 'territoires.hn.free.fr');
-  ga('send', 'pageview');
+    /* comptage Google - modifié pour intégrer do not track */
+    var page = window.location.hostname;
+    if (navigator.doNotTrack != 1) {
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('set', 'page', page);
+        ga('set', 'title', document.title);
+        ga('create', 'UA-109815-13', page);
+        ga('send', 'pageview');
+    }
     </script>
 </body>
 
