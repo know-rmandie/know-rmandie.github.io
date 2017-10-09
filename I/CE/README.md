@@ -1,4 +1,4 @@
-# Indicateurs de consommation d'espace (*v 1.0.2-beta*)
+# Indicateurs de consommation d'espace (*v 1.0.2*)
 
 Cette partie du projet présente des indicateurs de consommation d'espaces pour les territoires.
 
@@ -17,6 +17,11 @@ Cette partie du projet utilise :
 Les données utilisées sont issues
 * de l'[observatoire de l'occupation des sols communale][OSCOM] (OSCOM) développé et mis à jours par la DRAAF Normandie et la DDTM de Seine-Maritime
 * de la base [extension du tissu bâti][ETB] (ETB) développée et mise à jour par l'EPF Normandie avec l'appui de la Région Normandie
+
+## Licence
+L'ensemble des développements pour cet outil sont sous [licence ouverte](https://www.etalab.gouv.fr/licence-ouverte-open-licence)
+
+![licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Logo_Licence_Ouverte_bleu_blanc_rouge.png "licence ouverte")
 
 [jquery]:http://jquery.com
 [jquery_ui]:http://jqueryui.com

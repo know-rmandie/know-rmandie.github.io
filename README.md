@@ -8,9 +8,11 @@ Ce répertoire contient plusieurs projets destinés à capitaliser et mettre en 
 * [analyse des documents d'urbanisme](../../../analyseUrbanisme/) : une analyse de l'évolution des documents d'urbanisme à partir des données de sudocu. Notamment des diagrammes de Sankey, et des commentaires associés,
 * [cartographie de la planification](../../../cartoPlanification) : une cartographie des Schémas de cohérence territoriale et de leur avancement,
 * [cartographie de la ville durable](../../../cartoVilleDurable) : Une cartographie des projets d'écoquartiers, avec des éléments sur leur avancement et leur labellisation,
+* [Indicateurs de consommation d'espace][ice] : Des indicateurs pour décrire l'usage du foncier,
+* [TiddlyPAC][TiddlyPAC] : un outil pour faciliter la création de porter à connaissance pour les documents d'urbanisme
 * En cours de mise à jour sur ce répertoire :
   * Indicateurs économiques pour le suivi des territoires,
-  * [Indicateurs de consommation d'espace][ice]
+
 
 ## Installation
 L'ensemble est conçu pour fonctionner comme des pages web simples html / css / js. Penser à modifier l'ensemble des fichiers, en particulier `index.html`, en fonction des modules et de l'arborescence qu'on souhaite mettre en place. Les librairies extérieures sont rassemblées à la racine dans .lib pour essayer de rationaliser les mises à jour.
@@ -41,7 +43,8 @@ Imaginé, construit et mis en oeuvre par
    * [Gitlab][gitlab] > [gitlab page][gl-page]
       * [Github][github] > **[github page][gh-page]**
 
-[ice]:./I/CE/README.md
+[ice]: ./I/CE/README.md
+[TiddlyPAC]: https://framagit.org/know-rmandie/TiddlyPAC
 
 [origin]:https://framagit.org/know-rmandie/know-rmandie.frama.io
 [issues]:https://framagit.org/know-rmandie/know-rmandie.frama.io/issues
