@@ -9,9 +9,11 @@ Ce répertoire contient plusieurs projets destinés à capitaliser et mettre en 
 * [cartographie de la planification](../../../cartoPlanification) : une cartographie des Schémas de cohérence territoriale et de leur avancement,
 * [cartographie de la ville durable](../../../cartoVilleDurable) : Une cartographie des projets d'écoquartiers, avec des éléments sur leur avancement et leur labellisation,
 * [Indicateurs de consommation d'espace][ice] : Des indicateurs pour décrire l'usage du foncier,
-* [TiddlyPAC][TiddlyPAC] : un outil pour faciliter la création de porter à connaissance pour les documents d'urbanisme
 * En cours de mise à jour sur ce répertoire :
-  * Indicateurs économiques pour le suivi des territoires,
+   * Indicateurs économiques pour le suivi des territoires,
+
+* Voir également :
+   * [TiddlyPAC][TiddlyPAC] : un outil pour faciliter la création de porter à connaissance pour les documents d'urbanisme
 
 
 ## Installation
@@ -20,23 +22,20 @@ L'ensemble est conçu pour fonctionner comme des pages web simples html / css / 
 ## Pré-requis
 * serveur pour héberger des pages statiques html
 
-## Licence
-Sauf mention contraire les codes sont **réutilisable sous licence [MIT](http://opensource.org/licenses/MIT)** et les **icones, textes et objets graphiques sous licence [CC By 3.0](http://creativecommons.org/licenses/by/3.0/deed.fr)** et les données sous licence ODBL
-
-## Crédits
+## Crédits - Licence
 Chaque partie du projet utilise ses ressources et dépendances propres qui sont listées dans son répertoire. Ne sont listées ici que les ressources propre à la page d'accueil.
 * [jQuery](http://jquery.com/) *1.11.1*
-* [d3](https://d3js.org/) *3.?* et ses plugins
-   * [sankey-d3](https://github.com/soxofaan/d3-plugin-captain-sankey)
-   * d3-queue
-* [leaflet](http://leafletjs.com) *1.0.1*
-   * son extension [leaflet-markercluster](https://github.com/Leaflet/Leaflet.markercluster)
 * [normalize.css](http://necolas.github.io/normalize.css) *3.0.3*
 * [font-awesome](http://fontawesome.io) *4.3.0*
 * [pgi](http://sycom.gitlab.io/post-Gitlab-issues/) *0.1.1*
 
+A l'exception des ressources externes utilisées et dûment listées, l'ensemble des sources développées pour ce projet est sous [licence ouverte](https://www.etalab.gouv.fr/licence-ouverte-open-licence) (_DREAL Normandie_)
+
+![licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Logo_Licence_Ouverte_bleu_blanc_rouge.png "licence ouverte")
+
 Imaginé, construit et mis en oeuvre par
-* Sylvain Comte (DREAL Normandie)
+* Fouad Gafsi (DDTM de Seine-Maritime)
+* Eloi Larchevêque, Samuel Malbet, Sylvain Comte (DREAL Normandie)
 
 ## Circuit
 * **[Framagit][origin]** ([issues][issues]) > [frama.io page][f.io-page]
