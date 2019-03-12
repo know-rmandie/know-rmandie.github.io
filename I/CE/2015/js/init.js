@@ -32,7 +32,7 @@ var Dataliste = [{
 }, // les entités territoriales, avec noms et appartenances
                  {
                      type: "csv",
-                     url: "./data/oscom-norm-2017.csv"
+                     url: "./data/oscom-norm-2015.csv"
                  }, // les données d'occupation du sol (OSCOM)
                  {
                      type: "json",
@@ -174,14 +174,14 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         // mise en place des données dans la table
         for (var i in oscom) {
             for (var geo in Geo) {
-                if (oscom[i].insee === Geo[geo].id) data[+Geo[geo].order] = oscom[i];
+                if (oscom[i].insee_2015 === Geo[geo].id) data[+Geo[geo].order] = oscom[i];
             }
             for (var geo in Geo) {
                 // vérification des données et compléments éventuels
                 if (data[+Geo[geo].order] === undefined) {
                     // si on est sur une commune on regarde l
                     if (geo !== "inf" && geo !== "com" && geo !== "dep" && geo !== "reg") {
-                        data[+Geo[geo].order] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, oscom, "insee", "all");
+                        data[+Geo[geo].order] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, oscom, "insee_2015", "all");
                     }
                 }
             }
@@ -194,13 +194,13 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         if (data.length > 0) {
             // construction de l'axe y
             yOs.domain(data.map(function(d) {
-                if(territ["i"+d.insee] === undefined) {
+                if(territ["i"+d.insee_2015] === undefined) {
                     var nouvTer = {};
-                    nouvTer.id = d.insee;
-                    nouvTer.Nom = "nom inconnu (" + d.insee + ")";
+                    nouvTer.id = d.insee_2015;
+                    nouvTer.Nom = "nom inconnu (" + d.insee_2015 + ")";
                     territ["i"+nouvTer.id] = nouvTer;
                 }
-                return territ["i" + d.insee].Nom;
+                return territ["i" + d.insee_2015].Nom;
             }));
 
             var tip = d3.tip()
@@ -231,7 +231,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             })
                 .enter().append("rect")
                 .attr("y", function(d) {
-                return yOs(territ["i" + d.data.insee].Nom)
+                return yOs(territ["i" + d.data.insee_2015].Nom)
             })
                 .attr("x", function(d) {
                 return xOs(d[0]);
@@ -264,7 +264,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             // ajoute les sources et la légende si on est sur la première utilisation
             if (firstTime > 0) {
                 var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
-                .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2017 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a>");
+                .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a> - 2016");
                 var ocSoLeg = d3.select('#OcSoLeg').append('ul');
                 for (var l in oscleg) {
                     ocSoLeg.append('li')
