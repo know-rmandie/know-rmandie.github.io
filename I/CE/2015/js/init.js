@@ -32,7 +32,7 @@ var Dataliste = [{
 }, // les entités territoriales, avec noms et appartenances
                  {
                      type: "csv",
-                     url: "./data/oscom-norm-2017.csv"
+                     url: "./data/oscom-norm-2015.csv"
                  }, // les données d'occupation du sol (OSCOM)
                  {
                      type: "json",
@@ -40,8 +40,8 @@ var Dataliste = [{
                  }, // légende des données OSCOM
                  {
                      type: "csv",
-                     url: "./data/ccf-norm-2006_2015-2018.csv"
-                 } // les données de construction / densité (CCF)
+                     url: "./data/etb-norm-2004_2013-2017.csv"
+                 } // les données de construction / densité (ETB)
                 ];
 // création d'une queue
 var q = d3.queue();
@@ -62,7 +62,7 @@ function launch(err, res) {
     var territ = assoArray(res[0], "id"),
         oscom = res[1],
         oscleg = res[2],
-        ccf = res[3];
+        etb = res[3];
     for (var i in territ) {
         territ[i].label = territ[i].Nom;
         territ[i].value = territ[i].id;
@@ -143,7 +143,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
     }
     // tracé du graphe d'occupation des sols
     function drawOs(id,larg) {
-        var svg = d3.select('#OcsolAdn');
+        var svg = d3.select("svg");
         svg.attr("width", document.getElementById("OcSol").clientWidth);
         svg.attr("height", "300");
         var margin = {
@@ -174,14 +174,14 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         // mise en place des données dans la table
         for (var i in oscom) {
             for (var geo in Geo) {
-                if (oscom[i].insee === Geo[geo].id) data[+Geo[geo].order] = oscom[i];
+                if (oscom[i].insee_2015 === Geo[geo].id) data[+Geo[geo].order] = oscom[i];
             }
             for (var geo in Geo) {
                 // vérification des données et compléments éventuels
                 if (data[+Geo[geo].order] === undefined) {
                     // si on est sur une commune on regarde l
                     if (geo !== "inf" && geo !== "com" && geo !== "dep" && geo !== "reg") {
-                        data[+Geo[geo].order] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, oscom, "insee", "all");
+                        data[+Geo[geo].order] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, oscom, "insee_2015", "all");
                     }
                 }
             }
@@ -194,13 +194,13 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         if (data.length > 0) {
             // construction de l'axe y
             yOs.domain(data.map(function(d) {
-                if(territ["i"+d.insee] === undefined) {
+                if(territ["i"+d.insee_2015] === undefined) {
                     var nouvTer = {};
-                    nouvTer.id = d.insee;
-                    nouvTer.Nom = "nom inconnu (" + d.insee + ")";
+                    nouvTer.id = d.insee_2015;
+                    nouvTer.Nom = "nom inconnu (" + d.insee_2015 + ")";
                     territ["i"+nouvTer.id] = nouvTer;
                 }
-                return territ["i" + d.insee].Nom;
+                return territ["i" + d.insee_2015].Nom;
             }));
 
             var tip = d3.tip()
@@ -231,7 +231,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             })
                 .enter().append("rect")
                 .attr("y", function(d) {
-                return yOs(territ["i" + d.data.insee].Nom)
+                return yOs(territ["i" + d.data.insee_2015].Nom)
             })
                 .attr("x", function(d) {
                 return xOs(d[0]);
@@ -264,7 +264,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
             // ajoute les sources et la légende si on est sur la première utilisation
             if (firstTime > 0) {
                 var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
-                .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2017 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a>");
+                .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2015 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a> - 2016");
                 var ocSoLeg = d3.select('#OcSoLeg').append('ul');
                 for (var l in oscleg) {
                     ocSoLeg.append('li')
@@ -276,7 +276,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         }
     }
 
-    // tableau des données CCF
+    // tableau des données ETB
     function writeIC(id) {
         // récupération des niveaux géographiques
         // nettoyage de la table existante
@@ -310,33 +310,33 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         for (var geo in Geo) {
             // ajout de la ligne dans la table
             Line[Geo[geo].order] = table.append('tr');
-            for (var t in ccf) {
-                if (ccf[t].insee === Geo[geo].id) Data[geo] = ccf[t];
+            for (var t in etb) {
+                if (etb[t].insee_2017 === Geo[geo].id) Data[geo] = etb[t];
             }
             if (Data[geo] === undefined) {
                 if (geo !== "inf" && geo !== "com" && geo !== "dep" && geo !== "reg") {
-                    Data[geo] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, ccf, "insee", "all");
-                    ccf.push(Data[geo]);
+                    Data[geo] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, etb, "insee_2017", "all");
+                    etb.push(Data[geo]);
                 }
             }
         }
         // remplissage des lignes
         for (var d in Data) {
             for (var geo in Geo) {
-                if (Data[d].insee === Geo[geo].id) {
+                if (Data[d].insee_2017 === Geo[geo].id) {
                     var cons = 1 * Data[d].cons,
                         loc = 1 * Data[d].loc,
                         dens = Math.round(loc / cons * 100 * 10000) / 100,
                         pop;
                     if(cons < 250000) cons = Math.round(cons / 10000 * 100) / 100;
                     else cons = Math.round(cons / 10000);
-                    if (territ["i" + Data[d].insee] !== undefined) pop = territ["i" + Data[d].insee].pop;
+                    if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
                     else {
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
                     }
                     var int = Math.round(loc / pop * 1000 * 100 / 10) / 100,
                         l = Line[Geo[geo].order];
-                    l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee].Nom);
+                    l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee_2017].Nom);
                     l.append('td').attr('class', 'int').text(loc.toLocaleString());
                     l.append('td').attr('class', 'real').text(cons.toLocaleString());
                     l.append('td').attr('class', 'real').html(dens.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorDens(dens)+'"></i>');
@@ -348,14 +348,14 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                     if(Geo[geo].id === depart.id) l.attr('class', l.attr('class')+" depart");
                 } //fillLine(Line[Geo[geo].order],t);
             }
-            /*if(ccf[t].insee === id) createLine(tr0,t);
-    if(ccf[t].insee === dep) createLine(tr4,t);
-    if(ccf[t].insee === "Norm") createLine(tr5,t);*/
+            /*if(etb[t].insee_2017 === id) createLine(tr0,t);
+    if(etb[t].insee_2017 === dep) createLine(tr4,t);
+    if(etb[t].insee_2017 === "Norm") createLine(tr5,t);*/
         }
         // ajout des sources
         if (firstTime > 0) {
             var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-            .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Donnees-sur-la-consommation-fonciere-en-Normandie'>CCF</a> 2006 > 2015 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> <a href='https://www.normandie.fr'>Région Normandie</a> - 2018");
+            .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> - 2016");
         }
         firstTime += -0.5;
     }

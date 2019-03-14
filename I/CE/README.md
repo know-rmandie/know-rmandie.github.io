@@ -1,4 +1,4 @@
-# Indicateurs de consommation d'espace (*v 1.0.2*)
+# Indicateurs de consommation d'espace (*v 1.1.0*)
 
 Cette partie du projet présente des indicateurs de consommation d'espaces pour les territoires.
 
@@ -14,9 +14,9 @@ Cette partie du projet utilise :
 * [font-awesome][font-awesome] (*4.3.0*)
 
 ## Sources
-Les données utilisées sont issues
+Les [données](./data) utilisées sont issues
 * de l'[observatoire de l'occupation des sols communale][OSCOM] (OSCOM) développé et mis à jours par la DRAAF Normandie et la DDTM de Seine-Maritime
-* de la base [extension du tissu bâti][ETB] (ETB) développée et mise à jour par l'EPF Normandie avec l'appui de la Région Normandie
+* de la base [cartographie de la consommation foncière][CCF] (CCF) développée et mise à jour par l'EPF Normandie avec l'appui de la Région Normandie
 
 ## Licence
 L'ensemble des développements pour cet outil sont sous [licence ouverte](https://www.etalab.gouv.fr/licence-ouverte-open-licence)
@@ -33,4 +33,4 @@ L'ensemble des développements pour cet outil sont sous [licence ouverte](https:
 [pgi]:http://sycom.gitlab.io/post-Gitlab-issues/
 
 [OSCOM]:http://carto.geo-ide.application.developpement-durable.gouv.fr/481/DRAAF_OSCOM_R28.map
-[ETB]:http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB
+[CCF]:http://www.epf-normandie.fr/Actualites/A-la-Une/Donnees-sur-la-consommation-fonciere-en-Normandie
