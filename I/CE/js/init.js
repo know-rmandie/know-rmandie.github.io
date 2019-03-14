@@ -40,8 +40,8 @@ var Dataliste = [{
                  }, // légende des données OSCOM
                  {
                      type: "csv",
-                     url: "./data/etb-norm-2004_2013-2017.csv"
-                 } // les données de construction / densité (ETB)
+                     url: "./data/ccf-norm-2006_2015-2018.csv"
+                 } // les données de construction / densité (CCF)
                 ];
 // création d'une queue
 var q = d3.queue();
@@ -62,7 +62,7 @@ function launch(err, res) {
     var territ = assoArray(res[0], "id"),
         oscom = res[1],
         oscleg = res[2],
-        etb = res[3];
+        ccf = res[3];
     for (var i in territ) {
         territ[i].label = territ[i].Nom;
         territ[i].value = territ[i].id;
@@ -143,7 +143,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
     }
     // tracé du graphe d'occupation des sols
     function drawOs(id,larg) {
-        var svg = d3.select("svg");
+        var svg = d3.select('#OcsolAdn');
         svg.attr("width", document.getElementById("OcSol").clientWidth);
         svg.attr("height", "300");
         var margin = {
@@ -276,7 +276,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         }
     }
 
-    // tableau des données ETB
+    // tableau des données CCF
     function writeIC(id) {
         // récupération des niveaux géographiques
         // nettoyage de la table existante
@@ -310,33 +310,33 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         for (var geo in Geo) {
             // ajout de la ligne dans la table
             Line[Geo[geo].order] = table.append('tr');
-            for (var t in etb) {
-                if (etb[t].insee_2017 === Geo[geo].id) Data[geo] = etb[t];
+            for (var t in ccf) {
+                if (ccf[t].insee === Geo[geo].id) Data[geo] = ccf[t];
             }
             if (Data[geo] === undefined) {
                 if (geo !== "inf" && geo !== "com" && geo !== "dep" && geo !== "reg") {
-                    Data[geo] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, etb, "insee_2017", "all");
-                    etb.push(Data[geo]);
+                    Data[geo] = sumIf(territ, geo.substr(0, 1), Geo[geo].id, ccf, "insee", "all");
+                    ccf.push(Data[geo]);
                 }
             }
         }
         // remplissage des lignes
         for (var d in Data) {
             for (var geo in Geo) {
-                if (Data[d].insee_2017 === Geo[geo].id) {
+                if (Data[d].insee === Geo[geo].id) {
                     var cons = 1 * Data[d].cons,
                         loc = 1 * Data[d].loc,
                         dens = Math.round(loc / cons * 100 * 10000) / 100,
                         pop;
                     if(cons < 250000) cons = Math.round(cons / 10000 * 100) / 100;
                     else cons = Math.round(cons / 10000);
-                    if (territ["i" + Data[d].insee_2017] !== undefined) pop = territ["i" + Data[d].insee_2017].pop;
+                    if (territ["i" + Data[d].insee] !== undefined) pop = territ["i" + Data[d].insee].pop;
                     else {
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
                     }
                     var int = Math.round(loc / pop * 1000 * 100 / 10) / 100,
                         l = Line[Geo[geo].order];
-                    l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee_2017].Nom);
+                    l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee].Nom);
                     l.append('td').attr('class', 'int').text(loc.toLocaleString());
                     l.append('td').attr('class', 'real').text(cons.toLocaleString());
                     l.append('td').attr('class', 'real').html(dens.toLocaleString() + '&nbsp;<i class="fa fa-circle" style="color:'+colorDens(dens)+'"></i>');
@@ -348,14 +348,14 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                     if(Geo[geo].id === depart.id) l.attr('class', l.attr('class')+" depart");
                 } //fillLine(Line[Geo[geo].order],t);
             }
-            /*if(etb[t].insee_2017 === id) createLine(tr0,t);
-    if(etb[t].insee_2017 === dep) createLine(tr4,t);
-    if(etb[t].insee_2017 === "Norm") createLine(tr5,t);*/
+            /*if(ccf[t].insee === id) createLine(tr0,t);
+    if(ccf[t].insee === dep) createLine(tr4,t);
+    if(ccf[t].insee === "Norm") createLine(tr5,t);*/
         }
         // ajout des sources
         if (firstTime > 0) {
             var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-            .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Accompagnement-de-l-EPF-Normandie-dans-la-mesure-de-la-consommation-fonciere-a-l-echelle-regionale-Mise-en-ligne-de-la-base-de-donnees-Extension-du-Tissu-Bati-ETB'>Extension du Tissu Bâti</a> (ETB) 2004 > 2013 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> - 2016");
+            .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Donnees-sur-la-consommation-fonciere-en-Normandie'>CCF</a> 2006 > 2015 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> <a href='https://www.normandie.fr'>Région Normandie</a> - 2018");
         }
         firstTime += -0.5;
     }
