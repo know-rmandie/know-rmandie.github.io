@@ -3,7 +3,7 @@
 /* --- */
 // outils de débugage
 var Tst = [];
-function tester(v, text) {
+function tester(v, text) { // variable testée, texte descriptif
     if (Tst[text] < 20 || Tst[text] === undefined) {
         if (Tst[text] === undefined) Tst[text] = 0;
         console.log("test > " + text);
@@ -15,6 +15,7 @@ function tester(v, text) {
 var Geo = [],
     depart = [],
     firstTime = 1;
+var Densites = {}, Intensites = {};
 // -----------------
 // masquage du pilote
 $("#pilote").fadeOut();
@@ -63,6 +64,7 @@ function launch(err, res) {
         oscom = res[1],
         oscleg = res[2],
         ccf = res[3];
+
     for (var i in territ) {
         territ[i].label = territ[i].Nom;
         territ[i].value = territ[i].id;
@@ -119,7 +121,6 @@ function launch(err, res) {
     // tracé de toutes les données
     function create(id) {
         // !!todo, faire un traitement différencié pour les différents types de territoires
-        // vérifie qu'on part bien d'une commune. Récupère la commune centre sinon...
 if(!territ[id]) tester(id,"id (territ[id] === undefined)");
 //        if (territ[id].type !== "c") id = "i" + territ[id].c;
         // récupération des niveaux géographiques
@@ -296,13 +297,13 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         var Line = [],
             Data = [],
             colorDens = d3.scaleLinear()
-                   .domain([3, 5, 7, 15, 30, 1000])
-                   .range(["red", "darkorange", "gold","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
+                   .domain([0, 2, 5, 8, 15, 30, 1000])
+                   .range(["darkred", "red", "darkorange", "gold","green","rgb(59, 157, 240)","rgb(59, 157, 240)"]),
             colorInt = d3.scaleLinear()
                    .domain([1000, 12, 8, 6, 4, 2])
-                   .range(["red","red", "darkorange", "gold","green","rgb(59, 157, 240)"]);
+                   .range(["darkred", "red", "darkorange", "gold","green","rgb(59, 157, 240)"]);
         // description des échelles dans "Infos"
-        // !! faire des histogrammes dynamiques en lieu et place des histo svg actuels
+        // !!todo faire des histogrammes dynamiques en lieu et place des histo svg actuels
         $("#echDens").html("Echelle (locaux/ha) : ");
         for(var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html()+"<li class='fa fa-circle' style='color:"+colorDens(colorDens.domain()[i])+"'></li>&nbsp;"+colorDens.domain()[i]+" ");
         $("#echInt").html("Echelle (locaux/1000 hab./an) : ");
@@ -334,8 +335,8 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                     else {
                         pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
                     }
-                    var int = Math.round(loc / pop * 1000 * 100 / 10) / 100,
-                        l = Line[Geo[geo].order];
+                    var int = Math.round(loc / pop * 1000 * 100 / 10) / 100;
+                    var l = Line[Geo[geo].order];
                     l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee].Nom);
                     l.append('td').attr('class', 'int').text(loc.toLocaleString());
                     l.append('td').attr('class', 'real').text(cons.toLocaleString());
@@ -348,14 +349,118 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
                     if(Geo[geo].id === depart.id) l.attr('class', l.attr('class')+" depart");
                 } //fillLine(Line[Geo[geo].order],t);
             }
-            /*if(ccf[t].insee === id) createLine(tr0,t);
-    if(ccf[t].insee === dep) createLine(tr4,t);
-    if(ccf[t].insee === "Norm") createLine(tr5,t);*/
-        }
-        // ajout des sources
+      }
+      // ajout des sources
         if (firstTime > 0) {
             var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
             .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Donnees-sur-la-consommation-fonciere-en-Normandie'>CCF</a> 2006 > 2015 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> <a href='https://www.normandie.fr'>Région Normandie</a> - 2018");
+        }
+        // compilation des données pour les graphes densité et intensité
+        if (firstTime > 0) {
+          for (var t in ccf)  {
+            var dens = Math.floor(1 * ccf[t].loc / ccf[t].cons * 10000);
+            if (dens > 30) dens = 31; // on écrète le diagramme au delà de 30 logts / ha
+            if (territ["i" + ccf[t].insee] !== undefined) pop = territ["i" + ccf[t].insee].pop;
+            else {
+                pop = sumIf(territ, ccf[t].insee.substr(0, 1), ccf[t].insee, territ, "id", "pop");
+            }
+            var int = Math.floor(1* ccf[t].loc / pop * 1000 / 10);
+            if (int > 25) int = 26; // on écrète le diagramme au delà de 26 logts / 1000 hab / an
+            if (Densites[dens] !== undefined) Densites[dens] += 1
+              else Densites[dens] = 1;
+            if (Intensites[int] !== undefined) Intensites[int] += 1
+              else Intensites[int] = 1;
+            }
+            var Ddata = [];
+            for (var d in Densites) {
+              Ddata.push({"classe":d,"effectif":Densites[d]});
+            }
+            // On enlève la classe 31 et plus et la classe "NaN" du tableau
+            Ddata.pop();Ddata.pop();
+
+            var Idata = [];
+              for (var d in Intensites) {
+            Idata.push({"classe":d,"effectif":Intensites[d]});
+          }
+          // On enlève la classe 26 et plus et la classe "NaN" du tableau
+          Idata.pop();Idata.pop();
+
+// insertion du premier svg (Densités) dans #iConsGraph
+// dimensions des graphes, marges etc.
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+   width = document.getElementById("OcSol").clientWidth - margin.left - margin.right,
+   height = width / 2 - margin.top - margin.bottom;
+
+// création des deux axes
+var x = d3.scaleBand().range([0, width]).padding(0.1);
+var y = d3.scaleLinear().range([height, 0]);
+
+var svg = d3.select("#IceDensGraph").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// Mise à l'échelle des axes
+x.domain(Ddata.map(function(d) { return d.classe; }));
+y.domain([0, 510]);
+
+// append the rectangles for the bar chart
+svg.selectAll(".bar")
+  .data(Ddata)
+  .enter().append("rect")
+  .attr("class", function(d) { return "bar "+d.classe })
+  .attr("x", function(d) { return x(d.classe) })
+  .attr("width", x.bandwidth())
+  .attr("y", function(d) { return y(d.effectif)})
+  .attr("height", function(d) { return height - y(d.effectif); })
+  .attr("fill", function (d) {
+    if (d.classe === "31" || d.classe === "NaN") return "none"
+    else return colorDens(d.classe)});
+
+// add the x Axis
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x));
+
+// add the y Axis
+svg.append("g")
+  .call(d3.axisLeft(y));
+
+  // insertion du deuxième svg (Intensités) dans #iConsGraph
+  // création d'un groupe 'g' dedans et déplacement en haut à gauche
+  var svg = d3.select("#IceIntGraph").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  // mapage des données
+
+  // Mise à l'échelle des axes
+  x.domain(Idata.map(function(d) { return d.classe; }));
+  y.domain([0, 450]);
+
+  // append the rectangles for the bar chart
+  svg.selectAll(".bar")
+    .data(Idata)
+    .enter().append("rect")
+    .attr("class", function(d) { return "bar "+d.classe })
+    .attr("x", function(d) { return x(d.classe) })
+    .attr("width", x.bandwidth())
+    .attr("y", function(d) { return y(d.effectif)})
+    .attr("height", function(d) { return height - y(d.effectif); })
+    .attr("fill", function (d) {
+      if (d.classe === "26" || d.classe === "NaN") return "none"
+      else return colorInt(d.classe)});
+
+  // add the x Axis
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+  // add the y Axis
+  svg.append("g")
+    .call(d3.axisLeft(y));
         }
         firstTime += -0.5;
     }
@@ -371,7 +476,7 @@ function geoLevels(id, base) {
     // récupération de l'identifiant de la commune centre (si existe)
     var com;
     // si on a un "centre", on "recentre"
-    if(base[id].c !== undefined) com = base[id].c;
+    if (base[id].c !== undefined) com = base[id].c;
     if (com !== "" && com !== null && com !== undefined) {
         // si notre territoire est une commune, elle a été fusionnée commune nouvelle
         if (base[id].type === "c") {

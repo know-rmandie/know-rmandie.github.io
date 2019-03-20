@@ -157,7 +157,7 @@ a {
 }
 
 a:hover {
-    black
+    color: black
 }
 
 a:visited {

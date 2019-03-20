@@ -10,8 +10,8 @@ Cette partie du projet utilise :
    * [d3-tip][d3-tip]
    * [d3-queue][d3-queue]
 * [post Gitblab issues][pgi] (*0.1.1*)
-* [normalize.css][normalize_css] (*5.0.0*)
-* [font-awesome][font-awesome] (*4.3.0*)
+* [normalize.css][normalize_css] (*8.0.1*)
+* [font-awesome][font-awesome] (*5.7.2*)
 
 ## Sources
 Les [données](./data) utilisées sont issues
@@ -29,7 +29,7 @@ L'ensemble des développements pour cet outil sont sous [licence ouverte](https:
 [d3-tip]:https://d3js.org/d3-tip
 [d3-queue]:https://d3js.org/d3-queue
 [normalize_css]:http://necolas.github.io/normalize.css
-[font-awesome]:http://fontawesome.io
+[font-awesome]:http://fontawesome.com
 [pgi]:http://sycom.gitlab.io/post-Gitlab-issues/
 
 [OSCOM]:http://carto.geo-ide.application.developpement-durable.gouv.fr/481/DRAAF_OSCOM_R28.map
