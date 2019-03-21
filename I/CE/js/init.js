@@ -155,7 +155,7 @@ if(!territ[id]) tester(id,"id (territ[id] === undefined)");
         },
             width = larg || +svg.attr("width") - margin.left - margin.right,
             height = +svg.attr("height") - margin.top - margin.bottom;
-        $("svg g").remove();
+        $("#OcSol svg g").remove();
         var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var yOs = d3.scaleBand()
