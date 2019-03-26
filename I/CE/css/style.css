@@ -54,23 +54,20 @@
   padding:3px;
 }
 
-.c11 {fill:#d44} .c11::before {color:#d44}
-.c12 {fill:#a58} .c12::before {color:#a58}
-.c13 {fill:#aaa} .c13::before {color:#aaa}
-.c14 {fill:#7a7} .c14::before {color:#7a7}
-.c15 {fill:#555} .c15::before {color:#555}
-.c21 {fill:#eb0} .c21::before {color:#eb0}
-.c22 {fill:#fc0} .c22::before {color:#fc0}
-.c23 {fill:#ac0} .c23::before {color:#ac0}
-.c24 {fill:#ba5} .c24::before {color:#ba5}
-.c31 {fill:#292} .c31::before {color:#292}
-.c32 {fill:#8c7} .c32::before {color:#8c7}
-.c51 {fill:#8af} .c51::before {color:#8af}
-.cxx {fill:#ddd} .cxx::before {color:#ddd}
-
-#OcSoLeg li::before {
-  padding:0 5px;
+/* légende de l'occupation des sols */
+#OcSoLeg li {
+  display:inline-block;
 }
+
+#OcSoLeg li svg {
+  stroke-width: 1px;
+}
+
+.c11 {fill:#d44} .c12 {fill:#a58} .c13 {fill:#aaa} .c14 {fill:#7a7} .c15 {fill:#555}
+.c21 {fill:#eb0} .c22 {fill:#fc0} .c23 {fill:#ac0} .c24 {fill:#ba5}
+.c31 {fill:#292} .c32 {fill:#8c7}
+.c51 {fill:#8af}
+.cxx {fill:#ddd}
 
 .hyperlink {display:block;float:right}
 .hyperlink span {margin-left:5px;font-family:"open sans";font-size:75%}

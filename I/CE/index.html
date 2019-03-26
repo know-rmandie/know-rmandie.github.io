@@ -5,9 +5,9 @@
 <head>
 	<meta charset='UTF-8' />
 	<meta name='date-created' value='2012-12-02' />
-	<meta name='date-modified' value='2017-10-09' />
+	<meta name='date-modified' value='2019-03-26' />
 	<meta name='author' value='Sylvain Comte' />
-	<meta name='version' value='1.1.1' />
+	<meta name='version' value='1.2.2' />
 	<meta name="keywords" value="indicateurs, espace, consommation, urbanisme, aménagement" />
 	<meta name="description" content="Normandie : indicateurs de consommation d'espace et d'intensité d'urbanisation" />
 
@@ -16,9 +16,9 @@
 	<title>ICE - Indicateurs de consommation d'espace</title>
 
 	<link rel="stylesheet" href="../../lib/normalize-min.css" type="text/css" />
-	<link rel="stylesheet" href="../../fonts/fa-all-min.css" type="text/css" />
 	<link rel="stylesheet" href="../../fonts/g-fonts.css" type="text/css" />
 	<link rel="stylesheet" href="../../css/style-knw.css" type="text/css" />
+	<link rel="stylesheet" href="../../css/feather.css" type="text/css" />
 	<link rel="stylesheet" href="./css/style.css" type="text/css" />
 
 	<script src="../../lib/jquery.min.js"></script>
@@ -34,8 +34,7 @@
 <body>
 	<div id="page" class="page">
 		<div id="nav" class="nav" role="navigation">
-			<ul>
-				<li><a class="fa fa-icon fa-home" href="../../" title="Accueil"></a></li>
+			<a href="../../" title="Accueil"><svg class="feather"><use href="../../lib/feather-sprite.svg#home"></use></svg></a>
 			</ul>
 		</div>
 
@@ -44,7 +43,7 @@
 		<div id="main" class="main" role="main">
 			<div id="header" class="header">
 				<div id="wait">
-					<p class="center"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><br />
+					<p class="center"><svg class="feather x3"><use href="../../lib/feather-sprite.svg#clock"></use></svg><br />
 						L'application charge les données, merci de patienter...</p>
 				</div>
 				<div id="pilote">
@@ -74,7 +73,7 @@
 			</div>
 
 			<div id="fiche">
-				<span class="fa fa-link hyperlink" title="double clickez pour obtenir un lien permanent..."><span class="hidden"></span></span>
+				<span class="hyperlink" title="double clickez pour obtenir un lien permanent..."><svg class="feather"><use href="../../lib/feather-sprite.svg#link"></use></svg><span class="hidden"></span></span>
 				<h2 id='titreZone'></h2>
 				<div id="OcSol" class="active">
 					<h3>Occupation du sol</h3>
@@ -117,11 +116,11 @@
 
 		<footer id="footer" class="footer" role="banner">
 			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD - mars 2019.
-			<ul class="fa-ul">
-				<li><i class="fa-li fa fa-code-branch"></i>
+			<ul class="feather">
+				<li><svg><use href="../../lib/feather-sprite.svg#git-branch"/></svg></i>
 					Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://framagit.org/know-rmandie/know-rmandie.frama.io" target="_blank">Code source</a></li>
-				<li><i class="fa-li fa fa-comment pgiButton"></i>Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a class="pgiButton" href="#">remarques et commentaires</a>.</li>
-				<li><i class="fa-li fa fa-archive"></i>Des versions antérieures de l'outil sont toujours accessibles (<a href="./2015/">2015</a>)</li>
+				<li><svg><use href="../../lib/feather-sprite.svg#message-circle"/></svg>Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a class="pgiButton" href="#">remarques et commentaires</a>.</li>
+				<li><svg><use href="../../lib/feather-sprite.svg#archive"/></svg>Des versions antérieures de l'outil sont toujours accessibles (<a href="./2015/">2015</a>)</li>
 			</ul>
 		</footer>
 
