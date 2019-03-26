@@ -312,9 +312,9 @@
         // description des échelles dans "Infos"
         // !!todo faire des histogrammes dynamiques en lieu et place des histo svg actuels
         $("#echDens").html("Echelle (locaux/ha) : ");
-        for (var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html() + "<svg class='feather' style='fill:" + colorDens(colorDens.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorDens.domain()[i] + " ");
+        for (var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html() + "<svg class='feather thin' style='fill:" + colorDens(colorDens.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorDens.domain()[i] + " ");
         $("#echInt").html("Echelle (locaux/1000 hab./an) : ");
-        for (var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html() + "<svg class='feather' style='fill:" + colorInt(colorInt.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></svg>&nbsp;" + colorInt.domain()[i] + " ");
+        for (var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html() + "<svg class='feather thin' style='fill:" + colorInt(colorInt.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></svg>&nbsp;" + colorInt.domain()[i] + " ");
         for (var geo in Geo) {
           // ajout de la ligne dans la table
           Line[Geo[geo].order] = table.append('tr');
@@ -451,7 +451,7 @@
 
           // add the x Axis
           svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(" + -x.bandwidth() * 1.2 / 2 +", " + height + ")")
             .call(d3.axisBottom(x));
 
           // add the y Axis
@@ -465,7 +465,6 @@
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-          // mapage des données
 
           // Mise à l'échelle des axes
           x.domain(Idata.map(function(d) {
@@ -497,7 +496,7 @@
 
           // add the x Axis
           svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(" + -x.bandwidth() * 1.2 / 2 +"," + height + ")")
             .call(d3.axisBottom(x));
 
           // add the y Axis
