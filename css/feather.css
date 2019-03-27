@@ -3,11 +3,11 @@ svg.feather, ul.feather svg {
   width: 1.1em;
   height: 1.1em;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  vertical-align: baseline;
+  vertical-align: sub;
 }
 svg.x3 {
   width: 3.3em;
