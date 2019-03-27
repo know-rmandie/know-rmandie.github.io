@@ -15,7 +15,6 @@ Ce répertoire contient plusieurs projets destinés à capitaliser et mettre en 
 * Voir également :
    * [TiddlyPAC][TiddlyPAC] : un outil pour faciliter la création de porter à connaissance pour les documents d'urbanisme
 
-
 ## Installation
 L'ensemble est conçu pour fonctionner comme des pages web simples html / css / js. Penser à modifier l'ensemble des fichiers, en particulier `index.html`, en fonction des modules et de l'arborescence qu'on souhaite mettre en place. Les librairies extérieures sont rassemblées à la racine dans .lib pour essayer de rationaliser les mises à jour.
 
