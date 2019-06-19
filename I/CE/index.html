@@ -1,54 +1,52 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang='fr-FR'>
 
 <head>
-	<meta charset='UTF-8' />
-	<meta name='date-created' value='2012-12-02' />
-	<meta name='date-modified' value='2019-03-26' />
-	<meta name='author' value='Sylvain Comte' />
-	<meta name='version' value='1.2.2' />
-	<meta name="keywords" value="indicateurs, espace, consommation, urbanisme, aménagement" />
-	<meta name="description" content="Normandie : indicateurs de consommation d'espace et d'intensité d'urbanisation" />
+    <meta charset='UTF-8' />
+    <meta name='date-created' value='2012-12-02' />
+    <meta name='date-modified' value='2019-03-26' />
+    <meta name='author' value='Sylvain Comte' />
+    <meta name='version' value='1.2.2' />
+    <meta name="keywords" value="indicateurs, espace, consommation, urbanisme, aménagement" />
+    <meta name="description" content="Normandie : indicateurs de consommation d'espace et d'intensité d'urbanisation" />
 
-	<meta name='viewport' content='width=device-width, user-scalable=yes'>
+    <meta name='viewport' content='width=device-width, user-scalable=yes'>
 
-	<title>ICE - Indicateurs de consommation d'espace - Normandie</title>
+    <title>ICE - Indicateurs de consommation d'espace - Normandie</title>
 
-	<link rel="stylesheet" href="../../lib/normalize-min.css" type="text/css" />
-	<link rel="stylesheet" href="../../fonts/g-fonts.css" type="text/css" />
-	<link rel="stylesheet" href="../../css/style-knw.css" type="text/css" />
-	<link rel="stylesheet" href="../../css/feather.css" type="text/css" />
-	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/normalize-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../fonts/g-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/style-knw.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/feather.css" type="text/css" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
 
-	<script src="../../lib/jquery.min.js"></script>
-	<script src="../../lib/jquery-ui.min.js"></script>
-	<script src="../../lib/d3.v4.min.js"></script>
-	<script src="../../lib/d3-tip.js"></script>
-	<script src="../../lib/d3-queue.js"></script>
-	<script src="./user/pgi_config.js"></script>
-	<script src="../../lib/pgi.js"></script>
-	<script src="./js/init.js"></script>
+    <script src="../../lib/jquery.min.js"></script>
+    <script src="../../lib/jquery-ui.min.js"></script>
+    <script src="../../lib/d3.v4.min.js"></script>
+    <script src="../../lib/d3-tip.js"></script>
+    <script src="../../lib/d3-queue.js"></script>
+    <script src="./user/pgi_config.js"></script>
+    <script src="../../lib/pgi.js"></script>
+    <script src="./js/init.js"></script>
 </head>
 
 <body>
-	<div id="page" class="page">
-		<div id="nav" class="nav" role="navigation">
-			<a href="../../" title="Accueil"><svg class="feather"><use href="../../lib/feather-sprite.svg#home"></use></svg></a>
-			</ul>
-		</div>
+    <div id="page" class="page">
+        <div id="nav" class="nav" role="navigation">
+            <a href="../../" title="Accueil"><svg class="feather"><use href="../../lib/feather-sprite.svg#home"></use></svg></a>
+            </ul>
+        </div>
 
-		<h1>Indicateurs de consommation d'espace</h1>
+        <h1>Indicateurs de consommation d'espace</h1>
 
-		<div id="main" class="main" role="main">
-			<div id="header" class="header">
-				<div id="wait">
-					<p class="center"><svg class="feather x3"><use href="../../lib/feather-sprite.svg#clock"></use></svg><br />
-						L'application charge les données, merci de patienter...</p>
-				</div>
-				<div id="pilote">
-					<p>selectionnez un territoire à l'aide du champ suivant pour avoir un aperçu des indicateurs associés.</p>
-					<!--<div id="geo" class="geo">
+        <div id="main" class="main" role="main">
+            <div id="header" class="header">
+                <div id="wait">
+                    <p class="center"><svg class="feather x3"><use href="../../lib/feather-sprite.svg#clock"></use></svg><br /> L'application charge les données, merci de patienter...</p>
+                </div>
+                <div id="pilote">
+                    <p>selectionnez un territoire à l'aide du champ suivant pour avoir un aperçu des indicateurs associés.</p>
+                    <!--<div id="geo" class="geo">
     					<ul>
                             <li class='niv' id='com'>commune</li>
                             <li class='niv' id='can'>canton</li>
@@ -60,92 +58,112 @@
                             <li class='niv' id='pay'>France</li>
                         </ul>
     				</div>-->
-					<label>secteur : </label>
-					<input id="choix" name="choix" type="text" title="secteur géographique"></input>
-				</div>
-				<nav id="onglets">
-					<ul>
-						<li class="onglet OcSol active" target="OcSol">Occ. Sol</li>
-						<li class="onglet ConsNeuve" target="ConsNeuve">Constr.</li>
-						<li class="onglet Infos" target="Infos">Infos</li>
-					</ul>
-				</nav>
-			</div>
+                    <label>secteur : </label>
+                    <input id="choix" name="choix" type="text" title="secteur géographique"></input>
+                </div>
+                <nav id="onglets">
+                    <ul>
+                        <li class="onglet OcSol active" target="OcSol">Occ. Sol</li>
+                        <li class="onglet ConsNaf" target="ConsNaf">Cons. Naf</li>
+                        <li class="onglet ConsNeuve" target="ConsNeuve">Constr.</li>
+                        <li class="onglet Infos" target="Infos">Infos</li>
+                    </ul>
+                </nav>
+            </div>
 
-			<div id="fiche">
-				<span class="hyperlink" title="double clickez pour obtenir un lien permanent..."><svg class="feather"><use href="../../lib/feather-sprite.svg#link"></use></svg><span class="hidden"></span></span>
-				<h2 id='titreZone'></h2>
-				<div id="OcSol" class="active">
-					<h3>Occupation du sol</h3>
-					<svg class="full" id="OcsolAdn"></svg>
-					<div id="OcSoLeg">
-					</div>
-				</div>
-				<div id="ConsNeuve">
-					<h3>Construction neuve</h3>
-					<p>La construction neuve est caractérisée, en <i>intensité</i> par l'<strong>indice de construction</strong> (nombre de locaux construits par an pour mille habitants) et en <i>qualité</i> par la <strong>densité de construction</strong> (nombre
-						de locaux par hectare)</p>
-					<div id="iCons"></div>
-					<div id="iConsLeg">
-					</div>
-				</div>
-				<div id="Infos">
-					<h3>Informations sur ce travail</h3>
-					<p>Les indicateurs présentés ici ont été choisis dans le cadre des études réalisées par la DREAL Normandie avec l'appui du CEREMA Normandie Centre. Il a notamment été considéré que la production d'un seul indicateur de synthèse était
-						insuffisante pour décrire la consommation d'espaces sur un territoire et que la sélection d'un faisceau d'indicateurs était préférable.
-						<ul>
-							<li><strong>l'occupation du sol</strong> (onglet "Occ. Sol") fourni un aperçu rapide de la répartition entre espaces urbanisés, agricoles et naturels. C'est une sorte de <i>portrait express</i> qui fourni un contexte à l'évolution et à la
-								consommation des espaces,</li>
-							<li>la <strong>construction neuve</strong> (onglet "Constr.") donne des chiffres clés de l'utilisation des espaces au cours des dix dernières années. Les graphes qui suivent présentent la distribution des valeurs pour les communes des Normandie :</li></ul>
+            <div id="fiche">
+                <span class="hyperlink" title="double clickez pour obtenir un lien permanent..."><svg class="feather"><use href="../../lib/feather-sprite.svg#link"></use></svg><span class="hidden"></span></span>
+                <h2 id='titreZone'></h2>
+                <div id="OcSol" class="active">
+                    <h3>Occupation du sol</h3>
+                    <svg class="full" id="OcsolAdn"></svg>
+                    <div id="OcSoLeg">
+                    </div>
+                </div>
+                <div id="ConsNaf">
+                    <h3>Consommation d'espaces</h3>
+                    <p>La consommation des espaces <strong>naturels, agricoles et forestier</strong> est un des éléments à surveiller, notamment dans le cadre de l'élaboration des documents d'urbanisme.</p>
+                    <div id="iNaf"></div>
+                    <div id="iNafLeg"></div>
+                </div>
+                <div id="ConsNeuve">
+                    <h3>Construction neuve</h3>
+                    <p>La construction neuve est caractérisée, en <i>intensité</i> par l'<strong>indice de construction</strong> (nombre de locaux construits par an pour mille habitants) et en <i>qualité</i> par la <strong>densité de construction</strong>                        (nombre de locaux par hectare)</p>
+                    <div id="iCons"></div>
+                    <div id="iConsLeg">
+                    </div>
+                </div>
+                <div id="Infos">
+                    <h3>Informations sur ce travail</h3>
+                    <p>Les indicateurs présentés ici ont été choisis dans le cadre des études réalisées par la DREAL Normandie avec l'appui du CEREMA Normandie Centre. Il a notamment été considéré que la production d'un seul indicateur de synthèse était
+                        insuffisante pour décrire la consommation d'espaces sur un territoire et que la sélection d'un faisceau d'indicateurs était préférable.
+                        <ul>
+                            <li><strong>l'occupation du sol</strong> (onglet "Occ. Sol") fourni un aperçu rapide de la répartition entre espaces urbanisés, agricoles et naturels. C'est une sorte de <i>portrait express</i> qui fourni un contexte à l'évolution
+                                et à la consommation des espaces,</li>
+                            <li><strong>la consommation des espaces naturels, agricoles et forestiers</strong> (onglet "cons. NAF") donne une estimation de la disparition de ces espaces au profit des espaces artificialisés
+                                <br/><span id="echPartNaf"></span>
+                                <br/><span id="echNaf"></span>
+                            </li>
+                            <li>la <strong>construction neuve</strong> (onglet "Constr.") donne des chiffres clés de l'utilisation des espaces au cours des dix dernières années à travers deux indicateurs : la <strong>densité de construction</strong> (en locaux
+                                par hectare utilisé) donne une indication sur la <i>sobriété</i> de cette utilisation et l'<strong>indice de construction</strong> (<i>intensité</i> en locaux pour 1&nbsp;000 habitants et par an) montre la pression subie
+                                par le territoire
+                                <br/><span id="echDens"></span>
+                                <br/><span id="echInt"></span>
+                            </li>
+                        </ul>
+                    </p>
+                    <h3>Quelques éléments régionaux</h3>
+                    <p>Les graphes qui suivent présentent la distribution des valeurs pour les communes de Normandie :<br/>
+                        <figure style="display:none">
+                            <div id="IcePartNaf"></div>
+                            <figcaption>diminution de la part des espaces Naturels, agricoles et forestiers (en % par commune)</figcaption>
+                        </figure>
+                        <figure>
+                            <div id="IceDensGraph"></div>
+                            <figcaption>densité de construction (en locaux par hectare utilisé)</figcaption>
+                        </figure>
+                        <figure>
+                            <div id="IceIntGraph"></div>
+                            <figcaption>intensité de construction (en locaux pour 1&nbsp;000 habitants et par an)</figcaption>
+                        </figure>
+                    </p>
+                </div>
 
-									<p>la <strong>densité de construction</strong> (en locaux par hectare utilisé) donne une indication sur la <i>sobriété</i> de cette utilisation.<br /><span id="echDens"></span><br />
-										<div id="IceDensGraph"></div>
+            </div>
+        </div>
 
-									</p>
-									<p>L'<i>intensité</i> de cette utilisation, fournie par l'<strong>indice de construction</strong> (en locaux pour 1&nbsp;000 habitants et par an) montre la pression subie par le territoire (l'échelle de couleur utilisée est relative à la
-										Normandie).<br /><span id="echInt"></span><br />
-										<div id="IceIntGraph"></div>
+        <footer id="footer" class="footer" role="banner">
+            Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD - mars 2019.
+            <ul class="feather">
+                <li><svg><use href="../../lib/feather-sprite.svg#git-branch"/></svg></i>
+                    Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://framagit.org/know-rmandie/know-rmandie.frama.io/tree/master/I/CE" target="_blank">Code source</a></li>
+                <li><svg><use href="../../lib/feather-sprite.svg#message-circle"/></svg>Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a class="pgiButton" href="#">remarques et commentaires</a>.</li>
+                <li><svg><use href="../../lib/feather-sprite.svg#archive"/></svg>Des versions antérieures de l'outil sont toujours accessibles (<a href="./2015/">2015</a>)</li>
+            </ul>
+        </footer>
 
-									</p>
+        <script>
+            /* comptage Google - modifié pour intégrer do not track */
+            var page = window.location.hostname;
+            if (navigator.doNotTrack != 1) {
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-					</p>
-				</div>
-
-			</div>
-		</div>
-
-		<footer id="footer" class="footer" role="banner">
-			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr" target="_blank">DREAL Normandie</a> / SECLAD / BADD - mars 2019.
-			<ul class="feather">
-				<li><svg><use href="../../lib/feather-sprite.svg#git-branch"/></svg></i>
-					Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://framagit.org/know-rmandie/know-rmandie.frama.io/tree/master/I/CE" target="_blank">Code source</a></li>
-				<li><svg><use href="../../lib/feather-sprite.svg#message-circle"/></svg>Si quelque chose ne fonctionne pas ou peut être amélioré, n'hésitez pas à envoyer vos <a class="pgiButton" href="#">remarques et commentaires</a>.</li>
-				<li><svg><use href="../../lib/feather-sprite.svg#archive"/></svg>Des versions antérieures de l'outil sont toujours accessibles (<a href="./2015/">2015</a>)</li>
-			</ul>
-		</footer>
-
-		<script>
-			/* comptage Google - modifié pour intégrer do not track */
-			var page = window.location.hostname;
-			if (navigator.doNotTrack != 1) {
-				(function(i, s, o, g, r, a, m) {
-					i['GoogleAnalyticsObject'] = r;
-					i[r] = i[r] || function() {
-						(i[r].q = i[r].q || []).push(arguments)
-					}, i[r].l = 1 * new Date();
-					a = s.createElement(o),
-						m = s.getElementsByTagName(o)[0];
-					a.async = 1;
-					a.src = g;
-					m.parentNode.insertBefore(a, m)
-				})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-				ga('set', 'page', page);
-				ga('set', 'title', document.title);
-				ga('create', 'UA-109815-13', page);
-				ga('send', 'pageview');
-			}
-		</script>
+                ga('set', 'page', page);
+                ga('set', 'title', document.title);
+                ga('create', 'UA-109815-13', page);
+                ga('send', 'pageview');
+            }
+        </script>
 </body>
 
 </html>
