@@ -1,4 +1,4 @@
-# Indicateurs de consommation d'espace (*v 1.2.2*)
+# Indicateurs de consommation d'espace (*v 1.3.0*)
 
 Cette partie du projet présente des indicateurs de consommation d'espaces pour les territoires.
 
@@ -10,7 +10,6 @@ Cette partie du projet utilise :
    * [d3-tip][d3-tip]
    * [d3-queue][d3-queue]
 * [post Gitblab issues][pgi] (*0.1.1*)
-* [normalize.css][normalize_css] (*8.0.1*)
 * [feather][feather] icons (*4.19.0*)
 
 ## Sources
