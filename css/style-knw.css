@@ -1,9 +1,12 @@
 /************
 L A Y O U T
 ************/
+
+
 /* elem. */
 
-tr, th {
+tr,
+th {
     line-height: 1.75em
 }
 
@@ -18,19 +21,23 @@ li {
 
 /* struct. */
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0
 }
 
-#page, #main, table {
+#page,
+#main,
+table {
     width: 100%;
     padding: 0;
     max-width: 1000px;
     margin: auto;
 }
 
-#page, #main {
+#page,
+#main {
     max-width: 1000px;
 }
 
@@ -73,7 +80,10 @@ table tr:last-child td {
     list-style: none
 }
 
-#nav, #main>div, h1, #footer {
+#nav,
+#main>div,
+h1,
+#footer {
     padding: .5em;
     margin: 0
 }
@@ -89,19 +99,24 @@ table tr:last-child td {
 
 /* classes */
 
-.geo li, li.onglet {
+.geo li,
+li.onglet {
     display: inline-block;
     margin: 2em .1em 0 .1em;
     padding: .5em
 }
 
-.hidden {display:none}
+.hidden {
+    display: none
+}
+
 
 /*****************
 //    T Y P O    //
 ******************/
 
-html, body {
+html,
+body {
     font-family: "Open Sans", "Liberation Serif", Arial, sans-serif;
     font-size: 18px;
 }
@@ -110,6 +125,10 @@ h1 {
     font-family: "Cormorant Upright", Georgia, serif;
     font-style: italic;
     font-size: 160%;
+}
+
+input {
+    font-size: inherit;
 }
 
 .source {
@@ -139,7 +158,8 @@ h1 {
     text-align: left
 }
 
-.real, .int {
+.real,
+.int {
     text-align: right;
 }
 
@@ -174,7 +194,8 @@ table {
     box-shadow: 4px 0px 8px #ddd
 }
 
-.header, .footer {
+.header,
+.footer {
     color: #444;
     background: #333;
     background-image: linear-gradient(33deg, #ddd, #eaeaea);
@@ -273,11 +294,12 @@ li.onglet.active {
         padding: 0 .5cm;
         font-size: 12pt
     }
-
     svg.full {
-        width:100%;
+        width: 100%;
     }
-    #nav, #header, #footer ul {
+    #nav,
+    #header,
+    #footer ul {
         display: none
     }
     h1 {
