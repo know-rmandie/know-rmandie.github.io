@@ -131,6 +131,12 @@ input {
     font-size: inherit;
 }
 
+figcaption {
+    text-align:center;
+    font-size: .95rem;
+    font-style:italic;
+}
+
 .source {
     font-style: italic;
     font-size: .75em;
