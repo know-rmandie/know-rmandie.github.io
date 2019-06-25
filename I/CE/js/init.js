@@ -315,18 +315,17 @@
                 var table = d3.select('#iNaf').append('table');
                 // en-têtes
                 var thead = table.append('tr');
-                thead.append('th').text('Nom');
+                thead.append('th').html('Nom');
                 thead.append('th').html('espaces <abbr title="Naturels, Agricoles et Forestiers">NAF</abbr><br/>% 2008');
-                thead.append('th').html('évolution<br/>ha sur 10 ans');
-                thead.append('th').text('en % surf. NAF');
-                // création des lignes pour chaque niveau géographiques
-                // + vérification de l'existence de la valeur dans la table
+                thead.append('th').html('évolution<br/>(ha)');
+                thead.append('th').html('en %<br/>surf. NAF');
+                thead.append('th').html('dont<br/>prairies (ha)')
+                    // création des lignes pour chaque niveau géographiques
+                    // + vérification de l'existence de la valeur dans la table
                 var Line = [],
                     Data = [];
                 // description des échelles dans "Infos"
-                $("#echPartNaf").html("Echelle (% territoire NAF) : ");
                 for (var i = 0; i < colorPartNaf.domain().length; i++) $("#echPartNaf").html($("#echPartNaf").html() + "<svg class='feather thin' style='fill:" + colorPartNaf(colorPartNaf.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorPartNaf.domain()[i] + " ");
-                $("#echNaf").html("Echelle (% NAF consommé) : ");
                 for (var i = 0; i < colorNaf.domain().length; i++) $("#echNaf").html($("#echNaf").html() + "<svg class='feather thin' style='fill:" + colorNaf(colorNaf.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorNaf.domain()[i] + " ");
                 for (var geo in Geo) {
                     // ajout de la ligne dans la table
@@ -348,21 +347,18 @@
                             var surf = 1 * Data[d].surf,
                                 surf_naf = 1 * Data[d].surf_naf,
                                 part_naf = Math.round(surf_naf / surf * 10000) / 100,
-                                naf_evol = Math.round(10 * Data[d].naf_evol / 8),
-                                part_evol = Math.round(naf_evol / surf_naf * 10000) / 100;
-                            /*if (territ["i" + Data[d].insee] !== undefined) pop = territ["i" + Data[d].insee].pop;
-                            else {
-                                pop = sumIf(territ, geo.substr(0, 1), Geo[geo].id, territ, "id", "pop");
-                            }
-                            var int = Math.round(loc / pop * 1000 * 100 / 10) / 100;*/
+                                naf_evol = Math.round(10 * Data[d].naf_evol / 9),
+                                part_evol = Math.round(naf_evol / surf_naf * 10000) / 100,
+                                prairies_evol = Math.round(10 * Data[d].prairies_evol / 9);
                             var l = Line[Geo[geo].order];
                             l.append('td').attr('class', 'text').text(territ['i' + Data[d].insee].Nom);
-                            l.append('td').attr('class', 'int').html(part_naf.toLocaleString() + '&nbsp;<svg class="feather thin" style="fill:' + colorPartNaf(part_naf) + '"><use href="../../lib/feather-sprite.svg#circle"></svg>');
-                            l.append('td').attr('class', 'real').text(naf_evol.toLocaleString());
+                            l.append('td').attr('class', 'real').html(part_naf.toLocaleString() + '&nbsp;<svg class="feather thin" style="fill:' + colorPartNaf(part_naf) + '"><use href="../../lib/feather-sprite.svg#circle"></svg>');
+                            l.append('td').attr('class', 'int').html(naf_evol.toLocaleString());
                             l.append('td').attr('class', 'real').html(part_evol.toLocaleString() + '&nbsp;<svg class="feather thin" style="fill:' + colorNaf(part_evol) + '"><use href="../../lib/feather-sprite.svg#circle"></svg>');
-                            if (Math.abs(naf_evol) < 15) {
+                            l.append('td').attr('class', 'int').html(prairies_evol.toLocaleString());
+                            if (geo === "com" || geo === "inf") {
                                 l.attr('class', 'small');
-                                l.attr('title', 'surfaces insuffisantes pour garantir la fiabilité de la donnée')
+                                l.attr('title', 'précision insuffisante pour garantir la fiabilité de la donnée')
                             }
                             if (Geo[geo].id === depart.id) l.attr('class', l.attr('class') + " depart");
                         } //fillLine(Line[Geo[geo].order],t);
@@ -396,9 +392,7 @@
                     Data = [];
                 // description des échelles dans "Infos"
                 // !!todo faire des histogrammes dynamiques en lieu et place des histo svg actuels
-                $("#echDens").html("Echelle (locaux/ha) : ");
                 for (var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html() + "<svg class='feather thin' style='fill:" + colorDens(colorDens.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorDens.domain()[i] + " ");
-                $("#echInt").html("Echelle (locaux/1000 hab./an) : ");
                 for (var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html() + "<svg class='feather thin' style='fill:" + colorInt(colorInt.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></svg>&nbsp;" + colorInt.domain()[i] + " ");
                 for (var geo in Geo) {
                     // ajout de la ligne dans la table
@@ -458,8 +452,8 @@
                     if (part < 60) part = 59;
                     if (PartNaf[part] !== undefined) PartNaf[part] += 1
                     else PartNaf[part] = 1;
-                    // calcul des évolutions pour dix ans sur la base des 8 dernières années
-                    var evol = Math.round(1 * osnaf[t].naf_evol * 10 / 8 / osnaf[t].surf_naf * 200) / 2;
+                    // calcul des évolutions pour dix ans sur la base des 9 dernières années
+                    var evol = Math.round(1 * osnaf[t].naf_evol * 10 / 9 / osnaf[t].surf_naf * 200) / 2;
                     // on écrète le diagramme à -10% et +3%
                     if (evol > 3) evol = 4;
                     if (evol < -10) evol = -11;

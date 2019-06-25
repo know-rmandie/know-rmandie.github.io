@@ -79,10 +79,13 @@
                     </div>
                 </div>
                 <div id="ConsNaf">
-                    <h3>Consommation d'espaces</h3>
-                    <p>La consommation des espaces <strong>naturels, agricoles et forestier</strong> est un des éléments à surveiller, notamment dans le cadre de l'élaboration des documents d'urbanisme.</p>
-                    <div id="iNaf"></div>
-                    <div id="iNafLeg"></div>
+                    <h3>Consommation d'espaces naturels, agricoles et forestiers</h3>
+                    <p>La consommation des espaces <strong>naturels, agricoles et forestier</strong> est un des éléments à surveiller, notamment dans le cadre de l'élaboration des documents d'urbanisme. Avec un point particulier sur <strong>la disparition des prairies</strong>                        qui sont les principaux espaces touchés, tant au profit des terres arables qu'au profit des espaces urbanisés.</p>
+                    <figure>
+                        <figcaption>évolution des espaces naturels, agricoles et forestiers au cours des 10 dernières années</figcaption>
+                        <div id="iNaf"></div>
+                        <div id="iNafLeg"></div>
+                    </figure>
                 </div>
                 <div id="ConsNeuve">
                     <h3>Construction neuve</h3>
@@ -98,15 +101,22 @@
                         <ul>
                             <li><strong>l'occupation du sol</strong> (onglet "Occ. Sol") fourni un aperçu rapide de la répartition entre espaces urbanisés, agricoles et naturels. C'est une sorte de <i>portrait express</i> qui fourni un contexte à l'évolution
                                 et à la consommation des espaces,</li>
-                            <li><strong>la consommation des espaces naturels, agricoles et forestiers</strong> (onglet "cons. NAF") donne une estimation de la disparition de ces espaces au profit des espaces artificialisés
-                                <br/><span id="echPartNaf"></span>
-                                <br/><span id="echNaf"></span>
+                            <li><strong>la consommation des espaces naturels, agricoles et forestiers</strong> (onglet "cons. NAF") donne une estimation de la disparition de ces espaces au cours des dix dernières années (période 2008-2017 ramenée à 10 ans)
+                                notamment au profit des espaces artificialisés. Un focus est fait sur <strong>la disparition des prairies</strong>.
+                                <br/><em>Echelles</em> :
+                                <ul>
+                                    <li>contexte (% territoire NAF) : urbain --<span id="echPartNaf"></span>--> rural</li>
+                                    <li>niveau de disparition (% NAF consommé) : importante --<span id="echNaf"></span>--> faible</li>
+                                </ul>
                             </li>
                             <li>la <strong>construction neuve</strong> (onglet "Constr.") donne des chiffres clés de l'utilisation des espaces au cours des dix dernières années à travers deux indicateurs : la <strong>densité de construction</strong> (en locaux
                                 par hectare utilisé) donne une indication sur la <i>sobriété</i> de cette utilisation et l'<strong>indice de construction</strong> (<i>intensité</i> en locaux pour 1&nbsp;000 habitants et par an) montre la pression subie
                                 par le territoire
-                                <br/><span id="echDens"></span>
-                                <br/><span id="echInt"></span>
+                                <br/><em>Echelles</em> :
+                                <ul>
+                                    <li>densité (locaux / ha) : faible --<span id="echDens"></span>--> forte</li>
+                                    <li>intensité (loc. / an / 1000 hab.) : faible --<span id="echInt"></span>--> forte</li>
+                                </ul>
                             </li>
                         </ul>
                     </p>
