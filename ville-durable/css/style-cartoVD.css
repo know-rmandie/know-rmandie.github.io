@@ -1,3 +1,7 @@
+a.leaflet-control-layers-toggle {
+  border:none;
+}
+
 .avct:before {
     font-family: FontAwesome;
     margin-right: .35em;
