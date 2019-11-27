@@ -31,8 +31,9 @@ Le collectif à géométrie variable est composé d'agent·e·s de
     <i class="m-icons">public</i> [site internet](https://draaf.normandie.agriculture.gouv.fr)
 
 !!! contact "DREAL Normandie"
-    Hélène Buhot, [Eloi Larchevêque][Eloi2Rouen], [Sylvain Comte][sycom]...<br/>
-    <i class="m-icons">public</i> [site internet](https://normandie.developpement-durable.gouv.fr)
+    [Eloi Larchevêque][Eloi2Rouen], Hélène Buhot, Jérôme Potel, [Sylvain Comte][sycom]...<br/>
+    <i class="m-icons">public</i> [site internet](https://normandie.developpement-durable.gouv.fr)<br/>
+    <i>Martin Troisemaine</i>
 
 </div>
 
