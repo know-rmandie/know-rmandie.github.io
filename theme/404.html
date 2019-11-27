@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Ceci est une erreur « <i>404</i> »</h1>
+
+<p>Cela signifie que la page demandée n'existe pas...</p>
+<p><a href="{{ 'a_propos/partenaires' | url }}">Quelqu'un</a> a sans doute pensé qu'une page <code class="missing"></code> serait une bonne idée, mais n'a pas encore eu l'occasion de la concrétiser. Si vous avez des idées, vous pouvez <a href="{{ 'a_propos/contribuer' | url }}">participer</a> et proposer cette page.</p>
+
+<a href="" title="" class="md-source-file" target="_blank" style="word-break:break-all;height: 1.25rem;"></a>
+
+<script language="javascript">
+  let missing_url = window.location + "";
+  let FilePath = missing_url.split("/");
+  let file_name = "";
+  if(FilePath[FilePath.length-1] === "") file_name += FilePath[FilePath.length-2];
+    else file_name += FilePath[FilePath.length-1];
+  document.querySelector(".missing").innerText = file_name;
+  let SourcePath = missing_url.split("{{ config.site_url }}");
+  let file_source = "{{ config.repo_url }}" + "new/contributions/docs/" + SourcePath[SourcePath.length-1];
+  document.querySelector(".md-source-file").setAttribute("href",file_source);
+  document.querySelector(".md-source-file").setAttribute("title",file_source);  document.querySelector(".md-source-file").innerText = file_source;
+</script>
+{% endblock %}

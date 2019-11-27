@@ -1,0 +1,84 @@
+{% import "partials/language.html" as lang with context %}
+<footer class="md-footer">
+  {% if page.previous_page or page.next_page %}
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        {% if page.previous_page %}
+          <a href="{{ page.previous_page.url | url }}" title="{{ page.previous_page.title | striptags }}" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  {{ lang.t("footer.previous") }}
+                </span>
+                {{ page.previous_page.title }}
+              </span>
+            </div>
+          </a>
+        {% endif %}
+        {% if page.next_page %}
+          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  {{ lang.t("footer.next") }}
+                </span>
+                {{ page.next_page.title }}
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        {% endif %}
+      </nav>
+    </div>
+  {% endif %}
+  <div class="md-footer-meta">
+    <div class="md-footer-copyright__inner md-grid">
+        <div class="md-footer-copyright md-flex__cell">
+          {% if config.copyright %}
+            <div class="md-footer-copyright__highlight">
+              <p>{{ config.copyright }}</p>
+              <p>propulsé par <a href="https://www.mkdocs.org">MkDocs</a> et <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></p>
+            </div>
+          {% endif %}
+        </div>
+
+        {% include "partials/social.html" %}
+
+        <div class="md-footer-copyright md-flex__cell">
+          <div class="md-footer-copyright__highlight">
+          <ul>
+          {% if page.meta %}
+            {% if page.meta.revision %}
+                <li>mise à jour {{ page.meta.revision }}</li>
+            {% endif %}
+          {% endif %}
+          {% if config.repo_url and page %}
+            {% set repo = config.repo_url %}
+            {% if repo | last == "/" %}
+              {% set repo = repo[:-1] %}
+            {% endif %}
+            {% set comment_url = repo + '/issues/new?issue%5Bdescription%5D=' + page.url + '%20>' %}
+            {% set mail_url = 'mailto:incoming+know-rmandie-know-rmandie-gitlab-io-1216279-L1bnsR1r7dELmXL4uLbQ-issue@incoming.gitlab.com?subject=' + page.url + '%20>' %}
+            {% set source_url = repo + 'tree/master/docs/' + page.url[:-1] + '.md'  %}
+            <li>
+                source  <a href="{{ source_url | url }}" title="code source de cette page"><i class="material-icons">code</i></a>
+            </li>
+            <li>
+              une remarque? une proposition? <a href="{{ comment_url | url }}" title="déposer un ticket"><i class="material-icons">comment</i></a> <a href="{{ mail_url | url }}" title="par email"><i class="material-icons">email</i></a>
+            </li>
+            {% if page.edit_url %}
+            <li>
+              modifier  <a href="{{ page.edit_url | url }}" title="proposer des modifications (compte nécessaire)"><i class="material-icons">edit</i></a>
+            </li>
+            {% endif %}
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+</footer>

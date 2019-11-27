@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'ext/css/feather.css' | url }}" />
+  <link rel="stylesheet" href="{{ 'lib/fonts/material-icons-outlined.css' | url }}">
+
+  <script src="{{ 'lib/jquery.min.js' | url }}"></script>
+  <script src="{{ 'ext/js/init.js' | url }}"></script>
+  {% if page.meta.leaflet %}
+    <link rel="stylesheet" href="{{ 'lib/leaflet.css' | url }}" />
+    <link rel="stylesheet" href="{{ 'lib/leaflet-markercluster.css' | url }}" />
+    <link rel="stylesheet" href="{{ 'ext/css/leaflet.css' | url }}" />
+    <link rel="stylesheet" href="./css/leaflet.css" />
+
+    <script src="{{ 'ext/data/fonds.js' | url }}"></script>
+    <script src="{{ 'lib/leaflet.js' | url }}"></script>
+    <script src="{{ 'lib/leaflet-markercluster.js' | url }}"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/leaflet.js"></script>
+  {% endif %}
+  {% if page.meta.d3 %}
+    <link rel="stylesheet" href="./css/d3.css" />
+
+    <script src="{{ 'lib/d3.min.js' | url }}" type="text/javascript"></script>
+    <script src="{{ 'lib/d3-tip.js' | url }}" type="text/javascript"></script>
+    <script src="{{ 'lib/d3-queue.js' | url }}" type="text/javascript"></script>
+    <script src="{{ 'lib/d3-sankey.js' | url }}" type="text/javascript"></script>
+    <script src="{{ 'lib/jquery-ui.min.js' | url }}" type="text/javascript"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/d3.js" type="text/javascript"></script>
+  {% endif %}
+{% endblock %}
+
+{% block source %}
+  {% if page %}
+    {% if page.meta %}
+      {% if page.meta.index %}
+
+      {% endif %}
+      {% if page.meta.authors or page.meta.url or page.meta.date %}
+        <div class="admonition info">
+        <p class="admonition-title">A propos</p>
+        <p>{% if page.meta.authors %}{{ page.meta.authors }}{% endif %}
+           {% if page.meta.authors and page.meta.date %} - {% endif %}
+           {% if page.meta.date %}{{ page.meta.date }}{% endif %}
+           {% if page.meta.authors or page.meta.date %}<br/>{% endif %}
+           {% if page.meta.url %}
+           <a href="{{ page.meta.url }}">Plus d'informations</a>
+           {% endif %}
+           {% if page.meta.isbn %}
+           <br><a href="https://catalogue.bnf.fr/rechercher.do?motRecherche={{ page.meta.isbn }}">ISBN {{ page.meta.isbn }}</a> {% endif %}
+         </p>
+        </div>
+      {% endif %}      
+    {% endif %}
+  {% endif %}
+{% endblock %}

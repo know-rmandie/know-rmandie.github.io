@@ -16,8 +16,7 @@ conditions exprimées ci-dessous.
 
 Le « Réutilisateur » peut notamment s’acquitter de cette condition en renvoyant, par un lien hypertexte, vers la source de «l’Information» et assurant une mention effective de sa paternité.
 
-Par exemple : _« Ministère de xxx - Données originales téléchargées sur
-http://www.data.gouv.fr/fr/datasets/xxx/, mise à jour du 14 février 2017 »_.
+Par exemple : « _WikiFoncier - projet participatif et collectif - https://WikiFoncier.gitlab.io ,_ date _»_.
 
 Cette mention de paternité ne confère aucun caractère officiel à la « Réutilisation » de l’ « Information », et ne doit pas suggérer une quelconque reconnaissance ou caution par le « Concédant », ou par toute autre entité publique, du « Réutilisateur » ou de sa « Réutilisation ».
 

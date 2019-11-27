@@ -1,9 +1,12 @@
+image: python:buster
+
+before_script:
+  - pip install -r py-requirements.txt
+
 pages:
-  stage: deploy
   script:
-  - mkdir .public
-  - cp -r * .public
-  - mv .public public
+  - mkdocs build --clean
+  - mv site public
   artifacts:
     paths:
     - public

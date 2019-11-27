@@ -1,0 +1,92 @@
+# Informations sur le projet
+site_name: Know-rmandie
+site_description: 'Le "lab" des acteurs de la connaissance des territoires en Normandie'
+#site_url: 'https://know-rmandie.gitlab.io'
+site_url: 'http://127.0.0.1:8000'
+#use_directory_urls: false
+
+# Copyright
+copyright: 'Copyright &copy; 2003 - 2020 <a href="https://know-rmandie.gitlab.io/a_propos/partenaires/">Collectif know-rmand</a>'
+
+# Dépôt
+repo_name: 'know-rmandie/know-rmandie.gitlab.io'
+repo_url: 'https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/'
+edit_uri: 'edit/contributions/'
+
+# Configuration Personalisation
+docs_dir: 'contenu'
+
+theme:
+  name: material
+  favicon: './images/favicon.ico'
+  logo: 'images/logo.png'
+  custom_dir: theme
+  language: fr
+  font: false
+  feature:
+    tabs: true
+  palette:
+    primary: 'teal'
+    accent: 'red'
+
+extra_css:
+  - ext/style.css
+
+extra:
+  social:
+    - type: 'gitlab'
+      link: 'https://gitlab.com/know-rmandie'
+    - type: 'github'
+      link: 'https://github.com/know-rmandie'
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - fr
+        - en
+  - awesome-pages
+  - pdf-export:
+      verbose: false
+      media_type: print
+      combined: true
+      combined_output_path: WikiFoncier.pdf
+      enabled_if_env: ENABLE_PDF_EXPORT
+#  - git-revision-date
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: false
+  - footnotes
+  - markdown_include.include
+  - markdown_blockdiag:
+      format: svg
+  - meta
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.extra
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences: [
+        {name: flow, class: uml-flowchart, format: pymdownx.superfences.fence_code_format}
+       ,{name: sequence, class: uml-sequence-diagram, format: pymdownx.superfences.fence_code_format}
+       ,{name: mermaid, class: mermaid}
+       ]
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - toc:
+      permalink: "#"

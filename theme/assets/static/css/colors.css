@@ -1,0 +1,53 @@
+html,
+body  {
+  background-color: #eee;
+}
+
+html,
+body,
+input,
+textarea,
+buttons  {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+h2, h3, strong, a {
+  color:#009688
+}
+
+a:hover {
+  color:initial;
+  opacity:0.79;
+}
+
+pre, code {background-color: #888;color:#b2dfdb;border-radius:2px;}
+
+#sidedrawer {
+  background-color: #fff;
+}
+
+#header, #header a,
+#footer, #footer a,
+.sidedrawer-toggle, .sidedrawer-toggle:hover  {
+  color: #fff;
+}
+
+#sidedrawer strong, #sidedrawer a {
+  color: black;
+}
+
+#sidedrawer strong:hover  {
+  background-color: #E0E0E0;
+}
+
+#sidedrawer .active a {
+  color:#009688 !important;
+}
+
+#header,
+.mui-appbar,
+#footer  {
+  background-color: #009688;
+}

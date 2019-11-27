@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang='fr-FR'>
+<head>
+	<meta charset='UTF-8' />
+		<meta name='date-created' value='2013-12-10' /><meta name='date-modified' value='2016-02-01' />
+		<meta name='author' value='Sylvain Comte' />
+		<meta name='version' value='1.3.1' />
+		<meta name="keywords" value="carte, transition énergétique, réseau, acteurs" />
+		<meta name="description" content="Normandie : carte des acteurs de la transition énergétique en Normandie" />
+
+	<meta name='viewport' content='width=device-width, user-scalable=yes'>
+
+	<title>Le réseau TE en Normandie</title>
+
+	<link rel="stylesheet" href="../../lib/font-awesome.css">
+		<link rel="stylesheet" href="../../lib/leaflet.css" />
+		<link rel="stylesheet" href="../../lib/leaflet-markercluster.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="./css/leaflet-knwrmd.css" />
+		<link rel="stylesheet" href="./css/style-reseauTE.css" />
+
+    <script src="../../ext/data/fonds.js"></script>
+        <script src="./user/config.js"></script>
+
+    <script src="../../lib/jquery.min.js"></script>
+        <script src="../../lib/leaflet.js"></script>
+        <script src="../../lib/leaflet-markercluster.js"></script>
+        <script src="./js/init.js"></script>
+        <script src="./js/init-reseauTE.js"></script>
+
+</head>
+
+<body>
+	<div id="page" class="page">
+		<header id="header" class="header" role="banner">
+			<h1>le réseau Transition Energétique</h1>
+			<div id="nav" class="nav" role="navigation">
+				<p id="navIcon" class="fa fa-2x fa-icon fa-bars"></p>
+				<ul>
+					<li><a href="../../">Accueil</a></li>
+					<li class="active">Transition Energétique</li>
+				</ul>
+			</div>
+		</header>
+		<div id="main" class="main" role="main">
+			<h2>le réseau Transition Energétique en Normandie</h2>
+				<div id="map" class="map" style="width:500px;height:500px"></div>
+		</div>
+		<footer id="footer" class="footer" role="banner">
+			Réalisation : <a href="http://www.normandie.developpement-durable.gouv.fr">DREAL Normandie</a> / SECLAD / BADD / uSA - septembre 2016.<ul>
+				<li class="fa fa-code-fork">
+				Vous pouvez réutiliser tout ou partie de l'application et des données : <a href="https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/tree/master/contenu/archives/reseau-TE">Code source</a></li>
+				</ul>
+		</footer>
+	</div>
+</body>
