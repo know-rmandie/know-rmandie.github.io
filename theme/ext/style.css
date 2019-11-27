@@ -186,10 +186,16 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
   margin: .5rem 0;
 }
 
-.md-typeset .admonition.map>.admonition-title::before,
-.md-typeset .admonition.map>summary::before {
+.md-typeset .admonition.chart>.admonition-title::before,
+.md-typeset .admonition.chart>summary::before {
   color: #00bfa5;
-  content: "\e55b";
+  content: "\e6e1";
+}
+
+.md-typeset .admonition.contact>.admonition-title::before,
+.md-typeset .admonition.contact>summary::before {
+  color: #3f51b5;
+  content: "\e7fb";
 }
 
 .md-typeset .admonition.doc>.admonition-title::before,
@@ -199,11 +205,10 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
 }
 
 
-
-.md-typeset .admonition.chart>.admonition-title::before,
-.md-typeset .admonition.chart>summary::before {
+.md-typeset .admonition.map>.admonition-title::before,
+.md-typeset .admonition.map>summary::before {
   color: #00bfa5;
-  content: "\e6e1";
+  content: "\e55b";
 }
 
 .md-typeset .admonition.map>.admonition-title,

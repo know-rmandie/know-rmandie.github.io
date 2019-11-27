@@ -3,6 +3,18 @@
 # Outils et pages au service des territoires
 Ce répertoire contient plusieurs projets (ou leur documentation) destinés à capitaliser et mettre en forme des informations sur les territoires. C'est un travail initié pour la Normandie, mais adaptable à n'importe quel autre territoire...
 
+## Projets
+
+* Atlas de la [ville durable](./contenu/ville-durable/)
+* Indicateurs
+    * [ICE](./contenu/I/CE) indicateurs de consommation d'espaces
+* Cartographies
+    * des [SCoT](./contenu/planification/) de normandie
+    * de la [mobilisation du foncier public](./contenu/Foncier/foncier-public/)
+* Analyse de l'[évolution des documents d'urbanisme](./contenu/urbanisme/)
+
+Et d'autres projets désormais [archivés](./contenu/archives/)
+
 ## Licences
 
 Know-rmandie est libre et s'appuye sur des logiciels libres
