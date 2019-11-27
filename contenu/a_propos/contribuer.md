@@ -3,7 +3,7 @@ title: Contribuer
 Le site est conçu pour favoriser les contributions, ajouts et remarques. Le dépôt principal est hébergé sur gitlab. Un dépôt secondaire sur github peut également recevoir des contributions.
 
 ## Réagir, commenter
-Il est possible d'adresser [un mail au collectif][mail] en indiquant clairement l'adresse de la page concernée.
+Il est possible d'adresser [un mail au secrétariat du collectif][mail] en indiquant clairement l'adresse de la page concernée.
 
 La méthode privilégiée reste de [déposer un ticket sur le dépôt][issues]. Ce dépôt de ticket peut également se faire sans passer par la création d'un compte sur la plate-forme et utilisant [votre messagerie][issues_mail][^t].
 

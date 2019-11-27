@@ -5,8 +5,12 @@ Cette carte interactive des projets d'écoquartiers ([demonstration][demo]) ou a
 
 ## Options
 Il est possible d'activer certaines options non visibles par défaut en ajoutant des termes à l'url d'accès :
+
 * `?tousProjets` pour voir tous les projets, y compris les **projets abandonnés** (champs ` ` comporte le terme `archivé`)
-* `?carteSeule` pour voir la **Carte en plein écran**. Egalement utile pour insérer la carte sur son site internet via une balise `<iframe>` : http://know-rmandie.gitlab.io/ville-durable/?carteSeule
+* `?carteSeule` pour voir la **Carte en plein écran**. Egalement utile pour insérer la carte sur son site internet via une balise `<iframe>`. Par exemple :
+```html
+<iframe width="100%" height="542" src="http://know-rmandie.gitlab.io/ville-durable/?carteSeule" frameborder="0" allowfullscreen></iframe>
+```
 * `?adminView` pour accéder à des options supplémentaires :
     * choix d'autres couches de fond
     * outil de récupération des coordonnées

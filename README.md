@@ -26,8 +26,9 @@ Know-rmandie est libre et s'appuye sur des logiciels libres
 L'ensemble des adaptations, développements et contenus sont, sauf mention contraire, sous [licence ouverte][./LICENCE.md]
 
 ## Circuit
-* **[Gitlab][origin]** ([issues][issues]) > **[gitlab.io page][gl-page]**
-  * [Github][github]
+* **[Gitlab][origin]** ([issues][issues]) > **[gitlab.io page][gl-page]** [![build](https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/badges/master/pipeline.svg)](https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/commits/master)
+  * [Github][github] > [github.io page][gh-page]
+  * [Framagit][framagit] > [frama.io page][f.io-page]
 
 [origin]: https://gitlab.com/know-rmandie/know-rmandie.gitlab.io
 [issues]: https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/issues
@@ -36,4 +37,5 @@ L'ensemble des adaptations, développements et contenus sont, sauf mention contr
 [gh-page]: https://know-rmandie.github.io
 
 [gitlab]:https://gitlab.com/know-rmandie/know-ramndie.gitlab.io
-[github]:https://github.com/know-rmandie/know-rmandie.gitlab.io
+[github]:https://github.com/know-rmandie/know-rmandie.github.io
+[framagit]:https://framagit.org/know-rmandie/know-rmandie.frama.io

@@ -6,7 +6,7 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
   var tiles = {};
   for (i in fonds) {
     var couche = new L.TileLayer(fonds[i].url, {
-      attribution: sources + fonds[i].attrib,
+      attribution: sources + " | " + fonds[i].attrib,
       minZoom: fonds[i].zMin,
       maxZoom: fonds[i].zMax,
       unloadInvisibleTiles: true
@@ -43,7 +43,7 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
     ], Math.round(knwrmdZoom));
     for (i in fonds) {
       var couche = new L.TileLayer(fonds[i].url, {
-        attribution: sources + fonds[i].attrib,
+        attribution: sources +  " | " + fonds[i].attrib,
         minZoom: fonds[i].zMin,
         maxZoom: fonds[i].zMax,
         unloadInvisibleTiles: true
@@ -97,7 +97,7 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
     var Avancement = [{
       "id": "intention",
       "icone": "av0-int",
-      "string": "intention d'\u00e9coquartier"
+      "string": "intention d'écoquartier"
     }, {
       "id": "études",
       "icone": "av1-etu",
@@ -113,11 +113,11 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
     }, {
       "id": "r\u00e9alis\u00e9",
       "icone": "av3-real",
-      "string": "\u00e9coquartier r\u00e9alis\u00e9"
+      "string": "écoquartier réalisé"
     }, {
       "id": "abandonn\u00e9",
       "icone": "av0-aba",
-      "string": "projet abandonn\u00e9"
+      "string": "projet abandonné"
     }, {
       "id": "inconnu",
       "icone": "avx-inc",
@@ -125,7 +125,7 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
     }];
     // icones de la bibliothèque material associés aux avancements
     let MIcon = [];
-      MIcon["intention"] = "lightbulb_outline";
+      MIcon["intention"] = "lightbulb";
       MIcon["études"] = "menu_book";
       MIcon["projet"] = "edit";
       MIcon["chantier"] = "fast_forward";
@@ -146,7 +146,7 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
         shadowSize: [37, 23],
         shadowAnchor: [0, 20]
       });
-      HtmlLeg["Avancement"] += '<img src="./img/' + url + '" style="height:20px"/>&nbsp;' + Avancement[i].string + "<br/>"
+      HtmlLeg["Avancement"] += '<img src="./img/' + url + '" style="height:20px"/>&nbsp;' + Avancement[i].string + "<br/>";
     }
     HtmlLeg["Avancement"] += "</div>";
     var ecoQlabel = L.markerClusterGroup({
@@ -193,7 +193,7 @@ $.getJSON("./data/data-ville-durable.geojson", function(data) {
     var dataEQ = data.features;
     for (i in dataEQ)
       if (document.location.href.match(/tousProjets/g) || document.location.href.match(/adminView/g) || !dataEQ[i].properties.Acom.includes("archiv\u00e9")) {
-        var html = "<h6>" + dataEQ[i].properties.commune + " - " + dataEQ[i].properties.name + "</h6>";
+        var html = '<h6>' + dataEQ[i].properties.commune + ' - ' + dataEQ[i].properties.name + '</h6>';
         if(MIcon[dataEQ[i].properties.Aetat]) html += '<i class="material-icons">' + MIcon[dataEQ[i].properties.Aetat] + '</i> '+ dataEQ[i].properties.Aetat + '<br/>';
         else html += '<i class="material-icons">help_outline</i> ?';
         /*

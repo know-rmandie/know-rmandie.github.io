@@ -82,29 +82,6 @@ td.real {
   margin: 2rem 0;
 }
 
-.m-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
 .md-typeset code, .md-typeset pre {
   font-size: 100%;
 }
@@ -226,13 +203,25 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
 }
 
 @media (min-width:50em) {
+  img[alt$=">"], div[alt$=">"] {
+    float: right;
+    max-width: 50%;
+    margin: 0 0 1rem 1rem;
+  }
+
+  img[alt$="<"], div[alt$="<"] {
+    float: left;
+    max-width: 50%;
+    margin: 0 1rem 1rem 0;
+  }
+
   .cols {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-  .two>.admonition,.three>.admonition {
+  .three>.admonition, .three>div {
     flex-basis: 49%;
     max-width: 49%;
     flex-grow: 1;
@@ -240,23 +229,34 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
 }
 
 @media (min-width:76.25em) {
+  img[alt$=">"], div[alt$=">"] {
+    float: right;
+    max-width: 45%;
+    margin: 0 0 1rem 1rem;
+  }
+
+  img[alt$="<"], div[alt$="<"] {
+    float: left;
+    max-width: 45%;
+    margin: 0 1rem 1rem 0;
+  }
+
   .md-sidebar--secondary {
     margin-left: 66rem;
   }
 
-  .two>.admonition {
+  .two>.admonition, .two>div {
     flex-basis: 49%;
     max-width: 49%;
     flex-grow: 1;
   }
 
-  .three>.admonition {
-    flex-basis: 30%;
-    max-width: 49%;
+  .three>.admonition, .two>div {
+    flex-basis: 31%;
+    max-width: 31%;
     flex-grow: 1;
   }
 }
-
 
 @media print {
   html, .md-container, .md-main__inner, .md-content, .md-content__inner {
@@ -269,8 +269,8 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
   }
 
   h1, h2, h3, caption {
-  page-break-after: avoid;
-}
+    page-break-after: avoid;
+  }
 
   figure, table, svg, .md-main__inner {
     max-width: 100% !important;
@@ -283,14 +283,14 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
   p, blockquote {
     orphans: 3;
     widows: 3;
-}
+  }
 
   article {
     margin: 1cm;
   }
 
   .ui-helper-hidden-accessible {
-    display:none;
+    display: none;
   }
 
   html, body, p, blockquote, li {
