@@ -22,7 +22,7 @@ jobs:
     - name: Say that this is not Jekyll
       run: cat > site/.nojekyll
     - name: Publish site
-      uses: maxheld83/ghpages@v0.2.1        
+      uses: maxheld83/ghpages@v0.2.1
       env:
-        BUILD_DIR: "public/"
+        BUILD_DIR: "site/"
         GH_PAT: ${{ secrets.GH_PAT }}
