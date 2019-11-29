@@ -50,11 +50,15 @@
             $("#wait").fadeOut();
             $("#pilote").fadeIn();
             // préparation des données de niveaux territoriaux
-            var territ = assoArray(res[0], "id"),
+            let territ = assoArray(res[0], "id"),
                 oscom = res[1],
                 oscleg = res[2],
                 osnaf = res[3],
                 ccf = res[4];
+            // rapatriement des métadonnées
+              oscom.meta = Dataliste[1].meta;
+              osnaf.meta = Dataliste[3].meta;
+              ccf.meta = Dataliste[4].meta;
 
             for (var i in territ) {
                 territ[i].label = territ[i].Nom;
@@ -230,8 +234,8 @@
                     var serie = g.selectAll(".serie")
                         .data(stackOs.keys(data.columns.slice(1))(data))
                         .enter().append("g")
-                        .attr("class", function(d) {
-                            return "serie c" + d.key;
+                        .attr("fill", function(d) {
+                            return colorOscom(d.key);
                         })
                         .on('mouseover', tip.show)
                         .on('mouseout', tip.hide);
@@ -275,11 +279,11 @@
                     // ajoute les sources et la légende si on est sur la première utilisation
                     if (firstTime > 0) {
                         var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
-                            .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2017 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a>");
+                            .html("source : " + oscom.meta);
                         var ocSoLeg = d3.select('#OcSoLeg').append('ul').attr('class', 'feather');
                         for (var l in oscleg) {
                             var item = ocSoLeg.append('li');
-                            item.insert('svg').append('use').attr('href', '../../lib/feather-sprite.svg#square').attr('class', 'c' + oscleg[l].code);
+                            item.insert('svg').append('use').attr('href', '../../lib/feather-sprite.svg#square').attr('fill', colorOscom(oscleg[l].code));
                             item.insert('span').text(oscleg[l].nature);
                         }
                     }
@@ -349,7 +353,7 @@
                 // ajout des sources
                 if (firstTime > 0) {
                     var iConsNafSource = d3.select('#iNafLeg').append("p").attr("class", "source")
-                        .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2017 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a>");
+                        .html("source : " + osnaf.meta);
                 }
             }
 
@@ -422,7 +426,7 @@
                 // ajout des sources
                 if (firstTime > 0) {
                     var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-                        .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Donnees-sur-la-consommation-fonciere-en-Normandie'>CCF</a> 2006 > 2015 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> <a href='https://www.normandie.fr'>Région Normandie</a> - 2018");
+                        .html("source : " + ccf.meta);
                 }
             }
 

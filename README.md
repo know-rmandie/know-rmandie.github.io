@@ -15,15 +15,34 @@ Ce répertoire contient plusieurs projets (ou leur documentation) destinés à c
 
 Et d'autres projets désormais [archivés](./contenu/archives/)
 
+## Tester Know-rmandie sur votre machine
+
+L'outil nécessite python 3.x pour produire les pages ainsi que les bibliothèques figurant dans [py-requirements.txt](py-requirements.txt). On peut les installer facilement en faisant
+```bash
+pip install -r py-requirements.txt
+```
+
+Ceci fait, on peut soit produire l'ensemble du site tel qu'il sera envoyé au serveur. Le résultat apparaitra dans un dossier `site` . Une fois les pages produites, le site est "statique" et ne nécessite rien d'autre qu'un serveur de fichiers.
+```bash
+mkdocs build
+```
+
+On peut également lancer un serveur virtuel qui permet à la fois de prévisualiser le site, mais de visualiser en temps réel les modification qu'on fait dans le projet.
+```bash
+mkdocs serve
+```
+
 ## Licences
 
-Know-rmandie est libre et s'appuye sur des logiciels libres
+Know-rmandie est libre et s'appuye sur des logiciels libres. La plate-forme tourne grâce à
 
 * [MkDocs](https://www.mkdocs.org) propulse le wiki - licence BSD 2-Clause
   * le theme [material](https://squidfunk.github.io/mkdocs-material) - licence MIT
   * le plugin [awesome-pages](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) - licence MIT
 
-L'ensemble des adaptations, développements et contenus sont, sauf mention contraire, sous [licence ouverte][./LICENCE.md]
+L'ensemble des adaptations, développements et contenus sont, sauf mention contraire, sous [licence ouverte][./LICENCE.md]. Chacun des sous-projets évoqué indique les librairies qu'il utilise. Toutes sont rassemblées dans le répertoire [lib](./theme/lib)
+
+![licence ouverte](https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Logo_Licence_Ouverte_bleu_blanc_rouge.png "licence ouverte")
 
 ## Circuit
 * **[Gitlab][origin]** ([issues][issues]) > **[gitlab.io page][gl-page]** [![build](https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/badges/master/pipeline.svg)](https://gitlab.com/know-rmandie/know-rmandie.gitlab.io/commits/master)

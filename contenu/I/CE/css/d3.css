@@ -110,58 +110,6 @@ nav#onglets li.active {
   stroke-width: 1px;
 }
 
-.c11 {
-  fill: #d44
-}
-
-.c12 {
-  fill: #a58
-}
-
-.c13 {
-  fill: #aaa
-}
-
-.c14 {
-  fill: #7a7
-}
-
-.c15 {
-  fill: #555
-}
-
-.c21 {
-  fill: #eb0
-}
-
-.c22 {
-  fill: #fc0
-}
-
-.c23 {
-  fill: #ac0
-}
-
-.c24 {
-  fill: #ba5
-}
-
-.c31 {
-  fill: #292
-}
-
-.c32 {
-  fill: #8c7
-}
-
-.c51 {
-  fill: #8af
-}
-
-.cxx {
-  fill: #ddd
-}
-
 .hyperlink {
   display: block;
   float: right
@@ -206,6 +154,11 @@ tr.depart {
 @media print {
   #wait, #pilote, #onglets, #fiche .hyperlink {
     display: none !important;
+  }
+
+  .hyperlink {
+    display: block;
+    float: right
   }
 
   #Infos {

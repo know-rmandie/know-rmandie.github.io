@@ -21,7 +21,7 @@ author: Sylvain Comte
 </nav>
 
 <div markdown="1" id="fiche">
-    <span class="hyperlink" title="double clickez pour obtenir un lien permanent..."><i class="material-icons">link</i><span class="hidden"></span></span>
+<span class="hyperlink" title="double clickez pour obtenir un lien permanent..."><i class="material-icons">link</i><span class="hidden"></span></span>
 
 ## collectivite
 
