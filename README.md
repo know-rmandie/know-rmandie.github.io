@@ -32,6 +32,18 @@ On peut également lancer un serveur virtuel qui permet à la fois de prévisual
 mkdocs serve
 ```
 
+### Erreurs fréquemment rencontrées
+
+* problèmes avec le paquet `cffi` : ce problème ne se produit pas si vous utilisez PyPy pour faire fonctionner vos programmes en python. Cela peut en revanche arriver avec Python 3.8. Pour le régler, installer proprement cffi avec : `pip install cffi`
+* problèmes avec le paquet `tornado` : régulièrement rencontré avec Python 3.8. Il faudra alors éditer le fichier `... \AppData\Local\Programs\Python\Python38\Lib\site-packages\tornado\platform` en ajoutant les lignes suivantes
+
+```
+import sys
+
+if sys.platform == 'win32':
+	asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+```
+
 ## Licences
 
 Know-rmandie est libre et s'appuye sur des logiciels libres. La plate-forme tourne grâce à
