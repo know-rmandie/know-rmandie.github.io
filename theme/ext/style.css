@@ -251,7 +251,7 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
     flex-grow: 1;
   }
 
-  .three>.admonition, .two>div {
+  .three>.admonition, .three>div {
     flex-basis: 31%;
     max-width: 31%;
     flex-grow: 1;
