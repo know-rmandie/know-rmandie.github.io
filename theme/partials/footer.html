@@ -64,16 +64,15 @@
             {% endif %}
             {% set comment_url = repo + '/issues/new?issue%5Bdescription%5D=' + page.url + '%20>' %}
             {% set mail_url = 'mailto:incoming+know-rmandie-know-rmandie-gitlab-io-1216279-L1bnsR1r7dELmXL4uLbQ-issue@incoming.gitlab.com?subject=' + page.url + '%20>' %}
-            {% set source_url = repo + 'tree/master/docs/' + page.url[:-1] + '.md'  %}
             <li>
-                source  <a href="{{ source_url | url }}" title="code source de cette page"><i class="material-icons">code</i></a>
+              <a href="{{ comment_url | url }}" title="déposer une 'issue' sur gitlab (compte nécessaire)">déposer un ticket  <i class="material-icons">code</i></a>
             </li>
             <li>
-              une remarque? une proposition? <a href="{{ comment_url | url }}" title="déposer un ticket"><i class="material-icons">comment</i></a> <a href="{{ mail_url | url }}" title="par email"><i class="material-icons">email</i></a>
+              <a href="{{ mail_url | url }}" title="par email">envoyer un ticket <i class="material-icons">email</i></a>
             </li>
             {% if page.edit_url %}
             <li>
-              modifier  <a href="{{ page.edit_url | url }}" title="proposer des modifications (compte nécessaire)"><i class="material-icons">edit</i></a>
+              <a href="{{ page.edit_url | url }}" title="proposer des modifications (compte nécessaire)">modifier  <i class="material-icons">edit</i></a>
             </li>
             {% endif %}
           {% endif %}
