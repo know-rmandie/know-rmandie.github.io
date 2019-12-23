@@ -23,18 +23,6 @@
             Edata = [],
             Ddata = [],
             Idata = [];
-        var colorPartNaf = d3.scaleLinear()
-            .domain([50, 85, 90, 100])
-            .range(["purple", "red", "gold", "green"]),
-            colorNaf = d3.scaleLinear()
-            .domain([-11, -5, -1, -0.5, 0, 1.5, 20])
-            .range(["darkred", "red", "darkorange", "gold", "rgb(160, 221, 43)", "green", "rgb(59, 157, 240)"]),
-            colorDens = d3.scaleLinear()
-            .domain([0, 2, 5, 8, 15, 30, 1000])
-            .range(["darkred", "red", "darkorange", "gold", "green", "rgb(59, 157, 240)", "rgb(59, 157, 240)"]),
-            colorInt = d3.scaleLinear()
-            .domain([1000, 12, 8, 6, 4, 2])
-            .range(["darkred", "red", "darkorange", "gold", "green", "rgb(59, 157, 240)"]);
 
         // -----------------
         // masquage du pilote
@@ -46,28 +34,6 @@
         ongl = ongl.split("?")[0];
 
         /* récupération des données */
-        // liste des données
-        var Dataliste = [{
-                type: "csv",
-                url: "./data/territoires.csv"
-            }, // les entités territoriales, avec noms et appartenances
-            {
-                type: "csv",
-                url: "./data/oscom-norm-2017.csv"
-            }, // les données d'occupation du sol (OSCOM)
-            {
-                type: "json",
-                url: "./data/oscom-legende.json"
-            }, // légende des données OSCOM
-            {
-                type: "csv",
-                url: "./data/oscom-norm-2008-2017.csv"
-            }, // les données de consommation d'espaces naturels, agricoles et forestiers (OSCOM)
-            {
-                type: "csv",
-                url: "./data/ccf-norm-2006_2015-2018.csv"
-            } // les données de construction / densité (CCF)
-        ];
         // création d'une queue
         var q = d3.queue();
         // récupération des données listées
@@ -84,11 +50,15 @@
             $("#wait").fadeOut();
             $("#pilote").fadeIn();
             // préparation des données de niveaux territoriaux
-            var territ = assoArray(res[0], "id"),
+            let territ = assoArray(res[0], "id"),
                 oscom = res[1],
                 oscleg = res[2],
                 osnaf = res[3],
                 ccf = res[4];
+            // rapatriement des métadonnées
+              oscom.meta = Dataliste[1].meta;
+              osnaf.meta = Dataliste[3].meta;
+              ccf.meta = Dataliste[4].meta;
 
             for (var i in territ) {
                 territ[i].label = territ[i].Nom;
@@ -163,7 +133,7 @@
                 // bascule sur OcSol pour éviter les problèmes de tracé
                 bascule("OcSol", false);
                 // lancement des différents traitements
-                $("#titreZone").text(depart.Nom);
+                $("#collectivite").text(depart.Nom);
                 drawOs(id);
                 writeNaf(id);
                 writeIC(id);
@@ -264,8 +234,8 @@
                     var serie = g.selectAll(".serie")
                         .data(stackOs.keys(data.columns.slice(1))(data))
                         .enter().append("g")
-                        .attr("class", function(d) {
-                            return "serie c" + d.key;
+                        .attr("fill", function(d) {
+                            return colorOscom(d.key);
                         })
                         .on('mouseover', tip.show)
                         .on('mouseout', tip.hide);
@@ -309,11 +279,11 @@
                     // ajoute les sources et la légende si on est sur la première utilisation
                     if (firstTime > 0) {
                         var ocSoSource = d3.select('#OcSoLeg').append("p").attr("class", "source")
-                            .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2017 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a>");
+                            .html("source : " + oscom.meta);
                         var ocSoLeg = d3.select('#OcSoLeg').append('ul').attr('class', 'feather');
                         for (var l in oscleg) {
                             var item = ocSoLeg.append('li');
-                            item.insert('svg').append('use').attr('href', '../../lib/feather-sprite.svg#square').attr('class', 'c' + oscleg[l].code);
+                            item.insert('svg').append('use').attr('href', '../../lib/feather-sprite.svg#square').attr('fill', colorOscom(oscleg[l].code));
                             item.insert('span').text(oscleg[l].nature);
                         }
                     }
@@ -339,8 +309,10 @@
                 var Line = [],
                     Data = [];
                 // description des échelles dans "Infos"
-                for (var i = 0; i < colorPartNaf.domain().length; i++) $("#echPartNaf").html($("#echPartNaf").html() + "<svg class='feather thin' style='fill:" + colorPartNaf(colorPartNaf.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorPartNaf.domain()[i] + " ");
-                for (var i = 0; i < colorNaf.domain().length; i++) $("#echNaf").html($("#echNaf").html() + "<svg class='feather thin' style='fill:" + colorNaf(colorNaf.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorNaf.domain()[i] + " ");
+                if (firstTime > 0) {
+                  for (var i = 0; i < colorPartNaf.domain().length; i++) $("#echPartNaf").html($("#echPartNaf").html() + "<svg class='feather thin' style='fill:" + colorPartNaf(colorPartNaf.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorPartNaf.domain()[i] + " ");
+                  for (var i = 0; i < colorNaf.domain().length; i++) $("#echNaf").html($("#echNaf").html() + "<svg class='feather thin' style='fill:" + colorNaf(colorNaf.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorNaf.domain()[i] + " ");
+                }
                 for (var geo in Geo) {
                     // ajout de la ligne dans la table
                     Line[Geo[geo].order] = table.append('tr');
@@ -381,7 +353,7 @@
                 // ajout des sources
                 if (firstTime > 0) {
                     var iConsNafSource = d3.select('#iNafLeg').append("p").attr("class", "source")
-                        .html("source : <a target='_blank' href='http://valor.national.agri/R23-01-Haute-Normandie-Occupation?id_rubrique=187'>Observatoire de l'occupation des Sol Communale</a> (OSCOM) 2017 - <a href='http://draaf.normandie.agriculture.gouv.fr' target='_blank'>DRAAF Normandie</a>");
+                        .html("source : " + osnaf.meta);
                 }
             }
 
@@ -405,9 +377,10 @@
                 var Line = [],
                     Data = [];
                 // description des échelles dans "Infos"
-                // !!todo faire des histogrammes dynamiques en lieu et place des histo svg actuels
-                for (var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html() + "<svg class='feather thin' style='fill:" + colorDens(colorDens.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorDens.domain()[i] + " ");
-                for (var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html() + "<svg class='feather thin' style='fill:" + colorInt(colorInt.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></svg>&nbsp;" + colorInt.domain()[i] + " ");
+                if (firstTime > 0) {
+                  for (var i = 0; i < colorDens.domain().length - 1; i++) $("#echDens").html($("#echDens").html() + "<svg class='feather thin' style='fill:" + colorDens(colorDens.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></use></svg>&nbsp;" + colorDens.domain()[i] + " ");
+                  for (var i = colorInt.domain().length - 1; i > 0; i--) $("#echInt").html($("#echInt").html() + "<svg class='feather thin' style='fill:" + colorInt(colorInt.domain()[i]) + "'><use href='../../lib/feather-sprite.svg#circle'></svg>&nbsp;" + colorInt.domain()[i] + " ");
+                }
                 for (var geo in Geo) {
                     // ajout de la ligne dans la table
                     Line[Geo[geo].order] = table.append('tr');
@@ -441,7 +414,7 @@
                             l.append('td').attr('class', 'int').text(loc.toLocaleString());
                             l.append('td').attr('class', 'real').text(cons.toLocaleString());
                             l.append('td').attr('class', 'real').html(dens.toLocaleString() + '&nbsp;<svg class="feather thin" style="fill:' + colorDens(dens) + '"><use href="../../lib/feather-sprite.svg#circle"></svg>');
-                            l.append('td').attr('class', 'real').html(int.toLocaleString() + '&nbsp;<svg class="feather thin" style="fill:' + colorDens(int) + '"><use href="../../lib/feather-sprite.svg#circle"></svg>');
+                            l.append('td').attr('class', 'real').html(int.toLocaleString() + '&nbsp;<svg class="feather thin" style="fill:' + colorInt(int) + '"><use href="../../lib/feather-sprite.svg#circle"></svg>');
                             if (loc < 10) {
                                 l.attr('class', 'small');
                                 l.attr('title', 'nombre de construction insuffisant pour garantir la fiabilité de la donnée')
@@ -453,7 +426,7 @@
                 // ajout des sources
                 if (firstTime > 0) {
                     var iConsSource = d3.select('#iConsLeg').append("p").attr("class", "source")
-                        .html("source : <a target='_blank' href='http://www.epf-normandie.fr/Actualites/A-la-Une/Donnees-sur-la-consommation-fonciere-en-Normandie'>CCF</a> 2006 > 2015 - <a href='http://www.epf-normandie.fr/' target='_blank'>EPF Normandie</a> <a href='https://www.normandie.fr'>Région Normandie</a> - 2018");
+                        .html("source : " + ccf.meta);
                 }
             }
 
@@ -545,7 +518,6 @@ function traceGraphes(larg) {
 
                 // insertion du premier svg (Densités) dans #iConsGraph
                 insertBarGraph("IceDensGraph", Ddata, 550, colorDens, "densité des constructions neuves (en locaux / ha)", "nbre de communes",larg);
-
                 // insertion du deuxième svg (Intensités) dans #iConsGraph
                 insertBarGraph("IceIntGraph", Idata, 450, colorInt, "intensité de la construction (en locaux / 1000 hab / an)", "nbre de communes",larg);
             }
@@ -576,20 +548,6 @@ function traceGraphes(larg) {
                 return d.classe;
             })).range([0, width]).padding(0.1);
             var y = d3.scaleLinear().range([height, 0]).domain([0, yMax]);
-if(targetId === "IceDensGraph") {
-  tester(myWidth, "myWidth");
-  tester(width, "width");
-  tester(gWidth, "gWidth");
-  tester(height, "height");
-  tester(gHeight, "gHeight");
-
-}
-            // Mise à l'échelle des axes
-            /*x.domain(data.map(function(d) {
-                return d.classe;
-            }));
-            y.domain([0, yMax]);*/
-
             // append the rectangles for the bar chart
             svg.selectAll(".bar")
                 .data(data)
