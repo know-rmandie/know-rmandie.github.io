@@ -1,6 +1,5 @@
-$.getJSON("./data/data-normandie.json", function(data) {
-    $.getJSON("./data/N_SCOT_ZSUP_R23etR25_FLA-201502.geojson", function(SCoTs) {
-
+$.getJSON("./data/"+FichierDonnees, function(data) {
+    $.getJSON("./data/"+FichierGeometrie, function(SCoTs) {
       var sources = "sources : " + data.metadata.source + " - " + data.metadata.date;
       var context = "map";
       var Couches = new Array;
@@ -57,12 +56,11 @@ function letsStart() {
 	// insertion des SCoTs au format geoJSON (export direct depuis QGIS, stockage dans 	N_SCOT_ZSUP_R23etR25_FLA-201502.geo.json)
 	var dataScots;
 	var cScots=new L.geoJson(SCoTs, {
-		attribution: 'sources : IGN - GeoFLA 2010, METL - SUDOCUH, DREAL Haute-Normandie - Observatoire des SCoTs',
 		// colorisation des polygones
 		style: function (feature) {
 			var fill;
 			// recherche des données dans la base de l'Observatoire normand (plus à jour)
-			dataScots=data.liste;
+			dataScots = data.liste;
 			if (eval("dataScots.$"+feature.properties.idScot)) {
 				var avancement=eval("dataScots.$"+feature.properties.idScot+".avancement");
 				switch(avancement) {
@@ -121,7 +119,7 @@ function letsStart() {
 	legende.addTo(carte);
 
 	// adding function on local network only
-	if(document.location.href.match(/file:\/\/\//g)) {
+	if(document.location.href.match(/adminView/g)) {
 		// possibilité de choisir sa couche de fond
 		// couche IGN WMS sur i²
 		var RgeIgn = L.tileLayer.wms("http://georef.application.i2/cartes/mapserv?", {

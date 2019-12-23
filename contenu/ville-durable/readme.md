@@ -1,16 +1,17 @@
 *Le [projet original][origin] est hébergé sur gitlab. D'autres versions peuvent être déployées, notamment sur github, mais il s'agit de miroirs...*
 
 # Cartographie des projets urbains durables
-Cette carte interactive des projets d'écoquartiers ([demonstration][demo]) ou assimilés est un outil initialement développé pour la Haute-Normandie puis adapté à la Normandie. Assez facilement adaptable à n'importe quel territoire.
+Cette [carte interactive des projets d'écoquartiers][demo] ou assimilés est un outil initialement développé pour la Haute-Normandie puis adapté à la Normandie. Assez facilement adaptable à n'importe quel territoire.
 
 ## Options
 Il est possible d'activer certaines options non visibles par défaut en ajoutant des termes à l'url d'accès :
 
-* `?tousProjets` pour voir tous les projets, y compris les **projets abandonnés** (champs ` ` comporte le terme `archivé`)
+* `?tousProjets` pour voir tous les projets, y compris les **projets abandonnés** (le champ `Acom` comporte le terme `archivé`)
 * `?carteSeule` pour voir la **Carte en plein écran**. Egalement utile pour insérer la carte sur son site internet via une balise `<iframe>`. Par exemple :
 ```html
 <iframe width="100%" height="542" src="http://know-rmandie.gitlab.io/ville-durable/?carteSeule" frameborder="0" allowfullscreen></iframe>
 ```
+
 * `?adminView` pour accéder à des options supplémentaires :
     * choix d'autres couches de fond
     * outil de récupération des coordonnées

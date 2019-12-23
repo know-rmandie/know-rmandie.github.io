@@ -1,5 +1,3 @@
-title: Projets archivés
-
 Cette partie du site rassemble des projets archivés, mais dont il nous a semblé utile de conserver des éléments d'historique ou de documentation. Ces archives sont à distinguer de celles des projets vivants, utiles pour voir l'évolution dans le temps...
 
 Si vous cherchez une vision plus complète, la liste des projets archivés est plutôt [à retrouver sur le dépôt](https://gitlab.com/groups/know-rmandie/-/archived).

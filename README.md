@@ -5,31 +5,32 @@ Ce répertoire contient plusieurs projets (ou leur documentation) destinés à c
 
 ## Projets
 
-* Atlas de la [ville durable](./contenu/ville-durable/)
+* Atlas de la [ville durable](./contenu/ville-durable/readme.md)
 * Indicateurs
-    * [ICE](./contenu/I/CE) indicateurs de consommation d'espaces
+    * [ICE](./contenu/I/CE/readme.md) indicateurs de consommation d'espaces
 * Cartographies
-    * des [SCoT](./contenu/planification/) de normandie
-    * de la [mobilisation du foncier public](./contenu/Foncier/foncier-public/)
-* Analyse de l'[évolution des documents d'urbanisme](./contenu/urbanisme/)
+    * des [SCoT](./contenu/planification/readme.md) de normandie
+    * de la [mobilisation du foncier public](./contenu/Foncier/foncier-public/readme.md)
+* Analyse de l'[évolution des documents d'urbanisme](./contenu/urbanisme/readme.md)
 
 Et d'autres projets désormais [archivés](./contenu/archives/)
 
 ## Tester Know-rmandie sur votre machine
 
 L'outil nécessite python 3.x pour produire les pages ainsi que les bibliothèques figurant dans [py-requirements.txt](py-requirements.txt). On peut les installer facilement en faisant
+
 ```bash
 pip install -r py-requirements.txt
 ```
 
-Ceci fait, on peut soit produire l'ensemble du site tel qu'il sera envoyé au serveur. Le résultat apparaitra dans un dossier `site` . Une fois les pages produites, le site est "statique" et ne nécessite rien d'autre qu'un serveur de fichiers.
-```bash
-mkdocs build
-```
-
-On peut également lancer un serveur virtuel qui permet à la fois de prévisualiser le site, mais de visualiser en temps réel les modification qu'on fait dans le projet.
+Ceci fait, on peut lancer un serveur virtuel qui permet à la fois de prévisualiser le site, mais de visualiser en temps réel les modification qu'on fait dans le projet.
 ```bash
 mkdocs serve
+```
+
+On peut également produire l'ensemble du site tel qu'il sera envoyé au serveur. Le résultat apparaitra dans un dossier `site` . Une fois les pages produites, le site est "statique" et ne nécessite rien d'autre qu'un serveur de fichiers.
+```bash
+mkdocs build
 ```
 
 ### Problèmes dans l'exécution du programme
