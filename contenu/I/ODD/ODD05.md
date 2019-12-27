@@ -6,8 +6,8 @@ Indicateurs retenus pour cet ODD. Lorsque l'indicateur a une correspondance dans
 
 | Intitulé | description | unité | source(s) | date(s) |
 | -------- | ----------- | ----- | ------ | ------- |
-| Écart des salaire femmes / hommes | écart entre le salaire net horaire moyen des femmes et celui des hommes (_?_) | `%` | DADS[^DADS] | 2015 |
-| Taux de chômage par sexe | part des actifs femmes ou hommes au chômage (au sens du <abbr title="Bureau International du Travail">BIT</abbr>) (_?_) | `%` | Taux de chômages[^chom] | 2018 |
+| Écart des salaire femmes / hommes | écart entre le salaire net horaire moyen des femmes et celui des hommes (_?_) | `%` | DADS[^DADS] | 2015? 2016? |
+| Taux de chômage par sexe | part des actifs femmes ou hommes au chômage (au sens du <abbr title="Bureau International du Travail">BIT</abbr>) (_?_) | `%` | Taux de chômages[^chom] | 2016? 2018? |
 
 [^DADS]: Déclaration annuelle de données sociales - Insee
 [^chom]: Taux de chômage localisés, enquête emploi en continu - Insee
