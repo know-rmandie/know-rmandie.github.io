@@ -23,8 +23,9 @@ theme:
   custom_dir: theme
   language: fr
   font: false
-  feature:
-    tabs: true
+  features:
+    - tabs
+    - instant
   palette:
     primary: 'teal'
     accent: 'red'
@@ -34,14 +35,15 @@ extra_css:
 
 extra:
   social:
-    - type: 'gitlab'
+    - icon: fontawesome/brands/gitlab
       link: 'https://gitlab.com/know-rmandie'
-    - type: 'github'
+    - icon: fontawesome/brands/github
       link: 'https://github.com/know-rmandie'
 
 # Plugins
 plugins:
   - search:
+      separator: '[\s\-\.]+'
       lang:
         - fr
         - en

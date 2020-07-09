@@ -1,3 +1,11 @@
+.md-main__inner {
+  margin-top: 0;
+}
+
+.md-typeset h1 {
+  margin: 0 0 .5em 0;
+}
+
 article a[href^="http"] {
   text-decoration: underline
 }
@@ -261,6 +269,10 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
   flex-basis: 32%;
   max-width: 32%;
   flex-grow: 1;
+}
+
+.md-footer-nav__title {
+  line-height: 1em;
 }
 
 @media (min-width:50em) {

@@ -10,7 +10,7 @@ var $window, $body, getWidth, rW = 10,
     }), getWidth = function(b) {
       switch (b) {
         case "map":
-          rW = a(".md-content__inner").width() - 10, rH = a(window).height() - 340;
+          rW = a(".md-content__inner").width() - 10, rH = a(window).height() - 150;
           break;
         case "graph":
           rW = a(".md-content__inner").width(), rH = rW / 2;
