@@ -1,0 +1,312 @@
+{
+    "metadata":{
+      "date": "avril 2015",
+      "source": "IGN - GeoFLA 2010, METL - SUDOCUH, DREAL Normandie - <a href='http://www.normandie.developpement-durable.gouv.fr/'>Observatoire des SCoTs</a>"},
+    "liste": {
+    "$14b1": {
+        "nom": "ScoT du Bessin",
+        "avancement": "opelab",
+        "description": "SCoT en cours de révision<br/>- 140 communes, 78600 habitants, 990 hectares<br/>- document approuvé le 14/02/2008<ul></ul>"
+    },
+    "$14c1": {
+        "nom": "ScoT de Caen Métropole",
+        "avancement": "opelab",
+        "description": "SCoT en cours de révision<br/>- 143 communes, 340200 habitants, 900 hectares<br/>- document approuvé le 20/10/2011<br/>Le SD de Caen couvre initialement 50 communes. Le Syndicat Mixte a cru au fil de la création des communautés de communes. Périmètre encore en cours d'élargissement. Périmètre définitif attendu pour mi-2004. Prescription LE 01/07/2004. Transformation du SAUAC en syndicat de CAEN-METROPOLE<ul><li><a href='http://www.caen-metropole.fr/web/menuLavancementduscot.do'>internet</a></li></ul>"
+    },
+    "$14f1": {
+        "nom": "ScoT du Pays de Falaise",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 57 communes, 27200 habitants, 470 hectares<br/>Le SCoT est à l'échelle d'une communauté de communes, il n'y a donc pas d'EP créé spécifiquement. Il intègre depuis le 1er janvier 2010 4 communes de plus, communes ayant quitté le périmètre du SCOT du Sud Pays d'Auge. A la demande de la communauté de communes du Pays de Falaise, une procédure est actuellement en cours pour actualiser le périmètre arrêté initialement.<ul></ul>"
+    },
+    "$14h1": {
+        "nom": "ScoT du Nord Pays d’Auge",
+        "avancement": "opelab",
+        "description": "SCoT en cours de révision<br/>- 103 communes, 78600 habitants, 790 hectares<br/>- document approuvé le 15/12/2007<br/>Approuvé par délibération du syndicat mixte le 15/12/2007; Le SCoT deviendra exécutoire dans les 2 mois suivant sa transmission en préfecture le 03/01/2008 et l'accomplissement des mesures de publicité.<ul><li><a href='http://nord-pays-auge.proscot.fr/'>internet</a></li></ul>"
+    },
+    "$14l1": {
+        "nom": "ScoT du Sud Pays d’Auge",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 106 communes, 75500 habitants, 950 hectares<br/>- document approuvé le 24/10/2011<br/>4 communes (Jort, Courcy, Louvagny et Vicques) ont quitté la communauté de communes des trois rivières pour intégrer celle du Pays de Falaise le 1er janvier 2010. Cette dernière n'étant pas membre du syndicat mixte du SCOT du Sud Pays d'Auge, le périmètre de ce SCOT a été automatiquement réduit à cette même date conformément aux dispositions de l'article L122-5 du code de l'urbanisme.<ul><li><a href='http://www.cc-vallee-auge.fr/Le-SCOT/Le-SCOT-Sud-Pays-d-Auge'>internet</a></li></ul>"
+    },
+    "$14p1": {
+        "nom": "ScoT du Pré-Bocage",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 49 communes, 25300 habitants, 430 hectares<br/>Arrêté préfectoral du 08/01/2005 autorisant la transformation du SIVOM Pré-Bocage en syndicat mixte.<ul></ul>"
+    },
+    "$14s1": {
+        "nom": "ScoT de la Suisse Normande",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 48 communes, 22700 habitants, 400 hectares<br/>prescrit initialement le 20/04/2004, le syndicat mixte a relancé la procédure d'élaboration du SCOT par délibération du 14 avril 2010.<ul></ul>"
+    },
+    "$14v1": {
+        "nom": "ScoT du Bocage",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 60 communes, 39800 habitants, 690 hectares<br/>- document approuvé le 07/02/2013<ul></ul>"
+    },
+    "$27a1": {
+        "nom": "Scot du Pays d’Avre, d’Eure et d’Iton",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 85 communes, 60000 habitants, 990 hectares<br/>- SCoT retenu à l’appel à projet <i>SCoT ruraux</i> 2011<ul><li><a href='http://pays-avre-eure-iton.fr/index.html'>internet</a></li><li class='intranet'><a href='40484'>internet</a></li></ul>"
+    },
+    "$27c1": {
+        "nom": "ScoT de la communauté de communes de Conches",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 27 communes, 18600 habitants, 260 hectares<br/>- document approuvé le 05/10/2009<ul><li><a href='http://www.conches-en-ouche.fr/index.php?option=com_content&view=article&id=148%3Aenquete-publique-du-scot&catid=70%3Acommunes&Itemid=116&lang=fr'>internet</a></li><li class='intranet'><a href='38273'>internet</a></li></ul>"
+    },
+    "$27e1": {
+        "nom": "ScoT de l’Agglomération d’Évreux",
+        "avancement": "opelab",
+        "description": "SCoT en cours de révision<br/>- 37 communes, 81200 habitants, 290 hectares<br/>- document approuvé le 10/06/2004<br/>- SCoT candidat aux appels à projet <i>SCoT ruraux</i> 2011 et 2012<ul><li><a href='http://le-gea.fr/'>internet</a></li><li class='intranet'><a href='38148'>internet</a></li></ul>"
+    },
+    "$27e2": {
+        "nom": "ScoT Eure Madrie Seine",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 23 communes, 28700 habitants, 190 hectares<br/>- document approuvé le 28/09/2010<ul><li><a href='http://www.cc-euremadrieseine.fr/economie-territoire/schema-de-coherence-territoriale-scot/'>internet</a></li><li class='intranet'><a href='37914'>internet</a></li></ul>"
+    },
+    "$27p1": {
+        "nom": "ScoT des Portes de l’Eure",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 41 communes, 57200 habitants, 310 hectares<br/>- document approuvé le 14/12/2011<ul><li><a href='http://www.cape27.fr/cape-amenagement-territoire-habitat-83.html'>internet</a></li><li class='intranet'><a href='Codra'>internet</a></li><li class='intranet'><a href='38834'>internet</a></li></ul>"
+    },
+    "$27p2": {
+        "nom": "ScoT de la communauté de communes du Pays du Neubourg",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 34 communes, 17500 habitants, 250 hectares<br/>- SCoT retenu à l’appel à projet <i>SCoT ruraux</i> 2011<ul><li><a href='http://www.paysduneubourg.fr/'>internet</a></li><li class='intranet'><a href='38007'>internet</a></li></ul>"
+    },
+    "$27r1": {
+        "nom": "ScoT du Pays Risle-Charentonne",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 135 communes, 71300 habitants, 1310 hectares<br/>- document approuvé le 18/12/2012<ul><li><a href='http://www.paysrislecharentonne.com/'>internet</a></li><li class='intranet'><a href='Proscot'>internet</a></li><li class='intranet'><a href='38503'>internet</a></li></ul>"
+    },
+    "$27r2": {
+        "nom": "ScoT du Pays Risle-Estuaire",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 83 communes, 56600 habitants, 730 hectares<br/>- SCoT candidat aux appels à projet <i>SCoT ruraux</i> 2011 et 2012<ul><li><a href='http://www.normandie-accueil.fr/index.php'>internet</a></li><li class='intranet'><a href='34197'>internet</a></li></ul>"
+    },
+    "$27r3": {
+        "nom": "ScoT du Pays du Roumois",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 61 communes, 45100 habitants, 380 hectares<br/>- document approuvé le 03/03/2014<ul><li><a href='http://www.roumois.fr/SCoT-du-Roumois,96,0,0.html'>internet</a></li><li class='intranet'><a href='1er août 2007'>internet</a></li></ul>"
+    },
+    "$27s1": {
+        "nom": "ScoT Seine Eure Forêt de Bord",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 37 communes, 67900 habitants, 290 hectares<br/>- document approuvé le 17/12/2011<ul><li><a href='http://www.agglo-seine-eure.fr/Qu-est-ce-qu-un-SCoT_a77.html'>internet</a></li><li class='intranet'><a href='38097'>internet</a></li></ul>"
+    },
+    "$27v1": {
+        "nom": "ScoT du Pays du Vexin Normand",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 111 communes, 79400 habitants, 1030 hectares<br/>- document approuvé le 16/04/2009<ul><li><a href='http://www.pays-vexin-normand.com/sous_chap.html?s=238'>internet</a></li><li class='intranet'><a href='39001'>internet</a></li></ul>"
+    },
+    "$28d1": {
+        "nom": "SCoT du Pays de Dreux",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 78 communes, 111500 habitants, 1020 hectares<ul></ul>"
+    },
+    "$28xa": {
+        "nom": "SCoT de l'agglomération chartraine",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 47 communes, 121700 habitants, 610 hectares<ul></ul>"
+    },
+    "$28xb": {
+        "nom": "SCoT du Pays Dunois",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 53 communes, 45300 habitants, 930 hectares<ul></ul>"
+    },
+    "$28xc": {
+        "nom": "SCoT du Pays de Beauce",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 82 communes, 39200 habitants, 1240 hectares<ul></ul>"
+    },
+    "$28xd": {
+        "nom": "SCoT des Pays de Combray et Courvillois",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 33 communes, 20800 habitants, 440 hectares<ul></ul>"
+    },
+    "$28xe": {
+        "nom": "SCoT du canton de Maintenon",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 21 communes, 33400 habitants, 240 hectares<ul></ul>"
+    },
+    "$50b1": {
+        "nom": "SCoT du Pays de la baie du Mont-Saint-Michel",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 184 communes, 143100 habitants, 2010 hectares<br/>- document approuvé le 13/06/2013<ul></ul>"
+    },
+    "$50c1": {
+        "nom": "SCoT du Pays du cotentin",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 185 communes, 197400 habitants, 1730 hectares<br/>- document approuvé le 12/04/2011<ul></ul>"
+    },
+    "$50m1": {
+        "nom": "SCoT du Centre-Manche-Ouest",
+        "avancement": "opelab",
+        "description": "SCoT en cours de révision<br/>- 111 communes, 70700 habitants, 1140 hectares<br/>- document approuvé le 12/02/2010<ul></ul>"
+    },
+    "$50s1": {
+        "nom": "SCoT Pays Saint Lois",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 99 communes, 81300 habitants, 990 hectares<br/>- document approuvé le 18/12/2013<ul></ul>"
+    },
+    "$60b1": {
+        "nom": "SCoT du Pays de Bray",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 22 communes, 15500 habitants, 230 hectares<ul></ul>"
+    },
+    "$60p1": {
+        "nom": "SCoT de la Picardie Verte",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 89 communes, 32600 habitants, 630 hectares<ul></ul>"
+    },
+    "$60v1": {
+        "nom": "SCoT du Vexin Thelle",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 42 communes, 20600 habitants, 330 hectares<ul></ul>"
+    },
+    "$60xa": {
+        "nom": "SCoT de l'Oise Picarde",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 61 communes, 27200 habitants, 480 hectares<ul></ul>"
+    },
+    "$60xb": {
+        "nom": "SCoT du Pays de Thelle",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 36 communes, 46400 habitants, 270 hectares<ul></ul>"
+    },
+    "$60xc": {
+        "nom": "SCoT de l'Arc",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 15 communes, 69900 habitants, 200 hectares<ul></ul>"
+    },
+    "$60xd": {
+        "nom": "SCoT du Pays du Valois",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 62 communes, 53700 habitants, 620 hectares<ul></ul>"
+    },
+    "$60xe": {
+        "nom": "SCoT Pays des Sources",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 48 communes, 21500 habitants, 350 hectares<ul></ul>"
+    },
+    "$60xf": {
+        "nom": "SCoT du Pays d'Oise et d'Halatte",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 17 communes, 34100 habitants, 140 hectares<ul></ul>"
+    },
+    "$60xg": {
+        "nom": "SCoT des deux Vallees",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 16 communes, 22800 habitants, 110 hectares<ul></ul>"
+    },
+    "$60xh": {
+        "nom": "SCoT du Pays Noyonnais",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 42 communes, 33100 habitants, 270 hectares<ul></ul>"
+    },
+    "$60xi": {
+        "nom": "SCoT Oise-Aisne Soissonnaises",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 20 communes, 16300 habitants, 210 hectares<ul></ul>"
+    },
+    "$60xj": {
+        "nom": "SCoT de la Basse-automne-Plaine d'Estrees",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 25 communes, 27800 habitants, 220 hectares<ul></ul>"
+    },
+    "$60xk": {
+        "nom": "SCoT du Beauvaisis",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 31 communes, 78800 habitants, 310 hectares<ul></ul>"
+    },
+    "$60xl": {
+        "nom": "SCoT du Clermontois Plateau Picard",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 71 communes, 67200 habitants, 600 hectares<ul></ul>"
+    },
+    "$60xn": {
+        "nom": "SCoT du Grand Creillois",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 14 communes, 90400 habitants, 100 hectares<ul></ul>"
+    },
+    "$60xq": {
+        "nom": "SCoT des Sablons",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 25 communes, 34900 habitants, 210 hectares<ul></ul>"
+    },
+    "$61a0": {
+        "nom": "SCoT de la Communauté Urbaine d’Alençon",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 31 communes, 48600 habitants, 340 hectares<br/>- document approuvé le 18/12/2014<ul></ul>"
+    },
+    "$61a1": {
+        "nom": "SCoT du Pays d’Argentan, Pays d’Auge Ornais et Pays d’Ouche",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 161 communes, 76700 habitants, 1810 hectares<ul></ul>"
+    },
+    "$61p1": {
+        "nom": "SCoT du Pays du Perche Ornais",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 111 communes, 48300 habitants, 1550 hectares<ul></ul>"
+    },
+    "$76b1": {
+        "nom": "ScoT du Pays Interrégional Bresles-Yères",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 77 communes, 62100 habitants, 730 hectares<ul><li><a href='http://www.paysbresleyeres.fr/syndicat-mixte.php'>internet</a></li><li class='intranet'><a href='41296'>internet</a></li></ul>"
+    },
+    "$76b2": {
+        "nom": "ScoT du Pays de Bray",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 122 communes, 64200 habitants, 1360 hectares<ul><li><a href='http://www.paysdebray.org/economie-et-scot/scot/'>internet</a></li></ul>"
+    },
+    "$76c1": {
+        "nom": "ScoT du Pays de Caux Vallée de Seine",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 47 communes, 68500 habitants, 490 hectares<br/>- document approuvé le 26/03/2013<ul><li><a href='http://www.cauxseine.fr/cvs-qui_sommes_nous-scot.php'>internet</a></li><li class='intranet'><a href='37910'>internet</a></li></ul>"
+    },
+    "$76d1": {
+        "nom": "ScoT du Pays Dieppois - Terroir de Caux",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 128 communes, 106400 habitants, 860 hectares<ul><li><a href='http://www.paysdieppois-terroirdecaux.fr/le-scot'>internet</a></li><li class='intranet'><a href='40655'>internet</a></li></ul>"
+    },
+    "$76e1": {
+        "nom": "ScoT entre Seine et Bray",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 62 communes, 50400 habitants, 510 hectares<br/>- document approuvé le 24/11/2014<ul><li><a href='http://www.seineetbray.fr/Scot,5,0,0.html'>internet</a></li><li class='intranet'><a href='39755'>internet</a></li></ul>"
+    },
+    "$76h1": {
+        "nom": "ScoT du Havre - Pointe de Caux Estuaire",
+        "avancement": "opelab",
+        "description": "SCoT en cours de révision<br/>- 33 communes, 255000 habitants, 380 hectares<br/>- document approuvé le 13/02/2012<ul><li><a href='http://www.scot-lhpce.fr'>internet</a></li><li class='intranet'><a href='38090'>internet</a></li></ul>"
+    },
+    "$76h2": {
+        "nom": "ScoT du Pays des Hautes Falaises",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 100 communes, 81300 habitants, 630 hectares<br/>- document approuvé le 14/03/2014<ul><li><a href='http://www.paysdeshautesfalaises.org/syndicat-mixte/scot-contenu-du-document/'>internet</a></li><li class='intranet'><a href='39127'>internet</a></li></ul>"
+    },
+    "$76p1": {
+        "nom": "ScoT du Pays du Plateau de Caux Maritime",
+        "avancement": "opap",
+        "description": "SCoT opposable<br/>- 109 communes, 67600 habitants, 710 hectares<br/>- document approuvé le 24/09/2014<ul><li><a href='http://www.plateaudecauxmaritime.fr/spip.php?article27'>internet</a></li><li class='intranet'><a href='39232'>internet</a></li></ul>"
+    },
+    "$76r1": {
+        "nom": "ScoT Rouen -Elbeuf-Austreberthe",
+        "avancement": "elab",
+        "description": "SCoT en cours d’élaboration<br/>- 71 communes, 488600 habitants, 660 hectares<ul><li><a href='http://www.la-crea.fr/scot-dans-la-crea.html'>internet</a></li></ul>"
+    },
+    "$78m1": {
+        "nom": "SCoT du Mantois",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 0 communes, 0 habitants, 0 hectares<ul></ul>"
+    },
+    "$80a1": {
+        "nom": "SCoT du Grand Amienois",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 0 communes, 0 habitants, 0 hectares<ul></ul>"
+    },
+    "$80s1": {
+        "nom": "SCoT du Pays du Santerre Haute-Somme",
+        "avancement": "saispas",
+        "description": "Avancement : à compléter<br/><br/>- 126 communes, 56700 habitants, 890 hectares<ul></ul>"
+    }
+}
+}

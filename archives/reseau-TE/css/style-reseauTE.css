@@ -1,0 +1,55 @@
+.avct:before {
+    font-family: FontAwesome;
+    margin-right: .35em;
+    font-size: 120%
+}
+
+.avct.inconnu:before {
+    content: '\f128'
+}
+
+.avct.intention:before {
+    content: '\f0eb'
+}
+
+.avct.projet:before {
+    content: '\f073'
+}
+
+.avct.chantier:before {
+    content: '\f01d'
+}
+
+.avct.réalisé:before {
+    content: '\f00c'
+}
+
+.marker-cluster div {
+    border-radius: 50%;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    min-width: 16px;
+    min-height: 16px
+}
+
+.marker-cluster>div {
+    border: 1px dotted black
+}
+
+.marker-cluster div div {
+    margin: 1.5px auto
+}
+
+.marker-cluster div div span {
+    vertical-align: top;
+    margin: 1.5px 0 0 -.5px
+}
+
+path.leaflet-clickable {
+    fill: green;
+    fill-opacity: 0.5;
+    stroke: green;
+    stroke-width: 0.2
+}

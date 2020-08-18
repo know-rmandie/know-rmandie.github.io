@@ -1,0 +1,21 @@
+title: Know-rmandie
+---
+created: 2012-10-10
+---
+modified: 2016-05-20
+---
+author: Sylvain Comte
+---
+keywords: territoires,normandie,connaissance,outils,visualisation,cartographie,indicateurs,aménagement,urbanisme,ville durable,économie,consommation d'espace,dataviz,opensource,opendata
+---
+body:
+Ce site maintenu par la [DREAL Normandie](http://www.normandie.developpement-durable.gouv.fr) sert de support pour le partage et la mise à disposition d'informations et données sur les territoires normands.
+
+* Définition d'[indicateurs] pour le suivi des territoires
+    * [indicateurs économiques](./I/ET)
+    * [Indicateurs de consommation d'espace](./I/CE)
+* Carte des [Schémas de COhérence Territoriale](./planification) et de leur avancement
+* Analyse de l'[avancement des documents d'urbanisme](./urbanisme) locaux
+* Carte de la [ville durable en Normandie](./ville-durable) (et aussi en guise de test celle des [écoquartiers en France](./ville-durable/France))
+* Carte de la [mobilisation du foncier public](./foncier-public) en faveur du logement
+* [Documentation d'AGENor](./AGENor) (Application de Gestion des Etudes Normandie) en cours de développement

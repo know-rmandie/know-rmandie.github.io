@@ -1,0 +1,28 @@
+/* Styles for feathers sprites svg icons */
+svg.feather, ul.feather svg {
+  width: 1.1em;
+  height: 1.1em;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  vertical-align: sub;
+}
+svg.x3 {
+  width: 2.4em;
+  height: 2.4em;
+}
+svg.thin {
+  stroke-width: 1px;
+}
+
+ul.feather {
+  margin:.5em;
+}
+ul.feather li {
+  list-style: none;
+}
+ul.feather svg {
+  margin: 0 0.1em;
+}

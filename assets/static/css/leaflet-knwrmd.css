@@ -1,0 +1,35 @@
+.leaflet-right {
+	max-width:50%
+}
+.leaflet-popup-content h6 {
+	font-size:.7rem;
+	margin:0 0 .2rem 0
+}
+
+.leaflet-control-attribution {
+	height:1.5em;
+}
+.leaflet-control-attribution:hover {
+	height:auto;
+}
+
+@media (min-width: 490px) and (max-width:520px) {
+	.map {
+		height:520px
+	}
+}
+@media (min-width: 550px) and (max-width:600px) {
+	.map {
+		height:600px
+	}
+}
+@media (min-width:750px) {
+	.leaflet-right {
+		max-width:66%
+	}
+}
+@media (min-width: 900px) {
+	.leaflet-right {
+		max-width:75%
+	}
+}
