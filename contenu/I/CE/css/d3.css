@@ -145,6 +145,10 @@ tr.depart {
   text-align: left;
 }
 
+.md-sidebar--secondary {
+  display: none;
+}
+
 @media only screen and (min-width:100em) {
   #OcSoLeg ul {
     columns: 2;

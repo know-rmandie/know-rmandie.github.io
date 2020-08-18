@@ -334,10 +334,6 @@ article .md-search__input:hover, article .md-search__input:focus, article .md-se
     margin: 0 1rem 1rem 0;
   }
 
-  .md-sidebar--secondary {
-    margin-left: 66rem;
-  }
-
   .two>.admonition, .two>div {
     flex-basis: 49%;
     max-width: 49%;
